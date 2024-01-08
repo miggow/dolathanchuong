@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -15,24 +17,41 @@ class AuthController extends Controller
     public function register()
     {
         return view('auth.register');
-
     }
     public function do_login(Request $request)
     {
-
+        $credentials = $request->only('email', 'password');
+        // dd($credentials);
+        if (Auth::attempt($credentials)) {
+            if (Auth::user()->isAdmin) {
+                Session::flash('success', 'Đăng nhập thành công.');
+                return redirect()->route('admin.dashboard');
+            } else {
+                return redirect()->route('home');
+            }
+        } else {
+            Session::flash('error', 'Sai tên đăng nhập hoặc mật khẩu.');
+            return back();
+        }
     }
     public function do_register(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required',
-            'address' => 'required',
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string'],
+            'address' => ['required', 'string'],
+            'phone' => ['required'],
         ]);
-        $user = User::create(request(['name', 'email', 'password', 'phone', 'address']));
-        auth()->login($user);
-
-        return redirect()->to('/');
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'password' => Hash::make($request->password),
+        ]);
+        Auth::login($user);
+        return redirect()->route('home');
     }
     public function logout()
     {

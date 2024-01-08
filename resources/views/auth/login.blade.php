@@ -786,7 +786,7 @@
                                  @csrf
                                  <span class="ec-login-wrap">
                                      <label>Email*</label>
-                                     <input type="text" name="name" placeholder="Enter your email add..."
+                                     <input type="text" name="email" placeholder="Enter your email add..."
                                          required />
                                  </span>
                                  <span class="ec-login-wrap">

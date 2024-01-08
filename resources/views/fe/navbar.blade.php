@@ -36,13 +36,17 @@
 
                             <!-- Header User Start -->
                             <div class="ec-header-user dropdown">
-                                <button class="dropdown-toggle" data-bs-toggle="dropdown">{{ auth()->check() ? 'Hello, '.auth()->user()->name : '' }} <i
-                                        class="fi-rr-user"></i></button>
+                                <button class="dropdown-toggle"
+                                    data-bs-toggle="dropdown">{{ auth()->check() ? 'Hello, ' . auth()->user()->name : '' }}
+                                    <i class="fi-rr-user"></i></button>
                                 <ul class="dropdown-menu dropdown-menu-right">
-                                    <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('register') }}">Register</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
-                                    <li><a class="dropdown-item" href="checkout.html">Checkout</a></li>
+                                    @if (auth()->check())
+                                        <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
+                                    @else
+                                        <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('register') }}">Register</a></li>
+                                        <li><a class="dropdown-item" href="checkout.html">Checkout</a></li>
+                                    @endif
                                 </ul>
                             </div>
                             <!-- Header User End -->
