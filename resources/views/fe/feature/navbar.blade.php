@@ -1,7 +1,15 @@
-<header class="ec-header">
-    <!--Ec Header Top Start -->
 
-    <!-- Ec Header Top  End -->
+<div id="ec-overlay">
+    <div class="ec-ellipsis">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+
+<!-- Header start  -->
+<header class="ec-header">
     <!-- Ec Header Bottom  Start -->
     <div class="ec-header-bottom d-none d-lg-block">
         <div class="container position-relative">
@@ -10,7 +18,7 @@
                     <!-- Ec Header Logo Start -->
                     <div class="align-self-center">
                         <div class="header-logo">
-                            <a href="index.html"><img src="{{ asset('frontend/assets/images/debalogo.jpg') }}"
+                            <a href="{{ route('home') }}"><img src="{{ asset('frontend/assets/images/debalogo.jpg') }}"
                                     alt="Site Logo" /><img class="dark-logo"
                                     src="{{ asset('frontend/assets/images/debalogo.jpg') }}" alt="Site Logo"
                                     style="display: none;" /></a>
@@ -36,25 +44,20 @@
 
                             <!-- Header User Start -->
                             <div class="ec-header-user dropdown">
-                                <button class="dropdown-toggle"
-                                    data-bs-toggle="dropdown">{{ auth()->check() ? 'Hello, ' . auth()->user()->name : '' }}
-                                    <i class="fi-rr-user"></i></button>
+                                <button class="dropdown-toggle" data-bs-toggle="dropdown"><i
+                                        class="fi-rr-user"></i></button>
                                 <ul class="dropdown-menu dropdown-menu-right">
-                                    @if (auth()->check())
-                                        <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
-                                    @else
-                                        <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
-                                        <li><a class="dropdown-item" href="{{ route('register') }}">Register</a></li>
-                                        <li><a class="dropdown-item" href="checkout.html">Checkout</a></li>
-                                    @endif
+                                    <li><a class="dropdown-item" href="{{ route('register') }}">Register</a></li>
+                                    <li><a class="dropdown-item" href="checkout.html">Checkout</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
                                 </ul>
                             </div>
                             <!-- Header User End -->
                             <!-- Header wishlist Start -->
                             {{-- <a href="wishlist.html" class="ec-header-btn ec-header-wishlist">
-                                <div class="header-icon"><i class="fi-rr-heart"></i></div>
-                                <span class="ec-header-count">4</span>
-                            </a> --}}
+                                    <div class="header-icon"><i class="fi-rr-heart"></i></div>
+                                    <span class="ec-header-count">4</span>
+                                </a> --}}
                             <!-- Header wishlist End -->
                             <!-- Header Cart Start -->
                             <a href="#ec-side-cart" class="ec-header-btn ec-side-toggle">
@@ -77,7 +80,7 @@
                 <!-- Ec Header Logo Start -->
                 <div class="col">
                     <div class="header-logo">
-                        <a href="index.html"><img src="{{ asset('frontend/assets/images/debalogo.jpg') }}"
+                        <a href="{{ route('home') }}"><img src="{{ asset('frontend/assets/images/debalogo.jpg') }}"
                                 alt="Site Logo" /><img class="dark-logo"
                                 src="{{ asset('frontend/assets/images/debalogo.jpg') }}" alt="Site Logo"
                                 style="display: none;" /></a>
@@ -104,16 +107,14 @@
             <div class="row">
                 <div class="col-md-12 align-self-center">
                     <div class="ec-main-menu">
-                        <a href="javascript:void(0)" class="ec-header-btn ec-sidebar-toggle">
-                            <i class="fi fi-rr-apps"></i>
-                        </a>
                         <ul>
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="{{ route('home') }}">Home</a></li>
                             <li class="dropdown position-static"><a href="javascript:void(0)">Categories</a>
                                 <ul class="mega-menu d-block">
                                     <li class="d-flex">
                                         <ul class="d-block">
-                                            <li class="menu_title"><a href="javascript:void(0)">Classic Variation</a></li>
+                                            <li class="menu_title"><a href="javascript:void(0)">Classic
+                                                    Variation</a></li>
                                             <li><a href="shop-left-sidebar-col-3.html">Left sidebar 3 column</a>
                                             </li>
                                             <li><a href="shop-left-sidebar-col-4.html">Left sidebar 4 column</a>
@@ -127,13 +128,17 @@
                                         <ul class="d-block">
                                             <li class="menu_title"><a href="javascript:void(0)">Classic
                                                     Variation</a></li>
-                                            <li><a href="shop-banner-left-sidebar-col-3.html">Banner left sidebar 3
+                                            <li><a href="shop-banner-left-sidebar-col-3.html">Banner left sidebar
+                                                    3
                                                     column</a></li>
-                                            <li><a href="shop-banner-left-sidebar-col-4.html">Banner left sidebar 4
+                                            <li><a href="shop-banner-left-sidebar-col-4.html">Banner left sidebar
+                                                    4
                                                     column</a></li>
-                                            <li><a href="shop-banner-right-sidebar-col-3.html">Banner right sidebar
+                                            <li><a href="shop-banner-right-sidebar-col-3.html">Banner right
+                                                    sidebar
                                                     3 column</a></li>
-                                            <li><a href="shop-banner-right-sidebar-col-4.html">Banner right sidebar
+                                            <li><a href="shop-banner-right-sidebar-col-4.html">Banner right
+                                                    sidebar
                                                     4 column</a></li>
                                             <li><a href="shop-banner-full-width.html">Banner Full width 4
                                                     column</a>
@@ -150,7 +155,8 @@
                                             </li>
                                         </ul>
                                         <ul class="d-block">
-                                            <li class="menu_title"><a href="javascript:void(0)">List Variation</a>
+                                            <li class="menu_title"><a href="javascript:void(0)">List
+                                                    Variation</a>
                                             </li>
                                             <li><a href="shop-list-left-sidebar.html">Shop left sidebar</a></li>
                                             <li><a href="shop-list-right-sidebar.html">Shop right sidebar</a></li>
@@ -190,18 +196,21 @@
                             </li>
                             <li class="dropdown"><a href="javascript:void(0)">Products</a>
                                 <ul class="sub-menu">
-                                    <li class="dropdown position-static"><a href="javascript:void(0)">Product page
+                                    <li class="dropdown position-static"><a href="javascript:void(0)">Product
+                                            page
                                             <i class="ecicon eci-angle-right"></i></a>
                                         <ul class="sub-menu sub-menu-child">
                                             <li><a href="product-left-sidebar.html">Product left sidebar</a></li>
-                                            <li><a href="product-right-sidebar.html">Product right sidebar</a></li>
+                                            <li><a href="product-right-sidebar.html">Product right sidebar</a>
+                                            </li>
                                         </ul>
                                     </li>
                                     <li class="dropdown position-static"><a href="javascript:void(0)">Product 360
                                             <i class="ecicon eci-angle-right"></i></a>
                                         <ul class="sub-menu sub-menu-child">
                                             <li><a href="product-360-left-sidebar.html">360 left sidebar</a></li>
-                                            <li><a href="product-360-right-sidebar.html">360 right sidebar</a></li>
+                                            <li><a href="product-360-right-sidebar.html">360 right sidebar</a>
+                                            </li>
                                         </ul>
                                     </li>
                                     <li class="dropdown position-static"><a href="javascript:void(0)">Product
@@ -231,7 +240,7 @@
                                     <li><a href="product-gallery-full-width.html">Gallery full width</a></li>
                                 </ul>
                             </li>
-                            {{-- <li class="dropdown"><a href="javascript:void(0)">Pages</a>
+                            <li class="dropdown"><a href="javascript:void(0)">Pages</a>
                                 <ul class="sub-menu">
                                     <li><a href="about-us.html">About Us</a></li>
                                     <li><a href="contact-us.html">Contact Us</a></li>
@@ -239,16 +248,15 @@
                                     <li><a href="checkout.html">Checkout</a></li>
                                     <li><a href="compare.html">Compare</a></li>
                                     <li><a href="faq.html">FAQ</a></li>
-                                    <li><a href="{{route('login')}}">Login</a></li>
-                                    <li><a href="{{route('register')}}">Register</a></li>
+                                    <li><a href="{{ route('login') }}">Login</a></li>
+                                    <li><a href="{{ route('register') }}">Register</a></li>
                                     <li><a href="track-order.html">Track Order</a></li>
                                     <li><a href="terms-condition.html">Terms Condition</a></li>
                                     <li><a href="privacy-policy.html">Privacy Policy</a></li>
                                 </ul>
-                            </li> --}}
-                            {{-- <li class="dropdown"><span class="main-label-note-new" data-toggle="tooltip"
-                                    title="NEW"></span><a href="javascript:void(0)">Others</a> --}}
-                            {{-- <li class="dropdown"><a href="javascript:void(0)">Others</a>
+                            </li>
+                            <li class="dropdown"><span class="main-label-note-new" data-toggle="tooltip"
+                                    title="NEW"></span><a href="javascript:void(0)">Others</a>
                                 <ul class="sub-menu">
                                     <li class="dropdown position-static"><a href="javascript:void(0)">Mail
                                             Confirmation
@@ -338,7 +346,8 @@
                                         <a href="javascript:void(0)">Vendor Catalog pages
                                             <i class="ecicon eci-angle-right"></i></a>
                                         <ul class="sub-menu sub-menu-child">
-                                            <li><a href="catalog-single-vendor.html">Catalog Single Vendor</a></li>
+                                            <li><a href="catalog-single-vendor.html">Catalog Single Vendor</a>
+                                            </li>
                                             <li><a href="catalog-multi-vendor.html">Catalog Multi Vendor</a></li>
                                         </ul>
                                     </li>
@@ -349,7 +358,8 @@
                                     <li><a href="blog-left-sidebar.html">Blog left sidebar</a></li>
                                     <li><a href="blog-right-sidebar.html">Blog right sidebar</a></li>
                                     <li><a href="blog-detail-left-sidebar.html">Blog detail left sidebar</a></li>
-                                    <li><a href="blog-detail-right-sidebar.html">Blog detail right sidebar</a></li>
+                                    <li><a href="blog-detail-right-sidebar.html">Blog detail right sidebar</a>
+                                    </li>
                                     <li><a href="blog-full-width.html">Blog full width</a></li>
                                     <li><a href="blog-detail-full-width.html">Blog detail full width</a></li>
                                 </ul>
@@ -365,30 +375,8 @@
                                     <li><a href="elemets-accordions.html">Accordions</a></li>
                                     <li><a href="elemets-blog.html">Blogs</a></li>
                                 </ul>
-                            </li> --}}
-                            <li><a href="offer.html">Hot Offers</a></li>
-                            <li class="dropdown scroll-to"><a href="javascript:void(0)"><i
-                                        class="fi fi-rr-sort-amount-down-alt"></i></a>
-                                <ul class="sub-menu">
-                                    <li class="menu_title">Scroll To Section</li>
-                                    <li><a href="javascript:void(0)" data-scroll="collection" class="nav-scroll">Top
-                                            Collection</a></li>
-                                    <li><a href="javascript:void(0)" data-scroll="categories"
-                                            class="nav-scroll">Categories</a></li>
-                                    <li><a href="javascript:void(0)" data-scroll="offers"
-                                            class="nav-scroll">Offers</a></li>
-                                    <li><a href="javascript:void(0)" data-scroll="vendors" class="nav-scroll">Top
-                                            Vendors</a></li>
-                                    <li><a href="javascript:void(0)" data-scroll="services"
-                                            class="nav-scroll">Services</a></li>
-                                    <li><a href="javascript:void(0)" data-scroll="arrivals" class="nav-scroll">New
-                                            Arrivals</a></li>
-                                    <li><a href="javascript:void(0)" data-scroll="reviews" class="nav-scroll">Client
-                                            Review</a></li>
-                                    <li><a href="javascript:void(0)" data-scroll="insta" class="nav-scroll">Instagram
-                                            Feed</a></li>
-                                </ul>
                             </li>
+                            <li><a href="offer.html">Hot Offers</a></li>
                         </ul>
                     </div>
                 </div>
@@ -405,7 +393,7 @@
         <div class="ec-menu-inner">
             <div class="ec-menu-content">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="{{ route('home') }}">Home</a></li>
                     <li><a href="javascript:void(0)">Categories</a>
                         <ul class="sub-menu">
                             <li>
@@ -448,7 +436,8 @@
                                     <li><a href="shop-list-left-sidebar.html">Shop left sidebar</a></li>
                                     <li><a href="shop-list-right-sidebar.html">Shop right sidebar</a></li>
                                     <li><a href="shop-list-banner-left-sidebar.html">Banner left sidebar</a></li>
-                                    <li><a href="shop-list-banner-right-sidebar.html">Banner right sidebar</a></li>
+                                    <li><a href="shop-list-banner-right-sidebar.html">Banner right sidebar</a>
+                                    </li>
                                     <li><a href="shop-list-full-col-2.html">Full width 2 columns</a></li>
                                 </ul>
                             </li>
@@ -480,7 +469,8 @@
                             <li><a href="javascript:void(0)">Product gallery</a>
                                 <ul class="sub-menu">
                                     <li><a href="product-gallery-left-sidebar.html">Gallery left sidebar</a></li>
-                                    <li><a href="product-gallery-right-sidebar.html">Gallery right sidebar</a></li>
+                                    <li><a href="product-gallery-right-sidebar.html">Gallery right sidebar</a>
+                                    </li>
                                 </ul>
                             </li>
                             <li><a href="product-full-width.html">Product full width</a></li>
@@ -637,6 +627,9 @@
     </div>
     <!-- ekka mobile Menu End -->
 </header>
+<!-- Header End  -->
+
+<!-- ekka Cart Start -->
 <div class="ec-side-cart-overlay"></div>
 <div id="ec-side-cart" class="ec-side-cart">
     <div class="ec-cart-inner">

@@ -12,7 +12,7 @@
      <meta name="description" content="Best ecommerce html template for single and multi vendor store.">
      <meta name="author" content="ashishmaraviya">
 
-      <link rel="icon" href="{{ asset('frontend/assets/images/deba-logo.png') }}" sizes="32x32" />
+     <link rel="icon" href="{{ asset('frontend/assets/images/deba-logo.png') }}" sizes="32x32" />
      <link rel="apple-touch-icon" href="{{ asset('frontend/assets/images/deba-logo.png') }}" />
      <meta name="msapplication-TileImage" content="{{ asset('frontend/assets/images/deba-logo.png') }}" />
 
@@ -55,10 +55,10 @@
                          <!-- Ec Header Logo Start -->
                          <div class="align-self-center">
                              <div class="header-logo">
-                                 <a href="{{ route('home') }}"><img src="{{ asset('frontend/assets/images/debalogo.jpg') }}"
-                                         alt="Site Logo" /><img class="dark-logo"
-                                         src="{{ asset('frontend/assets/images/debalogo.jpg') }}" alt="Site Logo"
-                                         style="display: none;" /></a>
+                                 <a href="{{ route('home') }}"><img
+                                         src="{{ asset('frontend/assets/images/debalogo.jpg') }}" alt="Site Logo" /><img
+                                         class="dark-logo" src="{{ asset('frontend/assets/images/debalogo.jpg') }}"
+                                         alt="Site Logo" style="display: none;" /></a>
                              </div>
                          </div>
                          <!-- Ec Header Logo End -->
@@ -818,9 +818,10 @@
                          <div class="col-sm-12 col-lg-3 ec-footer-contact">
                              <div class="ec-footer-widget">
                                  <div class="ec-footer-logo"><a href="{{ route('home') }}"><img
-                                             src="{{ asset('frontend/assets/images/debalogo.jpg') }}" alt=""><img
-                                             class="dark-footer-logo" src="{{ asset('frontend/assets/images/debalogo.jpg') }}"
-                                             alt="Site Logo" style="display: none;" /></a></div>
+                                             src="{{ asset('frontend/assets/images/debalogo.jpg') }}"
+                                             alt=""><img class="dark-footer-logo"
+                                             src="{{ asset('frontend/assets/images/debalogo.jpg') }}" alt="Site Logo"
+                                             style="display: none;" /></a></div>
                                  <h4 class="ec-footer-heading">Contact us</h4>
                                  <div class="ec-footer-links">
                                      <ul class="align-items-center">
