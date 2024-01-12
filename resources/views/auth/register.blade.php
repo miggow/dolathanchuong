@@ -283,7 +283,7 @@
                                      <ul class="sub-menu">
                                          <li><a href="about-us.html">About Us</a></li>
                                          <li><a href="contact-us.html">Contact Us</a></li>
-                                         <li><a href="cart.html">Cart</a></li>
+                                         <li><a href="{{route('cart')}}">Cart</a></li>
                                          <li><a href="checkout.html">Checkout</a></li>
                                          <li><a href="compare.html">Compare</a></li>
                                          <li><a href="faq.html">FAQ</a></li>
@@ -588,7 +588,7 @@
                              <ul class="sub-menu">
                                  <li><a href="about-us.html">About Us</a></li>
                                  <li><a href="contact-us.html">Contact Us</a></li>
-                                 <li><a href="cart.html">Cart</a></li>
+                                 <li><a href="{{route('cart')}}">Cart</a></li>
                                  <li><a href="checkout.html">Checkout</a></li>
                                  <li><a href="compare.html">Compare</a></li>
                                  <li><a href="faq.html">FAQ</a></li>
@@ -738,7 +738,7 @@
                      </table>
                  </div>
                  <div class="cart_btn">
-                     <a href="cart.html" class="btn btn-primary">View Cart</a>
+                     <a href="{{route('cart')}}" class="btn btn-primary">View Cart</a>
                      <a href="checkout.html" class="btn btn-secondary">Checkout</a>
                  </div>
              </div>

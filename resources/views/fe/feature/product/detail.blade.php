@@ -27,7 +27,7 @@
         <div class="container">
             <div class="row">
                 <div class="ec-pro-rightside ec-common-rightside col-lg-9 order-lg-last col-md-12 order-md-first">
-
+                    <input type="hidden" id="productId" value="{{ $product->id }}">
                     <!-- Single product content Start -->
                     <div class="single-pro-block">
                         <div class="single-pro-inner">
@@ -58,24 +58,33 @@
                                         <h5 class="ec-single-title">{{ $product->name }}</h5>
                                         <div class="ec-single-price-stoke">
                                             <div class="ec-single-price">
-                                                <span class="ec-single-ps-title">As low as</span>
-                                                <span class="new-price">$97.00</span>
+                                                <span
+                                                    class="ec-single-ps-title text-decoration-line-through text-danger"></span>
+                                                <span class="new-price"></span>
                                             </div>
                                             <div class="ec-single-stoke">
                                                 <span class="ec-single-ps-title">IN STOCK</span>
                                                 <span class="ec-single-sku">SKU#: WH12</span>
                                             </div>
                                         </div>
+                                        @php
+                                            $variantSizeAttributes = $product->getVariantAttributesWithDetails(['size']);
+                                            $variantColorAttributes = $product->getVariantAttributesWithDetails(['color']);
 
+                                        @endphp
                                         <div class="ec-pro-variation">
                                             <div class="ec-pro-variation-inner ec-pro-variation-size">
                                                 <span>SIZE</span>
                                                 <div class="ec-pro-variation-content">
                                                     <ul>
-                                                        <li class="active"><span>S</span></li>
-                                                        <li><span>M</span></li>
-                                                        <li><span>L</span></li>
-                                                        <li><span>XL</span></li>
+                                                        @foreach ($variantSizeAttributes as $key => $attr)
+                                                            <li class="{{ $key == 0 ? 'active' : '' }}"
+                                                                data-price="{{ number_format($attr['price'], 0, '.', '.') }}"
+                                                                data-sale-price="{{ number_format($attr['sale_price'], 0, '.', '.') }}"
+                                                                data-sku="{{ $attr['sku'] }}" data-id="{{ $attr['variant_id'] }}">
+                                                                <span>{{ $attr['attribute_value'] }}</span>
+                                                            </li>
+                                                        @endforeach
                                                     </ul>
                                                 </div>
                                             </div>
@@ -83,15 +92,20 @@
                                                 <span>Color</span>
                                                 <div class="ec-pro-variation-content">
                                                     <ul>
-                                                        <li class="active"><span style="background-color:#1b4a87"></span>
-                                                        </li>
-                                                        <li><span style="background-color:#5f94d6"></span></li>
-                                                        <li><span style="background-color:#72aea2"></span></li>
-                                                        <li><span style="background-color:#c79782"></span></li>
+                                                        @foreach ($variantColorAttributes as $key => $attr)
+                                                            <li class="{{ $key == 0 ? 'active' : '' }}"
+                                                                data-price="{{ number_format($attr['price'], 0, '.', '.') }}"
+                                                                data-sale-price="{{ number_format($attr['sale_price'], 0, '.', '.') }}"
+                                                                data-sku="{{ $attr['sku'] }}"
+                                                                data-id="{{ $attr['variant_id'] }}">
+                                                                <span>{{ $attr['attribute_value'] }}</span>
+                                                            </li>
+                                                        @endforeach
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="ec-single-qty">
                                             <div class="qty-plus-minus">
                                                 <input class="qty-input" type="text" name="ec_qtybtn" value="1" />
@@ -99,7 +113,7 @@
                                             <div class="ec-single-cart ">
                                                 <button class="btn btn-primary">Add To Cart</button>
                                             </div>
-                                            <div class="ec-single-wishlist">
+                                            {{-- <div class="ec-single-wishlist">
                                                 <a class="ec-btn-group wishlist" title="Wishlist"><i
                                                         class="fi-rr-shopping-basket"></i></a>
                                             </div>
@@ -107,11 +121,11 @@
                                                 <a href="#" class="ec-btn-group quickview"
                                                     data-link-action="quickview" title="Quick view" data-bs-toggle="modal"
                                                     data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                         <div class="ec-single-social">
                                             <ul class="mb-0">
-                                                <li class="list-inline-item facebook"><a href="#"><i
+                                                {{-- <li class="list-inline-item facebook"><a href="#"><i
                                                             class="ecicon eci-facebook"></i></a></li>
                                                 <li class="list-inline-item twitter"><a href="#"><i
                                                             class="ecicon eci-twitter"></i></a></li>
@@ -124,7 +138,7 @@
                                                 <li class="list-inline-item whatsapp"><a href="#"><i
                                                             class="ecicon eci-whatsapp"></i></a></li>
                                                 <li class="list-inline-item plus"><a href="#"><i
-                                                            class="ecicon eci-plus"></i></a></li>
+                                                            class="ecicon eci-plus"></i></a></li> --}}
                                             </ul>
                                         </div>
                                     </div>
@@ -139,8 +153,8 @@
                             <div class="ec-single-pro-tab-nav">
                                 <ul class="nav nav-tabs">
                                     <li class="nav-item">
-                                        <a class="nav-link active" data-bs-toggle="tab"
-                                            data-bs-target="#ec-spt-nav-details" role="tablist">Detail</a>
+                                        <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#ec-spt-nav-details"
+                                            role="tablist">Detail</a>
                                     </li>
                                 </ul>
                             </div>
@@ -548,4 +562,64 @@
             </div>
         </div>
     </section>
+@endsection
+@section('feature.script')
+    <script>
+        $(document).ready(function() {
+            function updateProductInfo(variant) {
+                var price = variant.data('price');
+                var salePrice = variant.data('sale-price');
+                var sku = variant.data('sku');
+
+                // Update the UI with the selected variant's information
+                $('.ec-single-price .new-price').text(price + ' đ');
+                if (salePrice) {
+                    $('.ec-single-price .ec-single-ps-title').text(salePrice + ' đ').show();
+                } else {
+                    $('.ec-single-price .ec-single-ps-title').hide();
+                }
+                $('.ec-single-price-stoke .ec-single-sku').text('SKU#: ' + sku);
+            }
+
+            updateProductInfo($('.ec-pro-variation-size li.active').first());
+            updateProductInfo($('.ec-pro-variation-color li.active').first());
+            // Click event for size variants
+            $('.ec-pro-variation-size li').on('click', function() {
+                var selectedVariant = $(this);
+                updateProductInfo(selectedVariant);
+            });
+
+            // Click event for color variants
+            $('.ec-pro-variation-color li').on('click', function() {
+                var selectedVariant = $(this);
+                updateProductInfo(selectedVariant);
+            });
+        });
+    </script>
+    <script>
+        $('.ec-single-cart button').on('click', function() {
+            var productId = $('#productId').val();
+            var quantity = $('.qty-input').val();
+            var variantId = $('.ec-pro-variation-size li.active, .ec-pro-variation-color li.active').data(
+            'id'); // Adjust to get the correct variant ID
+
+            $.ajax({
+                url: '/cart/add',
+                type: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // For CSRF token
+                },
+                data: {
+                    variant_id: variantId,
+                    quantity: quantity
+                },
+                success: function(response) {
+                    alert(response.message); // Replace with your success logic
+                },
+                error: function(xhr, status, error) {
+                    alert("Error: " + error);
+                }
+            });
+        });
+    </script>
 @endsection

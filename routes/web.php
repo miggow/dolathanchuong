@@ -28,3 +28,6 @@ Route::group(['prefix' => 'product', 'as' => 'feature.'], function(){
     Route::get('', [HomeController::class, 'product'])->name('product.list');
     Route::get('{id}', [HomeController::class, 'product_detail'])->name('product.detail');
 });
+Route::get('cart', [HomeController::class, 'cart'])->name('cart');
+Route::post('/cart/add', 'Api\CartController@addToCart');
+

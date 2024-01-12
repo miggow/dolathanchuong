@@ -18,7 +18,7 @@
     - Common
     - Popup Model
     - Breadcrumb
-03. Layout 
+03. Layout
     - Header Section
     - Mainslider Section
     - Product Tab Section
@@ -48,7 +48,7 @@
     - Cart Page
     - Compare Page
     - Track Order Page
-    - Checkout Page    
+    - Checkout Page
     - Elements Tabs Page
     - Elements Categories Page
     - Elements Buttons Page
@@ -17766,7 +17766,7 @@ body.ec-open:before {
   margin-right: 5px;
 }
 .ec-pro-variation .ec-pro-variation-inner.ec-pro-variation-color .ec-pro-variation-content li {
-  border-radius: 100%;
+  /* border-radius: 100%; */
 }
 .ec-pro-variation .ec-pro-variation-inner.ec-pro-variation-color .ec-pro-variation-content li span {
   width: 16px;
@@ -18333,7 +18333,7 @@ i.ecicon.eci-star.fill {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   display: inline-block;
-  border-radius: 30px;
+  /* border-radius: 30px; */
   float: left;
   cursor: pointer;
   margin-right: 5px;
@@ -18348,7 +18348,8 @@ i.ecicon.eci-star.fill {
 }
 .ec-pro-color li a {
   pointer-events: none;
-  width: 20px;
+  text-align: center;
+  width: 3em;
   height: 20px;
   display: block;
   cursor: pointer;
@@ -21515,7 +21516,9 @@ h4.ec-faq-title::after {
 }
 .single-pro-content .ec-pro-variation .ec-pro-variation-inner.ec-pro-variation-color .ec-pro-variation-content li {
   padding: 2px;
-  border-radius: 30px;
+  /* border-radius: 30px; */
+  width: 4em;
+  text-align: center;
   opacity: 0.7;
   background-color: transparent;
 }
@@ -29762,7 +29765,7 @@ input[type=email]:focus::-webkit-input-placeholder {
    vendor Page CSS
    	- Single Vendor
    	- Multi Vendor
-   	- Vendor Sidebar 
+   	- Vendor Sidebar
    	- Vendor Dashboard
    	- Vendor Upload
    	- Vendor Profile

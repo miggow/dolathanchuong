@@ -45,18 +45,6 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        // Validation
-        // $request->validate([
-        //     'name' => 'required|string|max:255',
-        //     'description' => 'nullable|string',
-        //     'category_id' => 'required|integer',
-        //     'price' => 'required|numeric',
-        //     'quantity' => 'required|integer',
-        //     'images.*' => 'sometimes|file|image|max:2048', // Image validation
-        //     'isVariation' => 'required|boolean',
-        //     // Variant validations
-        // ]);
-
         DB::beginTransaction();
 
         try {

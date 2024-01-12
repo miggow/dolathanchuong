@@ -11,7 +11,7 @@
                         <div class="col-md-6 col-sm-12">
                             <!-- ec-breadcrumb-list start -->
                             <ul class="ec-breadcrumb-list">
-                                <li class="ec-breadcrumb-item"><a href="index.html">Home</a></li>
+                                <li class="ec-breadcrumb-item"><a href={{route('home')}}>Home</a></li>
                                 <li class="ec-breadcrumb-item active">Shop</li>
                             </ul>
                             <!-- ec-breadcrumb-list end -->
@@ -135,16 +135,7 @@
                             </div>
                         </div>
                         <!-- Ec Pagination Start -->
-                        <div class="ec-pro-pagination">
-                            <ul class="ec-pro-pagination-inner">
-                                <li><a class="active" href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a class="next" href="#">Next <i class="ecicon eci-angle-right"></i></a></li>
-                            </ul>
-                        </div>
+
                         <!-- Ec Pagination End -->
                     </div>
                     <!--Shop content End -->

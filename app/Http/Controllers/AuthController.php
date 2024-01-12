@@ -23,9 +23,9 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
         // dd($credentials);
         if (Auth::attempt($credentials)) {
-            if (Auth::user()->isAdmin) {
+            if (auth()->user()->isAdmin()) {
                 Session::flash('success', 'Đăng nhập thành công.');
-                return redirect()->route('admin.dashboard');
+                return redirect()->route('admin.home');
             } else {
                 return redirect()->route('home');
             }

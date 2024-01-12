@@ -6,7 +6,7 @@
             <div class="breadcrumb-wrapper breadcrumb-contacts">
                 <div>
                     <h1>User List</h1>
-                    <p class="breadcrumbs"><span><a href="index.html">Home</a></span>
+                    <p class="breadcrumbs"><span><a href={{route('home')}}>Home</a></span>
                         <span><i class="mdi mdi-chevron-right"></i></span>User
                     </p>
                 </div>

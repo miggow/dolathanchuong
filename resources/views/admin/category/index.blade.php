@@ -5,7 +5,7 @@
         <div class="content">
             <div class="breadcrumb-wrapper breadcrumb-wrapper-2 breadcrumb-contacts">
                 <h1>Main Category</h1>
-                <p class="breadcrumbs"><span><a href="index.html">Home</a></span>
+                <p class="breadcrumbs"><span><a href={{route('home')}}>Home</a></span>
                     <span><i class="mdi mdi-chevron-right"></i></span>Main Category
                 </p>
             </div>

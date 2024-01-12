@@ -10,7 +10,7 @@
                     <!-- Ec Header Logo Start -->
                     <div class="align-self-center">
                         <div class="header-logo">
-                            <a href="index.html"><img src="{{ asset('frontend/assets/images/debalogo.jpg') }}"
+                            <a href={{route('home')}}><img src="{{ asset('frontend/assets/images/debalogo.jpg') }}"
                                     alt="Site Logo" /><img class="dark-logo"
                                     src="{{ asset('frontend/assets/images/debalogo.jpg') }}" alt="Site Logo"
                                     style="display: none;" /></a>
@@ -21,9 +21,9 @@
                     <!-- Ec Header Search Start -->
                     <div class="align-self-center">
                         <div class="header-search">
-                            <form class="ec-btn-group-form" action="#">
+                            <form class="ec-btn-group-form" action="{{ route('feature.product.list') }}">
                                 <input class="form-control ec-search-bar" placeholder="Search products..."
-                                    type="text">
+                                    type="text" name="search">
                                 <button class="submit" type="submit"><i class="fi-rr-search"></i></button>
                             </form>
                         </div>
@@ -38,7 +38,7 @@
                             <div class="ec-header-user dropdown">
                                 <button class="dropdown-toggle"
                                     data-bs-toggle="dropdown">{{ auth()->check() ? 'Hello, ' . auth()->user()->name : '' }}
-                                    <i class="fi-rr-user"></i></button>
+                                    <i class="ml-3 fi-rr-user"></i></button>
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     @if (auth()->check())
                                         <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
@@ -57,10 +57,21 @@
                             </a> --}}
                             <!-- Header wishlist End -->
                             <!-- Header Cart Start -->
-                            <a href="#ec-side-cart" class="ec-header-btn ec-side-toggle">
-                                <div class="header-icon"><i class="fi-rr-shopping-bag"></i></div>
-                                <span class="ec-header-count cart-count-lable">3</span>
-                            </a>
+                            @if (auth()->check())
+                                <a href="#ec-side-cart" class="ec-header-btn ec-side-toggle">
+                                    <div class="header-icon"><i class="fi-rr-shopping-bag"></i></div>
+                                    <span class="ec-header-count cart-count-lable">
+                                        {{ auth()->user()->carts->count() }}
+                                    </span>
+                                </a>
+                            @else
+                                <a href="{{ route('login') }}" class="ec-header-btn ec-side-toggle">
+                                    <div class="header-icon"><i class="fi-rr-shopping-bag"></i></div>
+                                    <span class="ec-header-count cart-count-lable">
+                                        0
+                                    </span>
+                                </a>
+                            @endif
                             <!-- Header Cart End -->
                         </div>
                     </div>
@@ -77,7 +88,7 @@
                 <!-- Ec Header Logo Start -->
                 <div class="col">
                     <div class="header-logo">
-                        <a href="index.html"><img src="{{ asset('frontend/assets/images/debalogo.jpg') }}"
+                        <a href="{{ route('home') }}"><img src="{{ asset('frontend/assets/images/debalogo.jpg') }}"
                                 alt="Site Logo" /><img class="dark-logo"
                                 src="{{ asset('frontend/assets/images/debalogo.jpg') }}" alt="Site Logo"
                                 style="display: none;" /></a>
@@ -104,16 +115,19 @@
             <div class="row">
                 <div class="col-md-12 align-self-center">
                     <div class="ec-main-menu">
-                        <a href="javascript:void(0)" class="ec-header-btn ec-sidebar-toggle">
-                            <i class="fi fi-rr-apps"></i>
-                        </a>
+                        @if (Route::currentRouteName() == 'home')
+                            <a href="javascript:void(0)" class="ec-header-btn ec-sidebar-toggle">
+                                <i class="fi fi-rr-apps"></i>
+                            </a>
+                        @endif
                         <ul>
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href={{route('home')}}>Home</a></li>
                             <li class="dropdown position-static"><a href="javascript:void(0)">Categories</a>
                                 <ul class="mega-menu d-block">
                                     <li class="d-flex">
                                         <ul class="d-block">
-                                            <li class="menu_title"><a href="javascript:void(0)">Classic Variation</a></li>
+                                            <li class="menu_title"><a href="javascript:void(0)">Classic Variation</a>
+                                            </li>
                                             <li><a href="shop-left-sidebar-col-3.html">Left sidebar 3 column</a>
                                             </li>
                                             <li><a href="shop-left-sidebar-col-4.html">Left sidebar 4 column</a>
@@ -235,7 +249,7 @@
                                 <ul class="sub-menu">
                                     <li><a href="about-us.html">About Us</a></li>
                                     <li><a href="contact-us.html">Contact Us</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
+                                    <li><a href="{{route('cart')}}">Cart</a></li>
                                     <li><a href="checkout.html">Checkout</a></li>
                                     <li><a href="compare.html">Compare</a></li>
                                     <li><a href="faq.html">FAQ</a></li>
@@ -405,7 +419,7 @@
         <div class="ec-menu-inner">
             <div class="ec-menu-content">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href={{route('home')}}>Home</a></li>
                     <li><a href="javascript:void(0)">Categories</a>
                         <ul class="sub-menu">
                             <li>
@@ -557,7 +571,7 @@
                         <ul class="sub-menu">
                             <li><a href="about-us.html">About Us</a></li>
                             <li><a href="contact-us.html">Contact Us</a></li>
-                            <li><a href="cart.html">Cart</a></li>
+                            <li><a href="{{ route('cart') }}">Cart</a></li>
                             <li><a href="checkout.html">Checkout</a></li>
                             <li><a href="compare.html">Compare</a></li>
                             <li><a href="faq.html">FAQ</a></li>
@@ -646,65 +660,39 @@
                 <button class="ec-close">×</button>
             </div>
             <ul class="eccart-pro-items">
-                <li>
-                    <a href="product-left-sidebar.html" class="sidekka_pro_img"><img
-                            src="frontend/assets/images/product-image/6_1.jpg" alt="product"></a>
-                    <div class="ec-pro-content">
-                        <a href="product-left-sidebar.html" class="cart_pro_title">T-shirt For Women</a>
-                        <span class="cart-price"><span>$76.00</span> x 1</span>
-                        <div class="qty-plus-minus">
-                            <input class="qty-input" type="text" name="ec_qtybtn" value="1" />
+                @foreach ($carts as $cart)
+                    <li>
+                        <a href="{{ route('feature.product.list', ['search' => $cart->variant->product->name]) }}"
+                            class="sidekka_pro_img"><img src="{{ asset($cart->variant->product->images[0]->path) }}"
+                                alt="product"></a>
+                        <div class="ec-pro-content">
+                            <a href="product-left-sidebar.html"
+                                class="cart_pro_title">{{ $cart->variant->product->name }}</a>
+                            <span class="cart-price"><span>{{ $cart->variant->sale_price ? number_format($cart->variant->sale_price, 0, '.', '.') : number_format($cart->variant->price, 0, '.', '.') }}
+                                    đ</span></span>
+                            <div class="qty-plus-minus">
+                                <input class="qty-input" type="text" name="ec_qtybtn" value="1" />
+                            </div>
+                            <a href="javascript:void(0)" data-id="{{ $cart->id }}" class="remove">×</a>
                         </div>
-                        <a href="javascript:void(0)" class="remove">×</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="product-left-sidebar.html" class="sidekka_pro_img"><img
-                            src="frontend/assets/images/product-image/12_1.jpg" alt="product"></a>
-                    <div class="ec-pro-content">
-                        <a href="product-left-sidebar.html" class="cart_pro_title">Women Leather Shoes</a>
-                        <span class="cart-price"><span>$64.00</span> x 1</span>
-                        <div class="qty-plus-minus">
-                            <input class="qty-input" type="text" name="ec_qtybtn" value="1" />
-                        </div>
-                        <a href="javascript:void(0)" class="remove">×</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="product-left-sidebar.html" class="sidekka_pro_img"><img
-                            src="frontend/assets/images/product-image/3_1.jpg" alt="product"></a>
-                    <div class="ec-pro-content">
-                        <a href="product-left-sidebar.html" class="cart_pro_title">Girls Nylon Purse</a>
-                        <span class="cart-price"><span>$59.00</span> x 1</span>
-                        <div class="qty-plus-minus">
-                            <input class="qty-input" type="text" name="ec_qtybtn" value="1" />
-                        </div>
-                        <a href="javascript:void(0)" class="remove">×</a>
-                    </div>
-                </li>
+                    </li>
+                @endforeach
             </ul>
         </div>
         <div class="ec-cart-bottom">
             <div class="cart-sub-total">
                 <table class="table cart-table">
                     <tbody>
-                        <tr>
-                            <td class="text-left">Sub-Total :</td>
-                            <td class="text-right">$300.00</td>
-                        </tr>
-                        <tr>
-                            <td class="text-left">VAT (20%) :</td>
-                            <td class="text-right">$60.00</td>
-                        </tr>
+
                         <tr>
                             <td class="text-left">Total :</td>
-                            <td class="text-right primary-color">$360.00</td>
+                            <td class="text-right primary-color"></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <div class="cart_btn">
-                <a href="cart.html" class="btn btn-primary">View Cart</a>
+                <a href="{{ route('cart') }}" class="btn btn-primary">View Cart</a>
                 <a href="checkout.html" class="btn btn-secondary">Checkout</a>
             </div>
         </div>

@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+Route::get('/products/{product}/variants', [ProductController::class, 'getVariants'])->name('api.products.variants');
+Route::post('/cart/add', 'Api\CartController@addToCart');
+Route::delete('/cart/{cart}', 'Api\CartController@removeFromCart')->name('api.cart.remove');
+
+

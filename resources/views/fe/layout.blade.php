@@ -18,24 +18,24 @@
     <meta name="msapplication-TileImage" content="{{ asset('frontend/assets/images/debalogo.jpg') }}" />
 
     <!-- css Icon Font -->
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/vendor/ecicons.min.css')}}" />
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/vendor/ecicons.min.css') }}" />
 
     <!-- css All Plugins Files -->
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/plugins/animate.css')}}" />
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/plugins/swiper-bundle.min.css')}}" />
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/plugins/jquery-ui.min.css')}}" />
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/plugins/countdownTimer.css')}}" />
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/plugins/slick.min.css')}}" />
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/plugins/bootstrap.css')}}" />
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/plugins/animate.css') }}" />
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/plugins/swiper-bundle.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/plugins/jquery-ui.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/plugins/countdownTimer.css') }}" />
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/plugins/slick.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/plugins/bootstrap.css') }}" />
 
     <!-- Main Style -->
     @yield('fe.css')
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/demo1.css')}}" />
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css')}}" />
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/responsive.css')}}" />
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/demo1.css') }}" />
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/responsive.css') }}" />
 
     <!-- Background css -->
-    <link rel="stylesheet" id="bg-switcher-css" href="{{ asset('frontend/assets/css/backgrounds/bg-4.css')}}">
+    <link rel="stylesheet" id="bg-switcher-css" href="{{ asset('frontend/assets/css/backgrounds/bg-4.css') }}">
 </head>
 
 <body>
@@ -83,16 +83,16 @@
                         <div class="col-sm-12 col-lg-3 ec-footer-contact">
                             <div class="ec-footer-widget">
                                 <div class="ec-footer-logo"><a href="#"><img
-                                            src="{{ asset('frontend/assets/images/debalogo.jpg') }}" alt=""><img
-                                            class="dark-footer-logo" src="{{ asset('frontend/assets/images/debalogo.jpg') }}"
-                                            alt="Site Logo" style="display: none;" /></a></div>
+                                            src="{{ asset('frontend/assets/images/debalogo.jpg') }}"
+                                            alt=""><img class="dark-footer-logo"
+                                            src="{{ asset('frontend/assets/images/debalogo.jpg') }}" alt="Site Logo"
+                                            style="display: none;" /></a></div>
                                 <h4 class="ec-footer-heading">Contact us</h4>
                                 <div class="ec-footer-links">
                                     <ul class="align-items-center">
                                         <li class="ec-footer-link">71 Pilgrim Avenue Chevy Chase, east california.
                                         </li>
-                                        <li class="ec-footer-link"><span>Call Us:</span><a
-                                                href="tel:+440123456789">+44
+                                        <li class="ec-footer-link"><span>Call Us:</span><a href="tel:+440123456789">+44
                                                 0123 456 789</a></li>
                                         <li class="ec-footer-link"><span>Email:</span><a
                                                 href="mailto:example@ec-email.com">+example@ec-email.com</a></li>
@@ -260,14 +260,14 @@
                             class="ec-cart-noti ec-header-count cart-count-lable">3</span></a>
                 </div>
                 <div class="ec-nav-panel-icons">
-                    <a href="index.html" class="ec-header-btn"><i class="fi-rr-home"></i></a>
+                    <a href={{route('home')}} class="ec-header-btn"><i class="fi-rr-home"></i></a>
                 </div>
                 <div class="ec-nav-panel-icons">
                     <a href="wishlist.html" class="ec-header-btn"><i class="fi-rr-heart"></i><span
                             class="ec-cart-noti">4</span></a>
                 </div>
                 <div class="ec-nav-panel-icons">
-                    <a href="{{route('login')}}" class="ec-header-btn"><i class="fi-rr-user"></i></a>
+                    <a href="{{ route('login') }}" class="ec-header-btn"><i class="fi-rr-user"></i></a>
                 </div>
 
             </div>
@@ -489,25 +489,104 @@
     <!-- Feature tools end -->
     @yield('fe.modal')
     <!-- Vendor JS -->
-    <script src="{{ asset('frontend/assets/js/vendor/jquery-3.5.1.min.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/vendor/popper.min.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/vendor/bootstrap.min.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/vendor/jquery-migrate-3.3.0.min.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/vendor/modernizr-3.11.2.min.js')}}"></script>
+    <script src="{{ asset('frontend/assets/js/vendor/jquery-3.5.1.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/vendor/popper.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/vendor/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/vendor/jquery-migrate-3.3.0.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/vendor/modernizr-3.11.2.min.js') }}"></script>
 
     <!--Plugins JS-->
-    <script src="{{ asset('frontend/assets/js/plugins/swiper-bundle.min.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/plugins/countdownTimer.min.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/plugins/scrollup.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/plugins/jquery.zoom.min.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/plugins/slick.min.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/plugins/infiniteslidev2.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/vendor/jquery.magnific-popup.min.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/plugins/jquery.sticky-sidebar.js')}}"></script>
+    <script src="{{ asset('frontend/assets/js/plugins/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/plugins/countdownTimer.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/plugins/scrollup.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/plugins/jquery.zoom.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/plugins/slick.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/plugins/infiniteslidev2.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/vendor/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/plugins/jquery.sticky-sidebar.js') }}"></script>
 
     <!-- Main Js -->
-    <script src="{{ asset('frontend/assets/js/vendor/index.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/main.js')}}"></script>
+    <script src="{{ asset('frontend/assets/js/vendor/index.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            // function updateItemTotal($item) {
+            //     var priceText = $item.find('.cart-price span').first().text().replace('đ', '').replace(/\./g, '');
+            //     var price = parseFloat(priceText);
+            //     var quantity = parseInt($item.find('.qty-input').val());
+            //     var itemTotal = price * quantity;
+            //     $item.find('.cart-price span').last().text(' x ' + quantity);
+            //     return itemTotal;
+            // }
+            function updateItemTotal($item) {
+                // Get the price from the inner span of the cart-price element
+                var priceText = $item.find('.cart-price span').text().replace('đ', '').replace(/\./g, '');
+                var price = parseFloat(priceText);
+                var quantity = parseInt($item.find('.qty-input').val());
+                var itemTotal = price * quantity;
+                console.log(itemTotal);
+                // Update the quantity display, if necessary
+                // $item.find('.quantity-display').text(' x ' + quantity); // Uncomment and adjust if you have a separate element to display quantity
+                return itemTotal;
+            }
+
+            function updateCartTotals() {
+                var subtotal = 0;
+                $('.eccart-pro-items li').each(function() {
+                    subtotal += updateItemTotal($(this));
+                });
+
+                var total = subtotal;
+
+                $('.cart-table').find('td:contains("Total")').next('td').text(total.toLocaleString('vi-VN') + ' đ');
+            }
+
+            // Handle quantity change
+            $('.qty-input').on('change keyup', function() {
+                updateCartTotals();
+            });
+
+            // Handle remove item
+            $('.eccart-pro-items').on('click', '.remove', function() {
+                $(this).closest('li').remove();
+                updateCartTotals();
+            });
+
+            // Initial calculation
+            updateCartTotals();
+        });
+        $(document).ready(function() {
+            $('.remove').on('click', function(e) {
+                e.preventDefault();
+
+                var cartItemId = $(this).data(
+                'id'); // Ensure this data attribute is correctly set in your HTML
+                var $cartItem = $(this).closest('li');
+
+                if (confirm('Are you sure you want to remove this item from the cart?')) {
+                    $.ajax({
+                        url: '/api/cart/' + cartItemId, // Adjust the URL as per your API endpoint
+                        type: 'DELETE',
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                                'content') // For CSRF token, necessary for Laravel
+                        },
+                        success: function(response) {
+                            alert(response.message);
+                            $cartItem.fadeOut(500, function() {
+                                $(this).remove();
+                                updateCartTotals
+                            (); // Call to recalculate the cart total after item removal
+                            });
+                        },
+                        error: function(xhr, status, error) {
+                            alert("Error: " + error);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

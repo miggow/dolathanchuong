@@ -532,9 +532,8 @@
                                                         <ul class="ec-opt-swatch ec-change-img">
                                                             @foreach ($colorAttributes as $key => $attr)
                                                                 <li class="active"><a href="#"
-                                                                        class="ec-opt-clr-img"
-                                                                        data-src="{{ asset('frontend/assets/images/product-image/6_1.jpg') }}"
-                                                                        data-src-hover="{{ asset('frontend/assets/images/product-image/6_1.jpg') }}"
+                                                                        data-src="{{ asset($product->images[0]->path) }}"
+                                                                        data-src-hover="{{ asset($product->images[1]->path) }}"
                                                                         data-tooltip="Gray"><span>{{ $attr['attribute_value'] }}</span></a>
                                                                 </li>
                                                             @endforeach

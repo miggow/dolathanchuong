@@ -2,9 +2,9 @@
     <div id="sidebar" class="sidebar ec-sidebar-footer">
 
         <div class="ec-brand">
-            <a href="#" class="" title="De-ba">
+            <a href="{{ route('home') }}" class="" title="De-ba">
                 <img class="text-center ec-brand-icon" src="{{ asset('frontend/assets/images/debalogo.jpg') }}"
-                    style="max-width: unset" height="75" width="175" />
+                    style="max-width: unset" height="50" width="175" />
             </a>
         </div>
 
@@ -14,7 +14,7 @@
             <ul class="nav sidebar-inner" id="sidebar-menu">
                 <!-- Dashboard -->
                 <li>
-                    <a class="sidenav-item-link" href="index.html">
+                    <a class="sidenav-item-link" href="{{ route('admin.home') }}">
                         <i class="mdi mdi-view-dashboard-outline"></i>
                         <span class="nav-text">Dashboard</span>
                     </a>
@@ -32,7 +32,7 @@
                         <ul class="sub-menu" id="users" data-parent="#sidebar-menu">
 
                             <li class="">
-                                <a class="sidenav-item-link" href="user-list.html">
+                                <a class="sidenav-item-link" href="{{ route('user.index') }}">
                                     <span class="nav-text">User List</span>
                                 </a>
                             </li>
