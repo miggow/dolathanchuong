@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,12 +13,13 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::with(['variants', 'images', 'category'])->get();
+        $categories = Category::whereNull('parent_id')->get();
         $carts = [];
         if(Auth::check())
         {
             $carts = Cart::where('user_id', Auth::id())->get();
         }
-        return view('fe.home',compact('products', 'carts'));
+        return view('fe.home',compact('products', 'carts', 'categories'));
     }
     public function product(Request $request)
     {
