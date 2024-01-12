@@ -176,47 +176,7 @@
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <!-- Footer social Start -->
-                        <div class="col text-left footer-bottom-left">
-                            <div class="footer-bottom-social">
-                                <span class="social-text text-upper">Follow us on:</span>
-                                <ul class="mb-0">
-                                    <li class="list-inline-item"><a class="hdr-facebook" href="#"><i
-                                                class="ecicon eci-facebook"></i></a></li>
-                                    <li class="list-inline-item"><a class="hdr-twitter" href="#"><i
-                                                class="ecicon eci-twitter"></i></a></li>
-                                    <li class="list-inline-item"><a class="hdr-instagram" href="#"><i
-                                                class="ecicon eci-instagram"></i></a></li>
-                                    <li class="list-inline-item"><a class="hdr-linkedin" href="#"><i
-                                                class="ecicon eci-linkedin"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- Footer social End -->
-                        <!-- Footer Copyright Start -->
-                        <div class="col text-center footer-copy">
-                            <div class="footer-bottom-copy ">
-                                <div class="ec-copy">Copyright © 2023 <a class="site-name text-upper"
-                                        href="#">ekka<span>.</span></a>. All Rights Reserved</div>
-                            </div>
-                        </div>
-                        <!-- Footer Copyright End -->
-                        <!-- Footer payment -->
-                        <div class="col footer-bottom-right">
-                            <div class="footer-bottom-payment d-flex justify-content-end">
-                                <div class="payment-link">
-                                    <img src="frontend/assets/images/icons/payment.png" alt="">
-                                </div>
 
-                            </div>
-                        </div>
-                        <!-- Footer payment -->
-                    </div>
-                </div>
-            </div>
         </div>
     </footer>
     <!-- Footer Area End -->
@@ -247,7 +207,7 @@
     <!-- Newsletter Modal end -->
 
     <!-- Footer navigation panel for responsive display -->
-    <div class="ec-nav-toolbar">
+    {{-- <div class="ec-nav-toolbar">
         <div class="container">
             <div class="ec-nav-panel">
                 <div class="ec-nav-panel-icons">
@@ -272,7 +232,7 @@
 
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Footer navigation panel for responsive display end -->
 
     <!-- Recent Purchase Popup  -->
@@ -298,127 +258,7 @@
     <!-- Cart Floating Button end -->
 
     <!-- Whatsapp -->
-    <div class="ec-style ec-right-bottom">
-        <!-- Start Floating Panel Container -->
-        <div class="ec-panel">
-            <!-- Panel Header -->
-            <div class="ec-header">
-                <strong>Need Help?</strong>
-                <p>Chat with us on WhatsApp</p>
-            </div>
-            <!-- Panel Content -->
-            <div class="ec-body">
-                <ul>
-                    <!-- Start Single Contact List -->
-                    <li>
-                        <a class="ec-list" data-number="918866774266"
-                            data-message="Please help me! I have got wrong product - ORDER ID is : #654321485">
-                            <div class="d-flex bd-highlight">
-                                <!-- Profile Picture -->
-                                <div class="ec-img-cont">
-                                    <img src="frontend/assets/images/whatsapp/profile_01.jpg" class="ec-user-img"
-                                        alt="Profile image">
-                                    <span class="ec-status-icon"></span>
-                                </div>
-                                <!-- Display Name & Last Seen -->
-                                <div class="ec-user-info">
-                                    <span>Sahar Darya</span>
-                                    <p>Sahar left 7 mins ago</p>
-                                </div>
-                                <!-- Chat iCon -->
-                                <div class="ec-chat-icon">
-                                    <i class="fa fa-whatsapp"></i>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <!--/ End Single Contact List -->
-                    <!-- Start Single Contact List -->
-                    <li>
-                        <a class="ec-list" data-number="918866774266"
-                            data-message="Please help me! I have got wrong product - ORDER ID is : #654321485">
-                            <div class="d-flex bd-highlight">
-                                <!-- Profile Picture -->
-                                <div class="ec-img-cont">
-                                    <img src="frontend/assets/images/whatsapp/profile_02.jpg" class="ec-user-img"
-                                        alt="Profile image">
-                                    <span class="ec-status-icon ec-online"></span>
-                                </div>
-                                <!-- Display Name & Last Seen -->
-                                <div class="ec-user-info">
-                                    <span>Yolduz Rafi</span>
-                                    <p>Yolduz is online</p>
-                                </div>
-                                <!-- Chat iCon -->
-                                <div class="ec-chat-icon">
-                                    <i class="fa fa-whatsapp"></i>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <!--/ End Single Contact List -->
-                    <!-- Start Single Contact List -->
-                    <li>
-                        <a class="ec-list" data-number="918866774266"
-                            data-message="Please help me! I have got wrong product - ORDER ID is : #654321485">
-                            <div class="d-flex bd-highlight">
-                                <!-- Profile Picture -->
-                                <div class="ec-img-cont">
-                                    <img src="frontend/assets/images/whatsapp/profile_03.jpg" class="ec-user-img"
-                                        alt="Profile image">
-                                    <span class="ec-status-icon ec-offline"></span>
-                                </div>
-                                <!-- Display Name & Last Seen -->
-                                <div class="ec-user-info">
-                                    <span>Nargis Hawa</span>
-                                    <p>Nargis left 30 mins ago</p>
-                                </div>
-                                <!-- Chat iCon -->
-                                <div class="ec-chat-icon">
-                                    <i class="fa fa-whatsapp"></i>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <!--/ End Single Contact List -->
-                    <!-- Start Single Contact List -->
-                    <li>
-                        <a class="ec-list" data-number="918866774266"
-                            data-message="Please help me! I have got wrong product - ORDER ID is : #654321485">
-                            <div class="d-flex bd-highlight">
-                                <!-- Profile Picture -->
-                                <div class="ec-img-cont">
-                                    <img src="frontend/assets/images/whatsapp/profile_04.jpg" class="ec-user-img"
-                                        alt="Profile image">
-                                    <span class="ec-status-icon ec-offline"></span>
-                                </div>
-                                <!-- Display Name & Last Seen -->
-                                <div class="ec-user-info">
-                                    <span>Khadija Mehr</span>
-                                    <p>Khadija left 50 mins ago</p>
-                                </div>
-                                <!-- Chat iCon -->
-                                <div class="ec-chat-icon">
-                                    <i class="fa fa-whatsapp"></i>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <!--/ End Single Contact List -->
-                </ul>
-            </div>
-        </div>
-        <!--/ End Floating Panel Container -->
-        <!-- Start Right Floating Button-->
-        <div class="ec-right-bottom">
-            <div class="ec-box">
-                <div class="ec-button rotateBackward">
-                    <img class="whatsapp" src="frontend/assets/images/common/whatsapp.png" alt="whatsapp icon">
-                </div>
-            </div>
-        </div>
-        <!--/ End Right Floating Button-->
-    </div>
+
     <!-- Whatsapp end -->
 
     <!-- Feature tools -->

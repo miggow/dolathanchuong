@@ -3128,38 +3128,34 @@
                                 <div class="ec-pro-option">
                                     <div class="ec-pro-color">
                                         <span class="ec-pro-opt-label">Color</span>
+                                        @php
+                                            $colorAttributes = $product->getVariantAttributesWithDetails(['color']);
+                                        @endphp
                                         <ul class="ec-opt-swatch ec-change-img">
-                                            <li><a href="#" class="ec-opt-clr-img"
-                                                    data-src="{{ asset('frontend/assets/images/product-image/9_1.jpg') }}"
-                                                    data-src-hover="{{ asset('frontend/assets/images/product-image/9_1.jpg') }}"
-                                                    data-tooltip="Orange"><span
-                                                        style="background-color:#74c7ff;"></span></a>
-                                            </li>
-                                            <li><a href="#" class="ec-opt-clr-img"
-                                                    data-src="{{ asset('frontend/assets/images/product-image/9_2.jpg') }}"
-                                                    data-src-hover="{{ asset('frontend/assets/images/product-image/9_2.jpg') }}"
-                                                    data-tooltip="Green"><span
-                                                        style="background-color:#7af6ff;"></span></a>
-                                            </li>
-                                            <li><a href="#" class="ec-opt-clr-img"
-                                                    data-src="{{ asset('frontend/assets/images/product-image/9_3.jpg') }}"
-                                                    data-src-hover="{{ asset('frontend/assets/images/product-image/9_3.jpg') }}"
-                                                    data-tooltip="Sky Blue"><span
-                                                        style="background-color:#85ffeb;"></span></a></li>
+                                            @foreach ($colorAttributes as $key => $attr)
+                                                <li class="active"><a href="#"
+                                                        data-src="{{ asset($product->images[0]->path) }}"
+                                                        data-src-hover="{{ asset($product->images[1]->path) }}"
+                                                        data-tooltip="Gray"><span>{{ $attr['attribute_value'] }}</span></a>
+                                                </li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                     <div class="ec-pro-size">
                                         <span class="ec-pro-opt-label">Size</span>
-                                        <ul class="ec-opt-size">
-                                            <li class="active"><a href="#" class="ec-opt-sz" data-old="$20.00"
-                                                    data-new="$15.00" data-tooltip="Small">S</a></li>
-                                            <li><a href="#" class="ec-opt-sz" data-old="$22.00"
-                                                    data-new="$17.00" data-tooltip="Medium">M</a></li>
-                                            <li><a href="#" class="ec-opt-sz" data-old="$25.00"
-                                                    data-new="$20.00" data-tooltip="Large">X</a></li>
-                                            <li><a href="#" class="ec-opt-sz" data-old="$27.00"
-                                                    data-new="$22.00" data-tooltip="Extra Large">XL</a></li>
-                                        </ul>
+                                                        <ul class="ec-opt-size">
+                                                            @php
+                                                                $variantAttributes = $product->getVariantAttributesWithDetails(['size']);
+                                                            @endphp
+                                                            @foreach ($variantAttributes as $key => $attr)
+                                                                <li class="{{ $key == 0 ? 'active' : '' }}"><a
+                                                                        href="#" class="ec-opt-sz"
+                                                                        data-old="{{ number_format($attr['price'], '0', '.', '.') }} đ"
+                                                                        data-new="{{ number_format($attr['sale_price'], '0', '.', '.') }} đ"
+                                                                        data-tooltip="Small">{{ $attr['attribute_value'] }}</a>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
                                     </div>
                                 </div>
                             </div>
