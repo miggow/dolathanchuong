@@ -41,6 +41,10 @@
                                     <i class="ml-3 fi-rr-user"></i></button>
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     @if (auth()->check())
+                                        @if (auth()->user()->isAdmin())
+                                            <li><a class="dropdown-item" href="{{ route('admin.home') }}">Dashboard</a>
+                                            </li>
+                                        @endif
                                         <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
                                     @else
                                         <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
