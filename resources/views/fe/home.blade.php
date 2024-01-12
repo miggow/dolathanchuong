@@ -3096,9 +3096,6 @@
                                         <img class="hover-image" src="{{ asset($item_new->images[1]->path) }}"
                                             alt="Product" />
                                     </a>
-                                    <span class="flags">
-                                        <span class="sale">Sale</span>
-                                    </span>
                                     <a href="#" class="quickview" data-link-action="quickview"
                                         title="Quick view" data-bs-toggle="modal"
                                         data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
@@ -3143,19 +3140,19 @@
                                     </div>
                                     <div class="ec-pro-size">
                                         <span class="ec-pro-opt-label">Size</span>
-                                                        <ul class="ec-opt-size">
-                                                            @php
-                                                                $variantAttributes = $product->getVariantAttributesWithDetails(['size']);
-                                                            @endphp
-                                                            @foreach ($variantAttributes as $key => $attr)
-                                                                <li class="{{ $key == 0 ? 'active' : '' }}"><a
-                                                                        href="#" class="ec-opt-sz"
-                                                                        data-old="{{ number_format($attr['price'], '0', '.', '.') }} đ"
-                                                                        data-new="{{ number_format($attr['sale_price'], '0', '.', '.') }} đ"
-                                                                        data-tooltip="Small">{{ $attr['attribute_value'] }}</a>
-                                                                </li>
-                                                            @endforeach
-                                                        </ul>
+                                        <ul class="ec-opt-size">
+                                            @php
+                                                $variantAttributes = $product->getVariantAttributesWithDetails(['size']);
+                                            @endphp
+                                            @foreach ($variantAttributes as $key => $attr)
+                                                <li class="{{ $key == 0 ? 'active' : '' }}"><a href="#"
+                                                        class="ec-opt-sz"
+                                                        data-old="{{ number_format($attr['price'], '0', '.', '.') }} đ"
+                                                        data-new="{{ number_format($attr['sale_price'], '0', '.', '.') }} đ"
+                                                        data-tooltip="Small">{{ $attr['attribute_value'] }}</a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
