@@ -125,17 +125,19 @@
                             <li class="dropdown position-static"><a href="javascript:void(0)">Danh mục</a>
                                 <ul class="mega-menu d-block">
                                     <li class="d-flex">
-                                        @foreach ($categories as $category)
-                                            <ul class="d-block">
-                                                <li class="menu_title"><a
-                                                        href="javascript:void(0)">{{ $category->name }}</a>
-                                                </li>
-                                                @foreach ($category->children as $item)
-                                                    <li><a href="">{{ $item->name }}</a>
+                                        @if (!empty($categories))
+                                            @foreach ($categories as $category)
+                                                <ul class="d-block">
+                                                    <li class="menu_title"><a
+                                                            href="javascript:void(0)">{{ $category->name }}</a>
                                                     </li>
-                                                @endforeach
-                                            </ul>
-                                        @endforeach
+                                                    @foreach ($category->children as $item)
+                                                        <li><a href="">{{ $item->name }}</a>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            @endforeach
+                                        @endif
 
                                     </li>
                                     {{-- <li>
@@ -487,23 +489,26 @@
                 <button class="ec-close">×</button>
             </div>
             <ul class="eccart-pro-items">
-                @foreach ($carts as $cart)
-                    <li>
-                        <a href="{{ route('feature.product.list', ['search' => $cart->variant->product->name]) }}"
-                            class="sidekka_pro_img"><img src="{{ asset($cart->variant->product->images[0]->path) }}"
-                                alt="product"></a>
-                        <div class="ec-pro-content">
-                            <a href="product-left-sidebar.html"
-                                class="cart_pro_title">{{ $cart->variant->product->name }}</a>
-                            <span class="cart-price"><span>{{ $cart->variant->sale_price ? number_format($cart->variant->sale_price, 0, '.', '.') : number_format($cart->variant->price, 0, '.', '.') }}
-                                    đ</span></span>
-                            <div class="qty-plus-minus">
-                                <input class="qty-input" type="text" name="ec_qtybtn" value="1" />
+                @if (!empty($carts))
+
+                    @foreach ($carts as $cart)
+                        <li>
+                            <a href="{{ route('feature.product.list', ['search' => $cart->variant->product->name]) }}"
+                                class="sidekka_pro_img"><img
+                                    src="{{ asset($cart->variant->product->images[0]->path) }}" alt="product"></a>
+                            <div class="ec-pro-content">
+                                <a href="product-left-sidebar.html"
+                                    class="cart_pro_title">{{ $cart->variant->product->name }}</a>
+                                <span class="cart-price"><span>{{ $cart->variant->sale_price ? number_format($cart->variant->sale_price, 0, '.', '.') : number_format($cart->variant->price, 0, '.', '.') }}
+                                        đ</span></span>
+                                <div class="qty-plus-minus">
+                                    <input class="qty-input" type="text" name="ec_qtybtn" value="1" />
+                                </div>
+                                <a href="javascript:void(0)" data-id="{{ $cart->id }}" class="remove">×</a>
                             </div>
-                            <a href="javascript:void(0)" data-id="{{ $cart->id }}" class="remove">×</a>
-                        </div>
-                    </li>
-                @endforeach
+                        </li>
+                    @endforeach
+                @endif
             </ul>
         </div>
         <div class="ec-cart-bottom">

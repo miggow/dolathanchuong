@@ -73,37 +73,42 @@
 
                                         @endphp
                                         <div class="ec-pro-variation">
-                                            <div class="ec-pro-variation-inner ec-pro-variation-size">
-                                                <span>SIZE</span>
-                                                <div class="ec-pro-variation-content">
-                                                    <ul>
-                                                        @foreach ($variantSizeAttributes as $key => $attr)
-                                                            <li class="{{ $key == 0 ? 'active' : '' }}"
-                                                                data-price="{{ number_format($attr['price'], 0, '.', '.') }}"
-                                                                data-sale-price="{{ number_format($attr['sale_price'], 0, '.', '.') }}"
-                                                                data-sku="{{ $attr['sku'] }}" data-id="{{ $attr['variant_id'] }}">
-                                                                <span>{{ $attr['attribute_value'] }}</span>
-                                                            </li>
-                                                        @endforeach
-                                                    </ul>
+                                            @if (!empty($variantColorAttributes))
+                                                <div class="ec-pro-variation-inner ec-pro-variation-size">
+                                                    <span>SIZE</span>
+                                                    <div class="ec-pro-variation-content">
+                                                        <ul>
+                                                            @foreach ($variantSizeAttributes as $key => $attr)
+                                                                <li class="{{ $key == 0 ? 'active' : '' }}"
+                                                                    data-price="{{ number_format($attr['price'], 0, '.', '.') }}"
+                                                                    data-sale-price="{{ number_format($attr['sale_price'], 0, '.', '.') }}"
+                                                                    data-sku="{{ $attr['sku'] }}"
+                                                                    data-id="{{ $attr['variant_id'] }}">
+                                                                    <span>{{ $attr['attribute_value'] }}</span>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="ec-pro-variation-inner ec-pro-variation-color">
-                                                <span>Color</span>
-                                                <div class="ec-pro-variation-content">
-                                                    <ul>
-                                                        @foreach ($variantColorAttributes as $key => $attr)
-                                                            <li class="{{ $key == 0 ? 'active' : '' }}"
-                                                                data-price="{{ number_format($attr['price'], 0, '.', '.') }}"
-                                                                data-sale-price="{{ number_format($attr['sale_price'], 0, '.', '.') }}"
-                                                                data-sku="{{ $attr['sku'] }}"
-                                                                data-id="{{ $attr['variant_id'] }}">
-                                                                <span>{{ $attr['attribute_value'] }}</span>
-                                                            </li>
-                                                        @endforeach
-                                                    </ul>
+                                            @endif
+                                            @if (!empty($variantColorAttributes))
+                                                <div class="ec-pro-variation-inner ec-pro-variation-color">
+                                                    <span>Color</span>
+                                                    <div class="ec-pro-variation-content">
+                                                        <ul>
+                                                            @foreach ($variantColorAttributes as $key => $attr)
+                                                                <li class="{{ $key == 0 ? 'active' : '' }}"
+                                                                    data-price="{{ number_format($attr['price'], 0, '.', '.') }}"
+                                                                    data-sale-price="{{ number_format($attr['sale_price'], 0, '.', '.') }}"
+                                                                    data-sku="{{ $attr['sku'] }}"
+                                                                    data-id="{{ $attr['variant_id'] }}">
+                                                                    <span>{{ $attr['attribute_value'] }}</span>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            @endif
                                         </div>
 
                                         <div class="ec-single-qty">
@@ -572,17 +577,21 @@
                 var sku = variant.data('sku');
 
                 // Update the UI with the selected variant's information
-                $('.ec-single-price .new-price').text(price + ' đ');
-                if (salePrice) {
-                    $('.ec-single-price .ec-single-ps-title').text(salePrice + ' đ').show();
+                $('.ec-single-price .new-price').text(salePrice + ' đ');
+                if (price) {
+                    $('.ec-single-price .ec-single-ps-title').text(price + ' đ').show();
                 } else {
                     $('.ec-single-price .ec-single-ps-title').hide();
                 }
                 $('.ec-single-price-stoke .ec-single-sku').text('SKU#: ' + sku);
             }
 
-            updateProductInfo($('.ec-pro-variation-size li.active').first());
-            updateProductInfo($('.ec-pro-variation-color li.active').first());
+            if ($('.ec-pro-variation-size li').length > 0) {
+                updateProductInfo($('.ec-pro-variation-size li.active').first());
+            }
+            if ($('.ec-pro-variation-color li').length > 0) {
+                updateProductInfo($('.ec-pro-variation-color li.active').first());
+            }
             // Click event for size variants
             $('.ec-pro-variation-size li').on('click', function() {
                 var selectedVariant = $(this);
@@ -601,7 +610,7 @@
             var productId = $('#productId').val();
             var quantity = $('.qty-input').val();
             var variantId = $('.ec-pro-variation-size li.active, .ec-pro-variation-color li.active').data(
-            'id'); // Adjust to get the correct variant ID
+                'id'); // Adjust to get the correct variant ID
 
             $.ajax({
                 url: '/cart/add',
