@@ -189,11 +189,11 @@
                                             <div class="input-group mt-3 priceQuantityFields">
                                                 <input type="text" class="form-control" name="sku"
                                                     placeholder="SKU">
-                                                <input type="number" class="form-control" name="price" required
+                                                <input type="number" class="form-control" name="price"
                                                     placeholder="Giá">
                                                 <input type="number" class="form-control" name="sale_price"
                                                     placeholder="Khuyến Mãi">
-                                                <input type="number" class="form-control" name="quantity" required
+                                                <input type="number" class="form-control" name="quantity"
                                                     placeholder="Số lượng">
                                             </div>
                                             <div class="mt-3 col-md-12">
@@ -243,7 +243,7 @@
                 container.show();
                 variation.css('display', 'none');
             }
-            variation.find('.select2').select2();
+            // variation.find('.select2').select2();
         }
         window.addVariation = function() {
             var container = document.getElementById("VariationsContainer");
@@ -255,9 +255,9 @@
         <input type="text" class="form-control" name="variation[sku][]" placeholder="SKU">
         <input type="text" class="form-control" name="variation[color][]" placeholder="Màu sắc">
         <input type="text" class="form-control" name="variation[size][]" placeholder="Kích thước">
-        <input type="number" class="form-control" name="variation[price][]" required placeholder="Giá">
+        <input type="number" class="form-control" name="variation[price][]" placeholder="Giá">
         <input type="number" class="form-control" name="variation[sale_price][]" placeholder="Khuyến Mãi">
-        <input type="number" class="form-control" name="variation[quantity][]" required placeholder="Số lượng">
+        <input type="number" class="form-control" name="variation[quantity][]" placeholder="Số lượng">
         <button type="button" class="btn btn-danger" onclick="removeVariation(this)">Xóa</button>
     `;
 
