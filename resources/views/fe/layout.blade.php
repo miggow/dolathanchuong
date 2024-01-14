@@ -207,7 +207,7 @@
     <!-- Newsletter Modal end -->
 
     <!-- Footer navigation panel for responsive display -->
-    {{-- <div class="ec-nav-toolbar">
+    <div class="ec-nav-toolbar">
         <div class="container">
             <div class="ec-nav-panel">
                 <div class="ec-nav-panel-icons">
@@ -232,7 +232,7 @@
 
             </div>
         </div>
-    </div> --}}
+    </div>
     <!-- Footer navigation panel for responsive display end -->
 
     <!-- Recent Purchase Popup  -->
