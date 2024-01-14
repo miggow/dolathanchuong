@@ -62,10 +62,10 @@
                                             <div class="ec-pro-image-outer">
                                                 <div class="ec-pro-image">
                                                     <a href="product-left-sidebar.html" class="image">
-                                                        <img class="main-image" src="{{ asset($product->images[0]->path) }}"
+                                                        <img class="main-image" src="{{ asset($product->images->first()->path ?? '') }}"
                                                             alt="Product" />
                                                         <img class="hover-image"
-                                                            src="{{ asset($product->images[1]->path) }}" alt="Product" />
+                                                            src="{{ asset($product->images->skip(1)->first()->path ?? '') }}" alt="Product" />
                                                     </a>
                                                     <a href="#" class="quickview" data-link-action="quickview"
                                                         title="Quick view" data-bs-toggle="modal"

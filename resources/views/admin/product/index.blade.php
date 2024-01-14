@@ -5,7 +5,7 @@
             <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
                 <div>
                     <h1>Product</h1>
-                    <p class="breadcrumbs"><span><a href={{route('home')}}>Home</a></span>
+                    <p class="breadcrumbs"><span><a href={{ route('home') }}>Home</a></span>
                         <span><i class="mdi mdi-chevron-right"></i></span>Product
                     </p>
                 </div>
@@ -38,7 +38,7 @@
                                             <tr>
                                                 <td>
                                                     <img class="tbl-thumb"
-                                                        src="{{ asset($product->images[0]->path ?? '') }}"
+                                                        src="{{ asset($product->images->first()->path ?? '') }}"
                                                         alt="Product Image" />
                                                 </td>
                                                 <td>{{ $product->name }}</td>
@@ -59,7 +59,9 @@
                                                         href="{{ route('inventory.index', $product->id) }}">Kho</a>
 
                                                     <a class="btn btn-sm btn-success" href="">Edit</a>
-                                                    <a class="btn btn-sm btn-success" href="#">Delete</a>
+                                                    <button class="btn btn-outline-danger btn-sm confirm-delete"
+                                                        data-href="{{ route('destroy.product', encrypt($product->id)) }}">Delete</button>
+                                                    {{-- <a class="btn btn-sm btn-success" href="#">Delete</a> --}}
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -104,4 +106,7 @@
             </div>
         </div> <!-- End Content -->
     </div>
+@endsection
+@section('modal')
+    @include('modal.delete')
 @endsection

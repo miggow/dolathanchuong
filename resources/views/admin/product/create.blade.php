@@ -30,7 +30,7 @@
                                             <div class="ec-vendor-main-img">
                                                 <div class="avatar-upload">
                                                     <div class="avatar-edit">
-                                                        <input type='file' id="imageUpload" name="images[]"
+                                                        <input type='file' id="imageUpload" name="images[]" required
                                                             class="ec-image-upload" accept=".png, .jpg, .jpeg" />
                                                         <label for="imageUpload"><img src="{{ asset('admin/assets/img/icons/edit.svg') }}"
                                                                 class="svg_img header_svg" alt="edit" /></label>
@@ -46,7 +46,7 @@
                                                 <div class="thumb-upload-set colo-md-12">
                                                     <div class="thumb-upload">
                                                         <div class="thumb-edit">
-                                                            <input type='file' id="thumbUpload01" name="images[]"
+                                                            <input type='file' id="thumbUpload01" name="images[]" required
                                                                 class="ec-image-upload" accept=".png, .jpg, .jpeg" />
                                                             <label for="imageUpload"><img src="{{ asset('admin/assets/img/icons/edit.svg') }}"
                                                                     class="svg_img header_svg" alt="edit" /></label>
@@ -189,11 +189,11 @@
                                             <div class="input-group mt-3 priceQuantityFields">
                                                 <input type="text" class="form-control" name="sku"
                                                     placeholder="SKU">
-                                                <input type="number" class="form-control" name="price"
+                                                <input type="number" class="form-control" name="price" required
                                                     placeholder="Giá">
                                                 <input type="number" class="form-control" name="sale_price"
                                                     placeholder="Khuyến Mãi">
-                                                <input type="number" class="form-control" name="quantity"
+                                                <input type="number" class="form-control" name="quantity" required
                                                     placeholder="Số lượng">
                                             </div>
                                             <div class="mt-3 col-md-12">
@@ -255,9 +255,9 @@
         <input type="text" class="form-control" name="variation[sku][]" placeholder="SKU">
         <input type="text" class="form-control" name="variation[color][]" placeholder="Màu sắc">
         <input type="text" class="form-control" name="variation[size][]" placeholder="Kích thước">
-        <input type="number" class="form-control" name="variation[price][]" placeholder="Giá">
+        <input type="number" class="form-control" name="variation[price][]" required placeholder="Giá">
         <input type="number" class="form-control" name="variation[sale_price][]" placeholder="Khuyến Mãi">
-        <input type="number" class="form-control" name="variation[quantity][]" placeholder="Số lượng">
+        <input type="number" class="form-control" name="variation[quantity][]" required placeholder="Số lượng">
         <button type="button" class="btn btn-danger" onclick="removeVariation(this)">Xóa</button>
     `;
 

@@ -58,9 +58,21 @@
                                         <h5 class="ec-single-title">{{ $product->name }}</h5>
                                         <div class="ec-single-price-stoke">
                                             <div class="ec-single-price">
+                                                @php
+                                                    $variant = $product->variants()->first();
+                                                @endphp
                                                 <span
-                                                    class="ec-single-ps-title text-decoration-line-through text-danger"></span>
-                                                <span class="new-price"></span>
+                                                    class="ec-single-ps-title text-decoration-line-through text-danger">{{ $product->has_variants == 0 && $variant->sale_price != 0 ? number_format($product->variants()->first()->price, 0, '.', '.') . ' đ' : '' }}</span>
+                                                <span class="new-price">
+                                                    @if ($product->has_variants == 0)
+                                                        @if ($variant && $variant->sale_price != 0)
+                                                            {{ number_format($variant->sale_price, 0, '.', '.') . ' đ' }}
+                                                        @else
+                                                            {{ number_format($variant ? $variant->price : 0, 0, '.', '.') . ' đ' }}
+                                                        @endif
+                                                    @endif
+
+                                                </span>
                                             </div>
                                             <div class="ec-single-stoke">
                                                 <span class="ec-single-ps-title">IN STOCK</span>
@@ -73,7 +85,7 @@
 
                                         @endphp
                                         <div class="ec-pro-variation">
-                                            @if (!empty($variantColorAttributes))
+                                            @if (!empty($variantSizeAttributes))
                                                 <div class="ec-pro-variation-inner ec-pro-variation-size">
                                                     <span>SIZE</span>
                                                     <div class="ec-pro-variation-content">

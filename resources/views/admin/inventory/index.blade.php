@@ -24,7 +24,7 @@
                                 data-id="{{ $variant->id }}" data-price="{{ number_format($variant->price, 0, '.', '') }}"
                                 data-sale="{{ number_format($variant->sale_price, 0, '.', '') }}"
                                 data-quantity="{{ $variant->quantity }}"
-                                data-imagepath={{ asset($product->images[0]->path) }} data-product="{{ $product->name }}"
+                                data-imagepath={{ asset($product->images->first()->path ?? '') }} data-product="{{ $product->name }}"
                                 data-url="{{ route('inventory.update', $variant->id) }}" data-bs-target="#modalContact">
                                 <div class="media-body">
                                     <h5 class="mt-0 mb-2 text-dark">

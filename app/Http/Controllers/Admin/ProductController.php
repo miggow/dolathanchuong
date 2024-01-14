@@ -149,7 +149,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::find(decrypt($id));
+        $product->delete();
+        return redirect()->back();
     }
     private function attachAttributeToVariant($variant, $attributeName, $value)
     {

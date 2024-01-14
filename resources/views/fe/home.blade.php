@@ -486,9 +486,9 @@
                                                 <div class="ec-pro-image">
                                                     <a href="product-left-sidebar.html" class="image">
                                                         <img class="main-image"
-                                                            src="{{ asset($product->images[0]->path) }}" alt="Product" />
+                                                            src="{{ asset($product->images->first()->path ?? '') }}" alt="Product" />
                                                         <img class="hover-image"
-                                                            src="{{ asset($product->images[1]->path) }}" alt="Product" />
+                                                            src="{{ asset($product->images->skip(1)->first()->path ?? '') }}" alt="Product" />
                                                     </a>
                                                     <a href="#" class="quickview" data-link-action="quickview"
                                                         title="Quick view" data-bs-toggle="modal"
@@ -532,8 +532,8 @@
                                                         <ul class="ec-opt-swatch ec-change-img">
                                                             @foreach ($colorAttributes as $key => $attr)
                                                                 <li class="active"><a href="#"
-                                                                        data-src="{{ asset($product->images[0]->path) }}"
-                                                                        data-src-hover="{{ asset($product->images[1]->path) }}"
+                                                                        data-src="{{ asset($product->images->first()->path ?? '') }}"
+                                                                        data-src-hover="{{ asset($product->images->skip(1)->first()->path ?? '') }}"
                                                                         data-tooltip="Gray"><span>{{ $attr['attribute_value'] }}</span></a>
                                                                 </li>
                                                             @endforeach
@@ -2447,7 +2447,7 @@
     </section>
     <!-- ec Product tab Area End -->
     <!-- ec Banner Section Start -->
-    {{-- <section class="ec-banner section section-space-p">
+    <section class="ec-banner section section-space-p">
         <h2 class="d-none">Banner</h2>
         <div class="container">
             <!-- ec Banners Start -->
@@ -2487,11 +2487,11 @@
                 <!-- ec Banners End -->
             </div>
         </div>
-    </section> --}}
+    </section>
     <!-- ec Banner Section End -->
 
     <!--  Category Section Start -->
-    {{-- <section class="section ec-category-section section-space-p" id="categories">
+    <section class="section ec-category-section section-space-p" id="categories">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
@@ -2586,7 +2586,7 @@
                 </div>
             </div>
         </div>
-    </section> --}}
+    </section>
     <!-- Category Section End -->
 
     <!--  Feature & Special Section Start -->
@@ -2993,7 +2993,7 @@
             </div>
         </div>
     </section>
-    <!--  Top Vendor Section End -->
+    <!--  Top Vendor Section End -->--}}
 
     <!--  services Section Start -->
     <section class="section ec-services-section section-space-p" id="services">
@@ -3067,7 +3067,7 @@
             </div>
         </div>
     </section>
-    <!-- offer Section End --> --}}
+    <!-- offer Section End -->
 
     <!-- New Product Start -->
     <section class="section ec-new-product section-space-p" id="arrivals">
@@ -3131,8 +3131,8 @@
                                         <ul class="ec-opt-swatch ec-change-img">
                                             @foreach ($colorAttributes as $key => $attr)
                                                 <li class="active"><a href="#"
-                                                        data-src="{{ asset($product->images[0]->path) }}"
-                                                        data-src-hover="{{ asset($product->images[1]->path) }}"
+                                                        data-src="{{ asset($product->images->first()->path ?? '') }}"
+                                                        data-src-hover="{{ asset($product->images->skip(1)->first()->path ?? '') }}"
                                                         data-tooltip="Gray"><span>{{ $attr['attribute_value'] }}</span></a>
                                                 </li>
                                             @endforeach
