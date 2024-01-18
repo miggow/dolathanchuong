@@ -54,6 +54,11 @@
                                     <span class="nav-text">Danh mục</span>
                                 </a>
                             </li>
+                            <li class="{{ areActiveRoutes(['sub-category.index']) }}">
+                                <a class="sidenav-item-link" href="{{ route('sub-category.index') }}">
+                                    <span class="nav-text">Danh mục con</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>

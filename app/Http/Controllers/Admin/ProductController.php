@@ -126,7 +126,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        $categories = Category::whereNull('parent_id')->get();
+        return view('admin.product.edit', compact('product', 'categories'));
     }
 
     /**

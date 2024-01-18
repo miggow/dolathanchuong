@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashBoardController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\InventoryController;
 use Illuminate\Support\Facades\Route;
@@ -12,6 +13,8 @@ Route::group(['prefix' => 'admin'], function(){
 
     Route::resource('category', CategoryController::class);
     Route::get('category/destroy/{id}', [CategoryController::class, 'destroy'])->name('destroy.category');
+    Route::resource('sub-category', SubCategoryController::class);
+    Route::get('sub-category/destroy/{id}', [SubCategoryController::class, 'destroy'])->name('destroy.sub-category');
 
     Route::resource('product', ProductController::class);
     Route::get('product/destroy/{id}', [ProductController::class, 'destroy'])->name('destroy.product');

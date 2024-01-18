@@ -256,7 +256,10 @@
                                     <li><a href="product-gallery-full-width.html">Gallery full width</a></li>
                                 </ul>
                             </li>
+                            <li><a href="offer.html">ACCESSORIES</a></li>
+                            <li><a href="offer.html">Everyday Basics</a></li>
                             <li><a href="offer.html">Hot Offers</a></li>
+                            <li><a href="offer.html">Coming Soon</a></li>
                             <li class="dropdown scroll-to"><a href="javascript:void(0)"><i
                                         class="fi fi-rr-sort-amount-down-alt"></i></a>
                                 <ul class="sub-menu">

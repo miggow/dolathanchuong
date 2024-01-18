@@ -55,10 +55,10 @@
                                                 <td>{{ $product->status == 'active' ? 'Hoạt động' : 'Ngừng hiển thị' }}</td>
                                                 <td>{{ $product->created_at }}</td>
                                                 <td>
-                                                    <a class="btn btn-sm btn-success"
+                                                    <a class="btn btn-sm btn-outline-success"
                                                         href="{{ route('inventory.index', $product->id) }}">Kho</a>
 
-                                                    <a class="btn btn-sm btn-success" href="">Edit</a>
+                                                    <a class="btn btn-sm btn-outline-warning" href="{{ route('product.edit', $product->id) }}">Edit</a>
                                                     <button class="btn btn-outline-danger btn-sm confirm-delete"
                                                         data-href="{{ route('destroy.product', encrypt($product->id)) }}">Delete</button>
                                                     {{-- <a class="btn btn-sm btn-success" href="#">Delete</a> --}}
