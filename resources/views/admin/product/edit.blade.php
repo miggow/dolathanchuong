@@ -21,7 +21,7 @@
                         <div class="card-header card-header-border-bottom">
                             <h2>Add Product</h2>
                         </div>
-                        <form action="{{ route('product.store') }}" enctype="multipart/form-data" method="POST">
+                        <form action="" enctype="multipart/form-data" method="POST">
                             @csrf
                             <div class="card-body">
                                 <div class="row ec-vendor-uploads">
