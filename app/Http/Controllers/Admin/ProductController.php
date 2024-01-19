@@ -6,6 +6,7 @@ use App\Attribute;
 use App\Category;
 use App\Http\Controllers\Controller;
 use App\Product;
+use App\ProductImage;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -140,7 +141,21 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Product::find(decrypt($id));
+        $product->fill([
+            'name' => $request->name,
+            'description' => $request->description,
+            'category_id' => $request->category_id,
+        ]);
+
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $path = $image->store('public/products');
+                $product->images()->create(['path' => Storage::url($path)]);
+            }
+        }
+        $product->save();
+        return redirect()->back();
     }
 
     /**
@@ -161,5 +176,17 @@ class ProductController extends Controller
             $attribute = Attribute::firstOrCreate(['name' => $attributeName]);
             $variant->attributes()->attach($attribute->id, ['value' => $value]);
         }
+    }
+    public function delete_image(Request $request){
+        $image = ProductImage::find(decrypt($request->id));
+        $image->delete();
+        return ['success' => 'Xóa ảnh thành công'];
+    }
+    public function update_image(Request $request){
+        $image = ProductImage::find(decrypt($request->id));
+        $path = $request->image->store('public/products');
+        $image->path = Storage::url($path);
+        $image->save();
+        return ['success' => asset($path)];
     }
 }

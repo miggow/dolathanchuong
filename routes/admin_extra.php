@@ -18,11 +18,14 @@ Route::group(['prefix' => 'admin'], function(){
 
     Route::resource('product', ProductController::class);
     Route::get('product/destroy/{id}', [ProductController::class, 'destroy'])->name('destroy.product');
+    Route::post('product/image', [ProductController::class, 'delete_image'])->name('destroy.product.image');
+    Route::post('product/image/update', [ProductController::class, 'update_image'])->name('update.product.image');
 
     Route::get('product/{id}/inventory', [InventoryController::class, 'index'])->name('inventory.index');
     Route::post('inventory/{id}/update', [InventoryController::class, 'update'])->name('inventory.update');
     Route::post('inventory/{id}', [InventoryController::class, 'store'])->name('inventory.store');
     Route::get('inventory/{id}/destroy', [InventoryController::class, 'destroy'])->name('inventory.destroy');
+
 
     Route::resource('user', UserController::class);
     Route::get('user/destroy/{id}', [UserController::class, 'destroy'])->name('destroy.user');

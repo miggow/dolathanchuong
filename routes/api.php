@@ -21,3 +21,4 @@ Route::post('/cart/add', 'Api\CartController@addToCart');
 Route::delete('/cart/{cart}', 'Api\CartController@removeFromCart')->name('api.cart.remove');
 
 
+
