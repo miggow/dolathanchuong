@@ -111,6 +111,37 @@
                         </ul>
                     </div>
                 </li>
+                <!-- Orders -->
+                <li class="has-sub">
+                    <a class="sidenav-item-link" href="javascript:void(0)">
+                        <i class="mdi mdi-settings"></i>
+                        <span class="nav-text">Setting</span> <b class="caret"></b>
+                    </a>
+                    <div class="collapse">
+                        <ul class="sub-menu" id="settings" data-parent="#setting">
+                            <li class="">
+                                <a class="sidenav-item-link" href="{{ route('banner.index') }}">
+                                    <span class="nav-text">Banner</span>
+                                </a>
+                            </li>
+                            {{-- <li class="">
+                                <a class="sidenav-item-link" href="order-history.html">
+                                    <span class="nav-text">Order History</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a class="sidenav-item-link" href="order-detail.html">
+                                    <span class="nav-text">Order Detail</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a class="sidenav-item-link" href="invoice.html">
+                                    <span class="nav-text">Invoice</span>
+                                </a>
+                            </li> --}}
+                        </ul>
+                    </div>
+                </li>
 
 
             </ul>

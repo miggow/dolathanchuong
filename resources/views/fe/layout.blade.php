@@ -13,9 +13,9 @@
     <meta name="author" content="ashishmaraviya">
 
     <!-- site Favicon -->
-    <link rel="icon" href="{{ asset('frontend/assets/images/debalogo.jpg') }}" sizes="32x32" />
-    <link rel="apple-touch-icon" href="{{ asset('frontend/assets/images/debalogo.jpg') }}" />
-    <meta name="msapplication-TileImage" content="{{ asset('frontend/assets/images/debalogo.jpg') }}" />
+    <link rel="icon" href="{{ asset('frontend/assets/images/deba-logo.png') }}" sizes="32x32" />
+    <link rel="apple-touch-icon" href="{{ asset('frontend/assets/images/deba-logo.png') }}" />
+    <meta name="msapplication-TileImage" content="{{ asset('frontend/assets/images/deba-logo.png') }}" />
 
     <!-- css Icon Font -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/vendor/ecicons.min.css') }}" />

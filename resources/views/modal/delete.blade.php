@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body text-center">
                 <p class="mt-1 fs-14">Bạn có chắc chắn muốn xóa</p>
-                <button type="button" class="btn btn-secondary rounded-3 mt-5" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-secondary rounded-3 mt-5" data-bs-dismiss="modal">Cancel</button>
                 <a href="" id="delete-link" class="btn btn-primary rounded-3 mt-5">Delete</a>
             </div>
         </div>

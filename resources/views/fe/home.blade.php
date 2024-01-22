@@ -396,46 +396,57 @@
         <div class="ec-slider swiper-container main-slider-nav main-slider-dot">
             <!-- Main slider -->
             <div class="swiper-wrapper">
-                <div class="ec-slide-item swiper-slide d-flex"
-                    style="width: 100%;
-  background-image: url('/frontend/assets/images/406923517_253853657707601_1104735501352917681_n.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  overflow-y: hidden;">
-                    <div class="container align-self-center">
-                        <div class="row">
-                            <div class="col-xl-6 col-lg-7 col-md-7 col-sm-7 align-self-center">
-                                <div class="ec-slide-content slider-animation">
-                                    {{-- <h1 class="ec-slide-title">New Fashion Collection</h1>
+                @if (!empty($banners))
+                    @foreach ($banners as $banner)
+                        <div class="ec-slide-item swiper-slide d-flex"
+                            style="width: 100%; background-image: url('{{ asset($banner->image) }}'); background-repeat: no-repeat; background-size: cover; background-position: center; overflow-y: hidden;">
+                            <div class="container align-self-center">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-7 col-md-7 col-sm-7 align-self-center">
+                                        <div class="ec-slide-content slider-animation">
+                                            {{-- <h1 class="ec-slide-title">New Fashion Collection</h1>
                                     <h2 class="ec-slide-stitle">Sale Offer</h2>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
                                     <a href="#" class="btn btn-lg btn-secondary">Order Now</a> --}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <div class="ec-slide-item swiper-slide d-flex"
+                        style="width: 100%; background-image: url('/frontend/assets/images/406923517_253853657707601_1104735501352917681_n.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center; overflow-y: hidden;">
+                        <div class="container align-self-center">
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-7 col-md-7 col-sm-7 align-self-center">
+                                    <div class="ec-slide-content slider-animation">
+                                        {{-- <h1 class="ec-slide-title">New Fashion Collection</h1>
+                                    <h2 class="ec-slide-stitle">Sale Offer</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
+                                    <a href="#" class="btn btn-lg btn-secondary">Order Now</a> --}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="ec-slide-item swiper-slide d-flex"
-                    style="width: 100%;
-  background-image: url('/frontend/assets/images/404507601_246211555138478_3735670549288177643_n.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  overflow-y: hidden;">
-                    <div class="container align-self-center">
-                        <div class="row">
-                            <div class="col-xl-6 col-lg-7 col-md-7 col-sm-7 align-self-center">
-                                <div class="ec-slide-content slider-animation">
-                                    {{-- <h1 class="ec-slide-title">Boat Headphone Sets</h1>
+                    <div class="ec-slide-item swiper-slide d-flex"
+                        style="width: 100%; background-image: url('/frontend/assets/images/404507601_246211555138478_3735670549288177643_n.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center; overflow-y: hidden;">
+                        <div class="container align-self-center">
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-7 col-md-7 col-sm-7 align-self-center">
+                                    <div class="ec-slide-content slider-animation">
+                                        {{-- <h1 class="ec-slide-title">Boat Headphone Sets</h1>
                                     <h2 class="ec-slide-stitle">Sale Offer</h2>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
                                     <a href="#" class="btn btn-lg btn-secondary">Order Now</a> --}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endif
+
             </div>
             <div class="swiper-pagination swiper-pagination-white"></div>
             <div class="swiper-buttons">
@@ -3096,7 +3107,8 @@
                                 <div class="ec-pro-image">
                                     <a href="product-left-sidebar.html" class="image">
                                         <img class="main-image"
-                                            src="{{ asset($item_new->images->first()->path ?? '') }}" alt="item_new" />
+                                            src="{{ asset($item_new->images->first()->path ?? '') }}"
+                                            alt="item_new" />
                                         <img class="hover-image"
                                             src="{{ asset($item_new->images->skip(1)->first()->path ?? '') }}"
                                             alt="item_new" />

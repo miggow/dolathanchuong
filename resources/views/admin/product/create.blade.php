@@ -11,7 +11,7 @@
                     </p>
                 </div>
                 <div>
-                    <a href="product-list.html" class="btn btn-primary"> View All
+                    <a href="{{route('product.index')}}" class="btn btn-primary"> View All
                     </a>
                 </div>
             </div>

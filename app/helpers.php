@@ -4,6 +4,7 @@ use App\Models\Cart;
 use App\Models\SettingHomepage;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 
 if (!function_exists('areActiveRoutes')) {
@@ -20,5 +21,16 @@ if (!function_exists('areActiveRouteHome')) {
         if (Route::currentRouteName() == 'home')
             return true;
         return false;
+    }
+}
+//Save image
+if (!function_exists('save_image')) {
+    function save_image($folder, $image)
+    {
+        $name = date('dmYHis') . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
+        $path = $folder . '/';
+        $image->move(public_path($path), $name);
+
+        return $folder . '/' . $name;
     }
 }
