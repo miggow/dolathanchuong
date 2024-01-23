@@ -15,6 +15,9 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::with(['variants', 'images', 'category'])->get();
+        // $product_type_new = Product::with(['variants', 'images', 'category'])->where('is_new', 1)->limit(8)->get();
+        // $product_type_new = Product::with(['variants', 'images', 'category'])->where('is_new', 1)->limit(8)->get();
+        // $product_type_new = Product::with(['variants', 'images', 'category'])->where('is_new', 1)->limit(8)->get();
         $categories = Category::whereNull('parent_id')->get();
         $carts = [];
         if (Auth::check()) {
@@ -22,8 +25,8 @@ class HomeController extends Controller
         }
         $banners = Cache::remember('banner', 60*60, function () {
             return Banner::orderBy('order')->get();
+            //cache để lưu lại cái biến đó trong 1 khoảng thời gian, hết thời gian nó gọi lại tiếp cái hàm trong {};
         });
-        // dd($banners);
         return view('fe.home', compact('products', 'carts', 'categories', 'banners'));
     }
     public function product(Request $request)

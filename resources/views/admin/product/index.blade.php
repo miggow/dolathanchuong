@@ -28,7 +28,7 @@
                                             <th>Giao dịch</th>
                                             <th>Kho</th>
                                             <th>Status</th>
-                                            <th>Date</th>
+                                            {{-- <th>Date</th> --}}
                                             <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
@@ -53,7 +53,7 @@
                                                 <td>61</td>
                                                 <td>{{ $product->variants->sum('quantity') }}</td>
                                                 <td>{{ $product->status == 'active' ? 'Hoạt động' : 'Ngừng hiển thị' }}</td>
-                                                <td>{{ $product->created_at }}</td>
+                                                {{-- <td>{{ $product->created_at }}</td> --}}
                                                 <td>
                                                     <a class="btn btn-sm btn-outline-success"
                                                         href="{{ route('inventory.index', $product->id) }}">Kho</a>

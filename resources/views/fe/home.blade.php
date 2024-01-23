@@ -3197,7 +3197,7 @@
     <!-- New Product end -->
 
     <!-- ec testmonial Start -->
-    <section class="section ec-test-section section-space-ptb-100 section-space-m" id="reviews">
+    {{-- <section class="section ec-test-section section-space-ptb-100 section-space-m" id="reviews">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
@@ -3284,11 +3284,11 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- ec testmonial end -->
 
     <!-- Ec Brand Section Start -->
-    <section class="section ec-brand-area section-space-p">
+    {{-- <section class="section ec-brand-area section-space-p">
         <h2 class="d-none">Brand</h2>
         <div class="container">
             <div class="row">
@@ -3330,7 +3330,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- Ec Brand Section End -->
 
     <!-- Ec Instagram Start -->

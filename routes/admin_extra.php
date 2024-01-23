@@ -10,7 +10,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\InventoryController;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/dashboard', [DashBoardController::class, 'index'])->name('admin.home');
 
     Route::resource('category', CategoryController::class);
