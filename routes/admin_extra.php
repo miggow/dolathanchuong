@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\HomeSiteSettingController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\InstagramFeedController;
 use App\Http\Controllers\InventoryController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +37,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'authAdmin'], function () {
     Route::prefix('settings')->group(function(){
         Route::resource('banner', BannerController::class);
         Route::get('banner/destroy/{id}', [BannerController::class, 'destroy'])->name('destroy.banner');
-
+        Route::resource('instagram-feed', InstagramFeedController::class);
+        Route::get('instagram-feed/destroy/{id}', [InstagramFeedController::class, 'destroy'])->name('instagram-feed.destroy');
     });
+
 });

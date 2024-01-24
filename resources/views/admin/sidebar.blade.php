@@ -124,12 +124,12 @@
                                     <span class="nav-text">Banner</span>
                                 </a>
                             </li>
-                            {{-- <li class="">
-                                <a class="sidenav-item-link" href="order-history.html">
-                                    <span class="nav-text">Order History</span>
+                            <li class="">
+                                <a class="sidenav-item-link" href="{{ route('instagram-feed.index') }}">
+                                    <span class="nav-text">Instagram Feed</span>
                                 </a>
                             </li>
-                            <li class="">
+                            {{-- <li class="">
                                 <a class="sidenav-item-link" href="order-detail.html">
                                     <span class="nav-text">Order Detail</span>
                                 </a>

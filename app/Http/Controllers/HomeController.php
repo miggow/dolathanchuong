@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Banner;
 use App\Cart;
 use App\Category;
+use App\InstagramFeed;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,11 +24,15 @@ class HomeController extends Controller
         if (Auth::check()) {
             $carts = Cart::where('user_id', Auth::id())->get();
         }
-        $banners = Cache::remember('banner', 60*60, function () {
+        $banners = Cache::remember('banner', 60 * 60, function () {
             return Banner::orderBy('order')->get();
             //cache để lưu lại cái biến đó trong 1 khoảng thời gian, hết thời gian nó gọi lại tiếp cái hàm trong {};
         });
-        return view('fe.home', compact('products', 'newProducts', 'saleProducts', 'outstandingProducts', 'carts', 'categories', 'banners'));
+        $instagramFeeds = Cache::remember('instagram_feed', 60 * 60, function () {
+            return InstagramFeed::all();
+            //cache để lưu lại cái biến đó trong 1 khoảng thời gian, hết thời gian nó gọi lại tiếp cái hàm trong {};
+        });
+        return view('fe.home', compact('products', 'newProducts', 'saleProducts', 'outstandingProducts', 'carts', 'categories', 'banners', 'instagramFeeds'));
     }
     public function product(Request $request)
     {

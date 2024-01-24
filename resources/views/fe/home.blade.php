@@ -1162,23 +1162,21 @@
                             <div class="ec-pro-image-outer">
                                 <div class="ec-pro-image">
                                     <a href="product-left-sidebar.html" class="image">
-                                        <img class="main-image"
-                                            src="{{ asset($item_new->images->first()->path ?? '') }}"
+                                        <img class="main-image" src="{{ asset($item_new->images->first()->path ?? '') }}"
                                             alt="item_new" />
                                         <img class="hover-image"
                                             src="{{ asset($item_new->images->skip(1)->first()->path ?? '') }}"
                                             alt="item_new" />
                                     </a>
-                                    <a href="#" class="quickview" data-link-action="quickview"
-                                        title="Quick view" data-bs-toggle="modal"
-                                        data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
+                                    <a href="#" class="quickview" data-link-action="quickview" title="Quick view"
+                                        data-bs-toggle="modal" data-bs-target="#ec_quickview_modal"><i
+                                            class="fi-rr-eye"></i></a>
                                     <div class="ec-pro-actions">
                                         <a href="compare.html" class="ec-btn-group compare" title="Compare"><i
                                                 class="fi fi-rr-arrows-repeat"></i></a>
                                         <button title="Add To Cart" class="add-to-cart"><i
                                                 class="fi-rr-shopping-basket"></i> Add To Cart</button>
-                                        <a class="ec-btn-group wishlist" title="Wishlist"><i
-                                                class="fi-rr-heart"></i></a>
+                                        <a class="ec-btn-group wishlist" title="Wishlist"><i class="fi-rr-heart"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -1406,59 +1404,15 @@
             <div class="ec-insta-outer">
                 <div class="container" data-animation="fadeIn">
                     <div class="insta-auto">
+                        @foreach ($instagramFeeds as $feed)
                         <!-- instagram item -->
                         <div class="ec-insta-item">
                             <div class="ec-insta-inner">
-                                <a href="#" target="_blank"><img
-                                        src="frontend/assets/images/instragram-image/1.jpg" alt="insta"></a>
+                                    <a href={{ $feed->link }} target="_blank"><img width="480" height="340"
+                                            style="object-fit: cover" src={{ $feed->image }} alt="insta"></a>
                             </div>
                         </div>
-                        <!-- instagram item -->
-                        <div class="ec-insta-item">
-                            <div class="ec-insta-inner">
-                                <a href="#" target="_blank"><img
-                                        src="frontend/assets/images/instragram-image/2.jpg" alt="insta"></a>
-                            </div>
-                        </div>
-                        <!-- instagram item -->
-                        <div class="ec-insta-item">
-                            <div class="ec-insta-inner">
-                                <a href="#" target="_blank"><img
-                                        src="frontend/assets/images/instragram-image/3.jpg" alt="insta"></a>
-                            </div>
-                        </div>
-                        <!-- instagram item -->
-                        <div class="ec-insta-item">
-                            <div class="ec-insta-inner">
-                                <a href="#" target="_blank"><img
-                                        src="frontend/assets/images/instragram-image/4.jpg" alt="insta"></a>
-                            </div>
-                        </div>
-                        <!-- instagram item -->
-                        <!-- instagram item -->
-                        <div class="ec-insta-item">
-                            <div class="ec-insta-inner">
-                                <a href="#" target="_blank"><img
-                                        src="frontend/assets/images/instragram-image/5.jpg" alt="insta"></a>
-                            </div>
-                        </div>
-                        <!-- instagram item -->
-                        <!-- instagram item -->
-                        <div class="ec-insta-item">
-                            <div class="ec-insta-inner">
-                                <a href="#" target="_blank"><img
-                                        src="frontend/assets/images/instragram-image/6.jpg" alt="insta"></a>
-                            </div>
-                        </div>
-                        <!-- instagram item -->
-                        <!-- instagram item -->
-                        <div class="ec-insta-item">
-                            <div class="ec-insta-inner">
-                                <a href="#" target="_blank"><img
-                                        src="frontend/assets/images/instragram-image/7.jpg" alt="insta"></a>
-                            </div>
-                        </div>
-                        <!-- instagram item -->
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -1470,8 +1424,7 @@
     <div class="modal fade" id="ec_quickview_modal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <button type="button" class="btn-close qty_close" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
+                <button type="button" class="btn-close qty_close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-5 col-sm-12 col-xs-12">
@@ -1479,18 +1432,15 @@
                             <div class="qty-product-cover">
                                 <div class="qty-slide">
                                     <img class="img-responsive"
-                                        src="{{ asset('frontend/assets/images/product-image/3_1.jpg') }}"
-                                        alt="">
+                                        src="{{ asset('frontend/assets/images/product-image/3_1.jpg') }}" alt="">
                                 </div>
                                 <div class="qty-slide">
                                     <img class="img-responsive"
-                                        src="{{ asset('frontend/assets/images/product-image/3_2.jpg') }}"
-                                        alt="">
+                                        src="{{ asset('frontend/assets/images/product-image/3_2.jpg') }}" alt="">
                                 </div>
                                 <div class="qty-slide">
                                     <img class="img-responsive"
-                                        src="{{ asset('frontend/assets/images/product-image/3_3.jpg') }}"
-                                        alt="">
+                                        src="{{ asset('frontend/assets/images/product-image/3_3.jpg') }}" alt="">
                                 </div>
                                 <div class="qty-slide">
                                     <img class="img-responsive" src="frontend/assets/images/product-image/3_4.jpg"
@@ -1504,18 +1454,15 @@
                             <div class="qty-nav-thumb">
                                 <div class="qty-slide">
                                     <img class="img-responsive"
-                                        src="{{ asset('frontend/assets/images/product-image/3_1.jpg') }}"
-                                        alt="">
+                                        src="{{ asset('frontend/assets/images/product-image/3_1.jpg') }}" alt="">
                                 </div>
                                 <div class="qty-slide">
                                     <img class="img-responsive"
-                                        src="{{ asset('frontend/assets/images/product-image/3_2.jpg') }}"
-                                        alt="">
+                                        src="{{ asset('frontend/assets/images/product-image/3_2.jpg') }}" alt="">
                                 </div>
                                 <div class="qty-slide">
                                     <img class="img-responsive"
-                                        src="{{ asset('frontend/assets/images/product-image/3_3.jpg') }}"
-                                        alt="">
+                                        src="{{ asset('frontend/assets/images/product-image/3_3.jpg') }}" alt="">
                                 </div>
                                 <div class="qty-slide">
                                     <img class="img-responsive" src="frontend/assets/images/product-image/3_4.jpg"
@@ -1572,8 +1519,8 @@
                                                 </li>
                                                 <li><a href="#" class="ec-opt-sz" data-tooltip="Large">X</a>
                                                 </li>
-                                                <li><a href="#" class="ec-opt-sz"
-                                                        data-tooltip="Extra Large">XL</a></li>
+                                                <li><a href="#" class="ec-opt-sz" data-tooltip="Extra Large">XL</a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
