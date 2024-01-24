@@ -28,6 +28,9 @@
                                             <th>Giao dịch</th>
                                             <th>Kho</th>
                                             <th>Status</th>
+                                            <th>Mới</th>
+                                            <th>Nổi bật</th>
+                                            <th>Khuyến mãi</th>
                                             {{-- <th>Date</th> --}}
                                             <th class="text-center">Action</th>
                                         </tr>
@@ -55,9 +58,23 @@
                                                 <td>{{ $product->status == 'active' ? 'Hoạt động' : 'Ngừng hiển thị' }}</td>
                                                 {{-- <td>{{ $product->created_at }}</td> --}}
                                                 <td>
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" {{$product->is_new == 1 ? 'checked' : null}} data-id={{$product->id}} data-type="is_new">
+                                                    </div>                                                      
+                                                </td>
+                                                <td>
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" {{$product->is_sale == 1 ? 'checked' : null}} data-id={{$product->id}} data-type="is_sale">
+                                                    </div>                                                      
+                                                </td>
+                                                <td>
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" {{$product->is_outstanding == 1 ? 'checked' : null}} data-id={{$product->id}} data-type="is_outstanding">
+                                                    </div>                                                      
+                                                </td>
+                                                <td>
                                                     <a class="btn btn-sm btn-outline-success"
                                                         href="{{ route('inventory.index', $product->id) }}">Kho</a>
-
                                                     <a class="btn btn-sm btn-outline-warning" href="{{ route('product.edit', $product->id) }}">Edit</a>
                                                     <button class="btn btn-outline-danger btn-sm confirm-delete"
                                                         data-href="{{ route('destroy.product', encrypt($product->id)) }}">Delete</button>
@@ -106,6 +123,33 @@
             </div>
         </div> <!-- End Content -->
     </div>
+@endsection
+@section('script')
+    <script>
+         $(document).on('click', '.form-check-input', function() {
+            let check = $(this).prop('checked');
+            let productID = $(this).data('id');
+            let type = $(this).data('type');
+            $.ajax({
+                url: '{{ route("product.toggle") }}',
+                type: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // For CSRF token
+                },
+                data: {
+                    product_id: productID,
+                    type: type,
+                    check: check == true ? 1 : 0,
+                },
+                success: function(response) {
+                    alert(response.message); 
+                },
+                error: function(xhr, status, error) {
+                    alert("Error: " + error);
+                }
+            });
+        });
+    </script>
 @endsection
 @section('modal')
     @include('modal.delete')
