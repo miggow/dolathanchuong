@@ -1,22 +1,25 @@
-<script src="https://cdn.tiny.cloud/1/wh0pwm2635qsu5u881ap8pib44xs96rdbz8ohca8fwh0braa/tinymce/6/tinymce.min.js"
-    referrerpolicy="origin"></script>
+<script src="{{ asset('admin/assets/js/ckeditor.js') }}"></script>
+<script src="{{ asset('admin/assets/js/uploadadapter.js') }}"></script>
 <script>
-    tinymce.init({
-        selector: 'textarea#description',
-        plugins: 'ai tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss',
-        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-        tinycomments_mode: 'embedded',
-        tinycomments_author: 'Author name',
-        mergetags_list: [{
-                value: 'First.Name',
-                title: 'First Name'
-            },
-            {
-                value: 'Email',
-                title: 'Email'
-            },
-        ],
-        ai_request: (request, respondWith) => respondWith.string(() => Promise.reject(
-            "See docs to implement AI Assistant")),
-    });
+	ClassicEditor.create( document.querySelector( '#description' ),
+    {
+        extraPlugins: [ MyCustomUploadAdapterPlugin ],
+        ckfinder:
+        {
+            uploadUrl: "{{ route('ckeditor.upload', ['_token'=>csrf_token()]) }}",
+        },
+        mediaEmbed: {
+            previewsInData: true,
+        },
+        toolbar: {
+            items: [ 'undo', 'redo','|', 'heading',
+            '|', 'bold', 'italic', 'underline', 'blockQuote', 'strikethrough', 'subscript', 'superscript', 'code','alignment', 'fontfamily', 'fontsize', 'fontColor', 'fontBackgroundColor','sourceEditing',
+            '|','link', 'uploadImage', 'insertImage', 'mediaEmbed', 'codeBlock',
+            '|','insertTable', 'bulletedList', 'numberedList', 'todoList', 'outdent', 'indent'],
+            shouldNotGroupWhenFull: true
+        },
+
+    }).catch( error => {
+        console.error( error );
+    } );
 </script>
