@@ -46,7 +46,9 @@ class HomeController extends Controller
     public function product_detail($id)
     {
         $product = Product::with(['variants', 'images', 'category'])->find(decrypt($id));
-        return view('fe.feature.product.detail', compact('product'));
+        $product_same_category = Product::with(['images', 'variants', 'category'])->where('category_id', $product->category_id)->limit(4)->get();
+
+        return view('fe.feature.product.detail', compact('product', 'product_same_category'));
     }
     public function cart()
     {
