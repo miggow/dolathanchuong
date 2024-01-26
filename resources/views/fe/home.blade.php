@@ -470,10 +470,14 @@
                 <!-- Tab Start -->
                 <div class="col-md-12 text-center">
                     <ul class="ec-pro-tab-nav nav justify-content-center">
-                        <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#tab-pro-for-all">For All</a></li>
-                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-pro-for-new">New Product</a></li>
-                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-pro-for-sale">On Sale</a></li>
-                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-pro-for-outstanding">Outstanding Product</a></li>
+                        <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#tab-pro-for-all">For
+                                All</a></li>
+                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-pro-for-new">New
+                                Product</a></li>
+                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-pro-for-sale">On
+                                Sale</a></li>
+                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab"
+                                href="#tab-pro-for-outstanding">Outstanding Product</a></li>
                     </ul>
                 </div>
                 <!-- Tab End -->
@@ -582,23 +586,23 @@
                     <ul class="ec-cat-tab-nav nav">
                         <li class="cat-item"><a class="cat-link active" data-bs-toggle="tab" href="#tab-cat-1">
                                 <div class="cat-icons"><img class="cat-icon"
-                                        src="{{ asset('frontend/assets/images/icons/cat_1.png') }}"
-                                        alt="cat-icon"><img class="cat-icon-hover"
-                                        src="frontend/assets/images/icons/cat_1_1.png" alt="cat-icon"></div>
+                                        src="{{ asset('frontend/assets/images/icons/cat_1.png') }}" alt="cat-icon"><img
+                                        class="cat-icon-hover" src="frontend/assets/images/icons/cat_1_1.png"
+                                        alt="cat-icon"></div>
                                 <div class="cat-desc"><span>Clothes</span><span>440 Products</span></div>
                             </a></li>
                         <li class="cat-item"><a class="cat-link" data-bs-toggle="tab" href="#tab-cat-2">
                                 <div class="cat-icons"><img class="cat-icon"
-                                        src="{{ asset('frontend/assets/images/icons/cat_2.png') }}"
-                                        alt="cat-icon"><img class="cat-icon-hover"
-                                        src="frontend/assets/images/icons/cat_2_1.png" alt="cat-icon"></div>
+                                        src="{{ asset('frontend/assets/images/icons/cat_2.png') }}" alt="cat-icon"><img
+                                        class="cat-icon-hover" src="frontend/assets/images/icons/cat_2_1.png"
+                                        alt="cat-icon"></div>
                                 <div class="cat-desc"><span>Watches</span><span>510 Products</span></div>
                             </a></li>
                         <li class="cat-item"><a class="cat-link" data-bs-toggle="tab" href="#tab-cat-3">
                                 <div class="cat-icons"><img class="cat-icon"
-                                        src="{{ asset('frontend/assets/images/icons/cat_3.png') }}"
-                                        alt="cat-icon"><img class="cat-icon-hover"
-                                        src="frontend/assets/images/icons/cat_3_1.png" alt="cat-icon"></div>
+                                        src="{{ asset('frontend/assets/images/icons/cat_3.png') }}" alt="cat-icon"><img
+                                        class="cat-icon-hover" src="frontend/assets/images/icons/cat_3_1.png"
+                                        alt="cat-icon"></div>
                                 <div class="cat-desc"><span>Bags</span><span>620 Products</span></div>
                             </a></li>
                         <li class="cat-item"><a class="cat-link" data-bs-toggle="tab" href="#tab-cat-4">
@@ -1156,7 +1160,7 @@
             </div>
             <div class="row">
                 <!-- New Product Content -->
-                @foreach ($products as $item_new)
+                @foreach ($newProducts as $item_new)
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6  ec-product-content" data-animation="flipInY">
                         <div class="ec-product-inner">
                             <div class="ec-pro-image-outer">
@@ -1404,15 +1408,25 @@
             <div class="ec-insta-outer">
                 <div class="container" data-animation="fadeIn">
                     <div class="insta-auto">
-                        @foreach ($instagramFeeds as $feed)
-                        <!-- instagram item -->
-                        <div class="ec-insta-item">
-                            <div class="ec-insta-inner">
-                                    <a href={{ $feed->link }} target="_blank"><img width="480" height="340"
-                                            style="object-fit: cover" src={{ $feed->image }} alt="insta"></a>
+                        @if (count($instagramFeeds)>0)
+                            @foreach ($instagramFeeds as $feed)
+                                <!-- instagram item -->
+                                <div class="ec-insta-item">
+                                    <div class="ec-insta-inner">
+                                        <a href={{ $feed->link }} target="_blank"><img
+                                                style="object-fit: cover; max-width: 480px; max-height: 340px; "
+                                                src={{ $feed->image }} alt="insta"></a>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @else
+                            <div class="ec-insta-item">
+                                <div class="ec-insta-inner">
+                                    <a href="#" target="_blank"><img
+                                            src="frontend/assets/images/instragram-image/1.jpg" alt="insta"></a>
+                                </div>
                             </div>
-                        </div>
-                        @endforeach
+                        @endif
                     </div>
                 </div>
             </div>

@@ -59,6 +59,7 @@ class InstagramFeedController extends Controller
             File::delete($image_path);
         }
         $instagramFeed->delete();
+        Artisan::call('cache:clear');
         return redirect()->back();
     }
 }

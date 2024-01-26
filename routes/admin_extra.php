@@ -8,11 +8,15 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\InstagramFeedController;
+use App\Http\Controllers\Admin\UploadImageController;
 use App\Http\Controllers\InventoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'admin', 'middleware' => 'authAdmin'], function () {
     Route::get('/dashboard', [DashBoardController::class, 'index'])->name('admin.home');
+
+    Route::post('upload', [UploadImageController::class, 'upload'])->name('ckeditor.upload');
+
 
     Route::resource('category', CategoryController::class);
     Route::get('category/destroy/{id}', [CategoryController::class, 'destroy'])->name('destroy.category');

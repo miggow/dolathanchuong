@@ -117,14 +117,14 @@
                         <i class="mdi mdi-settings"></i>
                         <span class="nav-text">Setting</span> <b class="caret"></b>
                     </a>
-                    <div class="collapse">
+                    <div class="collapse {{ areActiveRoutes(['banner.index', 'instagram-feed.index']) }}">
                         <ul class="sub-menu" id="settings" data-parent="#setting">
-                            <li class="">
+                            <li class="{{ areActiveRoutes(['banner.index']) }}">
                                 <a class="sidenav-item-link" href="{{ route('banner.index') }}">
                                     <span class="nav-text">Banner</span>
                                 </a>
                             </li>
-                            <li class="">
+                            <li class="{{ areActiveRoutes(['instagram-feed.index']) }}">
                                 <a class="sidenav-item-link" href="{{ route('instagram-feed.index') }}">
                                     <span class="nav-text">Instagram Feed</span>
                                 </a>
