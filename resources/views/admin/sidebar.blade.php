@@ -129,6 +129,11 @@
                                     <span class="nav-text">Instagram Feed</span>
                                 </a>
                             </li>
+                            <li class="{{ areActiveRoutes(['category-video.index']) }}">
+                                <a class="sidenav-item-link" href="{{ route('category-video.index') }}">
+                                    <span class="nav-text">Category Video</span>
+                                </a>
+                            </li>
                             {{-- <li class="">
                                 <a class="sidenav-item-link" href="order-detail.html">
                                     <span class="nav-text">Order Detail</span>

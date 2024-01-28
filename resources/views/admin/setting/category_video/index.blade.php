@@ -8,17 +8,17 @@
         <div class="content">
             <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
                 <div>
-                    <h1>Instagram Feed</h1>
+                    <h1>Category Video</h1>
                     <p class="breadcrumbs"><span><a href={{ route('home') }}>Home</a></span>
                         <span><i class="mdi mdi-chevron-right"></i>Settings</span>
-                        <span><i class="mdi mdi-chevron-right"></i>Instagram Feed</span>
+                        <span><i class="mdi mdi-chevron-right"></i>Category Video</span>
                     </p>
                 </div>
                 <div>
                     {{-- <a href="{{ route('product.create') }}" class="btn btn-primary"> Add Porduct</a> --}}
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#addInstagramFeedModal">
-                        Add Feed
+                        data-bs-target="#addCategoryVideoModal">
+                        Add Category Video
                     </button>
                 </div>
             </div>
@@ -35,8 +35,9 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col" class="text-center">Image</th>
-                                    <th scope="col" class="text-center">Link</th>
+                                    <th scope="col" class="text-center">Image icon</th>
+                                    <th scope="col" class="text-center">Video</th>
+                                    <th scope="col" class="text-center">Name</th>
                                     <th scope="col" class="text-center">Actions</th>
                                 </tr>
                             </thead>
@@ -45,7 +46,7 @@
                                 @foreach ($instagramFeeds as $feed)
                                     <tr>
                                         <td>
-                                            <img width="100%" height="300px" style="object-fit: cover"
+                                            <img width="100px" height="100px" style="object-fit: cover"
                                                 src="{{ asset($feed->image) }}" alt="Product Image" />
                                         </td>
                                         <td class="text-center" style="text-align: center; vertical-align: middle;">
@@ -54,7 +55,7 @@
                                         <td class="text-center" style="text-align: center; vertical-align: middle;"
                                             class="table-actions">
                                             <button type="button"
-                                                class="btn-edit-instagram-feed btn btn-sm btn-outline-warning me-2"
+                                                class="btn-edit-category-video btn btn-sm btn-outline-warning me-2"
                                                 data-bs-toggle="modal" data-bs-target="#edit-instagram-feed"
                                                 data-id="{{ encrypt($feed->id) }}"
                                                 data-link="{{ $feed->link }}">Edit</button>
@@ -75,13 +76,13 @@
 @endsection
 @section('modal')
     @include('modal.delete')
-    <div class="modal fade" id="addInstagramFeedModal" tabindex="-1" aria-labelledby="addInstagramFeedModalLabel"
+    <div class="modal fade" id="addCategoryVideoModal" tabindex="-1" aria-labelledby="addCategoryVideoModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addInstagramFeedModalLabel">Add New Instagram Feed</h5>
+                    <h5 class="modal-title" id="addCategoryVideoModalLabel">Add New Category Video</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <!-- Modal Body -->
@@ -91,7 +92,7 @@
                         <div class="mb-3">
                             <label for="instagramFeed" class="form-label">Image</label>
                             <input type="file" class="form-control" name="instagram_feed" id="instagramFeed"
-                                accept="image/*" required>
+                                accept="image/*" required onchange="readURL(this);">
                         </div>
                         <div class="mb-3">
                             <label for="instagramFeed" class="form-label">Link</label>
@@ -108,13 +109,13 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="edit-instagram-feed" tabindex="-1" aria-labelledby="addInstagramFeedModalLabel"
+    <div class="modal fade" id="edit-instagram-feed" tabindex="-1" aria-labelledby="addCategoryVideoModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addInstagramFeedModalLabel">Edit Instagram Feed</h5>
+                    <h5 class="modal-title" id="addCategoryVideoModalLabel">Edit Category Video</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <!-- Modal Body -->
@@ -124,7 +125,7 @@
                         @csrf
                         <div class="mb-3">
                             <label for="instagramFeed" class="form-label">Image</label>
-                            <input type="file" class="form-control" name="instagram_feed" id="x"
+                            <input type="file" class="form-control" name="instagram_feed" id="instagramFeed"
                                 accept="image/*" required>
                         </div>
                         <div class="mb-3">
@@ -144,24 +145,19 @@
 @endsection
 @section('script')
     <script>
-        $("#instagramFeed").on('change', function(e) {
-            for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
-                var file = e.originalEvent.srcElement.files[i];
-                if ($("#add-img").length)
-                    $("#add-img").remove()
-                var img = document.createElement("img");
+        function readURL(input) {
+            if (input.files && input.files[0]) {
                 var reader = new FileReader();
-                reader.onloadend = function() {
-                    img.id = "add-img"
-                    img.width = 300
-                    img.src = reader.result;
-                }
-                reader.readAsDataURL(file);
-                $("#instagramFeed").after(img);
+
+                reader.onload = function(e) {
+                    $('#blah').attr('src', e.target.result).width(150).height(200);
+                };
+
+                reader.readAsDataURL(input.files[0]);
             }
-        });
+        }
         $(document).ready(function() {
-            $(".btn-edit-instagram-feed").click(function() {
+            $(".btn-edit-category-video").click(function() {
                 var id = $(this).data('id');
                 var url = "{{ route('instagram-feed.update', ':id') }}".replace(':id', id);
                 $('#form-edit').attr('action', url);
