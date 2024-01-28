@@ -31,40 +31,46 @@
                     <!-- Form -->
                     <div class="container mt-5">
 
-                        <!-- Banners Table -->
+                        <!-- Category Videos Table -->
                         <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th scope="col" class="text-center">Image icon</th>
                                     <th scope="col" class="text-center">Video</th>
-                                    <th scope="col" class="text-center">Name</th>
+                                    <th scope="col" class="text-center">Title</th>
+                                    <th scope="col" class="text-center">Order</th>
                                     <th scope="col" class="text-center">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <!-- Replace with dynamic rows -->
-                                @foreach ($instagramFeeds as $feed)
+                                @foreach ($categoryVideos as $video)
                                     <tr>
-                                        <td>
-                                            <img width="100px" height="100px" style="object-fit: cover"
-                                                src="{{ asset($feed->image) }}" alt="Product Image" />
+                                        <td class="text-center" style="vertical-align: middle;">
+                                            <img height="60px" width="60px" style="object-fit: cover"
+                                                src="{{ asset($video->image_icon) }}" alt="Product Image" />
                                         </td>
-                                        <td class="text-center" style="text-align: center; vertical-align: middle;">
-                                            <a href={{ $feed->link }}>{{ $feed->link }}</a>
+                                        <td class="text-center" style="vertical-align: middle;">
+                                            <video width="300" height="200" controls>
+                                                <source src="{{ asset($video->video) }}" type="video/mp4">
+                                            </video>
                                         </td>
-                                        <td class="text-center" style="text-align: center; vertical-align: middle;"
-                                            class="table-actions">
+                                        <td class="text-center" style="vertical-align: middle;">{{ $video->title }}</td>
+                                        <td class="text-center" style="vertical-align: middle;">{{ $video->order }}</td>
+                                        <td class="text-center" style="vertical-align: middle;" class="table-actions">
                                             <button type="button"
                                                 class="btn-edit-category-video btn btn-sm btn-outline-warning me-2"
-                                                data-bs-toggle="modal" data-bs-target="#edit-instagram-feed"
-                                                data-id="{{ encrypt($feed->id) }}"
-                                                data-link="{{ $feed->link }}">Edit</button>
+                                                data-bs-toggle="modal" data-bs-target="#edit-category-video"
+                                                data-id="{{ encrypt($video->id) }}" data-title="{{ $video->title }}"
+                                                data-video="{{ asset($video->video) }}"
+                                                data-image_icon="{{ $video->image_icon }}"
+                                                data-order="{{ $video->order }}">Edit</button>
                                             <button class="btn btn-outline-danger btn-sm confirm-delete"
-                                                data-href="{{ route('instagram-feed.destroy', encrypt($feed->id)) }}">Delete</button>
+                                                data-href="{{ route('category-video.destroy', encrypt($video->id)) }}">Delete</button>
                                         </td>
                                     </tr>
                                 @endforeach
-                                <!-- Repeat for other banners -->
+                                <!-- Repeat for other category videos -->
                             </tbody>
                         </table>
                     </div>
@@ -87,17 +93,25 @@
                 </div>
                 <!-- Modal Body -->
                 <div class="modal-body">
-                    <form action="{{ route('instagram-feed.store') }}" enctype="multipart/form-data" method="POST">
+                    <form action="{{ route('category-video.store') }}" enctype="multipart/form-data" method="POST">
                         @csrf
                         <div class="mb-3">
-                            <label for="instagramFeed" class="form-label">Image</label>
-                            <input type="file" class="form-control" name="instagram_feed" id="instagramFeed"
-                                accept="image/*" required onchange="readURL(this);">
+                            <label for="categoryVideo" class="form-label">Image icon</label>
+                            <input type="file" class="form-control" name="image_icon" id="categoryVideoImage"
+                                accept="image/*" required>
                         </div>
                         <div class="mb-3">
-                            <label for="instagramFeed" class="form-label">Link</label>
-                            <input type="text" class="form-control" name="link"
-                                placeholder="Copy and paste an instagram link">
+                            <label for="categoryVideo" class="form-label">Video</label>
+                            <input type="file" class="form-control" name="video" id="categoryVideoVideo"
+                                accept="video/*" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="categoryVideo" class="form-label">Title</label>
+                            <input type="text" class="form-control" name="title" placeholder="Type the video name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="categoryVideo" class="form-label">Order</label>
+                            <input type="number" class="form-control" name="order" min="0" value="1">
                         </div>
                         <!-- Submit Button -->
                         <div class="modal-footer">
@@ -109,7 +123,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="edit-instagram-feed" tabindex="-1" aria-labelledby="addCategoryVideoModalLabel"
+    <div class="modal fade" id="edit-category-video" tabindex="-1" aria-labelledby="addCategoryVideoModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -124,13 +138,24 @@
                         @method('PUT')
                         @csrf
                         <div class="mb-3">
-                            <label for="instagramFeed" class="form-label">Image</label>
-                            <input type="file" class="form-control" name="instagram_feed" id="instagramFeed"
+                            <label for="categoryVideo" class="form-label">Image icon</label>
+                            <input type="file" class="form-control" name="image_icon" id="categoryVideoImage"
                                 accept="image/*" required>
                         </div>
                         <div class="mb-3">
-                            <label for="instagramFeed" class="form-label">Sort</label>
-                            <input type="text" class="form-control" id="link" name="link">
+                            <label for="categoryVideo" class="form-label">Video</label>
+                            <input type="file" class="form-control" name="video" id="categoryVideoVideo"
+                                accept="video/*" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="categoryVideo" class="form-label">Name</label>
+                            <input type="text" class="form-control" name="title" id="title"
+                                placeholder="Type the video name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="categoryVideo" class="form-label">Order</label>
+                            <input type="number" class="form-control" name="order" id="order" min="0"
+                                value="1">
                         </div>
                         <!-- Submit Button -->
                         <div class="modal-footer">
@@ -145,23 +170,46 @@
 @endsection
 @section('script')
     <script>
-        function readURL(input) {
-            if (input.files && input.files[0]) {
+        $("#categoryVideoImage").on('change', function(e) {
+            for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
+                var file = e.originalEvent.srcElement.files[i];
+                if ($("#add-img").length)
+                    $("#add-img").remove()
+                var img = document.createElement("img");
                 var reader = new FileReader();
-
-                reader.onload = function(e) {
-                    $('#blah').attr('src', e.target.result).width(150).height(200);
-                };
-
-                reader.readAsDataURL(input.files[0]);
+                reader.onloadend = function() {
+                    img.id = "add-img"
+                    img.height = 300
+                    img.src = reader.result;
+                }
+                reader.readAsDataURL(file);
+                $("#categoryVideoImage").after(img);
             }
-        }
+        });
+        $("#categoryVideoVideo").on('change', function(e) {
+            for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
+                var file = e.originalEvent.srcElement.files[i];
+                if ($("#add-video").length)
+                    $("#add-video").remove()
+                var video = document.createElement("video");
+                var source = document.createElement("source")
+                video.id = "add-video"
+                video.height = 300
+                video.controls = "controls"
+                source.src = URL.createObjectURL(file)
+                source.type = "video/mp4"
+                video.append(source);
+                video.load();
+                $("#categoryVideoVideo").after(video);
+            }
+        });
         $(document).ready(function() {
             $(".btn-edit-category-video").click(function() {
                 var id = $(this).data('id');
-                var url = "{{ route('instagram-feed.update', ':id') }}".replace(':id', id);
+                var url = "{{ route('category-video.update', ':id') }}".replace(':id', id);
                 $('#form-edit').attr('action', url);
-                $('#link').attr('value', $(this).data('link'));
+                $('#title').attr('value', $(this).data('title'));
+                $('#order').attr('value', $(this).data('order'));
             });
         });
     </script>

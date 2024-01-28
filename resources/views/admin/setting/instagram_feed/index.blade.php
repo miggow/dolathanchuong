@@ -90,7 +90,7 @@
                         @csrf
                         <div class="mb-3">
                             <label for="instagramFeed" class="form-label">Image</label>
-                            <input type="file" class="form-control" name="instagram_feed" id="instagramFeed"
+                            <input type="file" class="form-control" name="instagram_feed" id="instagramFeedImage"
                                 accept="image/*" required>
                         </div>
                         <div class="mb-3">
@@ -144,7 +144,7 @@
 @endsection
 @section('script')
     <script>
-        $("#instagramFeed").on('change', function(e) {
+        $("#instagramFeedImage").on('change', function(e) {
             for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
                 var file = e.originalEvent.srcElement.files[i];
                 if ($("#add-img").length)
@@ -157,7 +157,7 @@
                     img.src = reader.result;
                 }
                 reader.readAsDataURL(file);
-                $("#instagramFeed").after(img);
+                $("#instagramFeedImage").after(img);
             }
         });
         $(document).ready(function() {

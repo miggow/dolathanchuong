@@ -45,6 +45,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'authAdmin'], function () {
         Route::resource('instagram-feed', InstagramFeedController::class);
         Route::get('instagram-feed/destroy/{id}', [InstagramFeedController::class, 'destroy'])->name('instagram-feed.destroy');
         Route::resource('category-video', CategoryVideoController::class);
+        Route::get('category-video/destroy/{id}', [CategoryVideoController::class, 'destroy'])->name('category-video.destroy');
     });
 
 });

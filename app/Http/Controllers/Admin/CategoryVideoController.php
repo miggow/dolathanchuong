@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\CategoryVideo;
 use App\Http\Controllers\Controller;
 use App\InstagramFeed;
 use Illuminate\Http\Request;
@@ -12,53 +13,67 @@ class CategoryVideoController extends Controller
 {
     public function index()
     {
-        $instagramFeeds = InstagramFeed::all();
-        return view('admin.setting.instagram_feed.index', compact('instagramFeeds'));
+        $categoryVideos = CategoryVideo::all();
+        return view('admin.setting.category_video.index', compact('categoryVideos'));
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'instagram_feed' => ['required'],
-        ]);
-        $path = "";
-        if ($request->instagram_feed) {
-            $image = $request->instagram_feed;
-            $path = save_image('public/instagram_feeds', $image);
+        try {
+            $request->validate([
+                'order' => ['required'],
+                'image_icon' => ['required'],
+                'video' => ['required'],
+                'title' => ['required'],
+            ]);
+            $imagePath = $videoPath = "";
+            if ($request->image_icon) {
+                $imagePath = save_image('public/category_icon', $request->image_icon);
+            }
+            if ($request->video) {
+                $videoPath = save_image('public/category_video', $request->video);
+            }
+            $categoryVideo = new CategoryVideo();
+            $categoryVideo->fill(['image_icon' => $imagePath, 'video' => $videoPath, 'title' => $request->title, 'order' => $request->order]);
+            $categoryVideo->save();
+            Artisan::call('cache:clear');
+            return redirect()->back();
+        } catch (\Exception $e) {
+            dd($e->getMessage());
         }
-        $instagramFeed = new InstagramFeed();
-        $instagramFeed->fill(['image' => $path, 'link' => $request->link]);
-        $instagramFeed->save();
-        Artisan::call('cache:clear');
-        return redirect()->back();
     }
 
     public function update(Request $request, $id)
     {
-        $instagramFeed = InstagramFeed::find(decrypt($id));
-
-        $image_path = $instagramFeed->image;  // Value is not URL but directory file path
-        if (File::exists($image_path)) {
-            File::delete($image_path);
+        try {
+            $categoryVideo = CategoryVideo::find(decrypt($id));
+            if (File::exists($categoryVideo->image_icon)) {
+                File::delete($categoryVideo->image_icon);
+            }
+            if (File::exists($categoryVideo->video)) {
+                File::delete($categoryVideo->video);
+            }
+            $imagePath = save_image('public/category_image', $request->image_icon);
+            $videoPath = save_image('public/category_video', $request->video);
+            $categoryVideo->fill(['image_icon' => $imagePath, 'video' => $videoPath, 'title' => $request->title, 'order' => $request->order]);
+            $categoryVideo->save();
+            Artisan::call('cache:clear');
+            return redirect()->back();
+        } catch (\Exception $e) {
+            dd($e->getMessage());
         }
-        if ($request->instagram_feed) {
-            $image = $request->instagram_feed;
-            $path = save_image('public/instagram_feeds', $image);
-        }
-        $instagramFeed->fill(['image' => $path, 'link' => $request->link]);
-        $instagramFeed->save();
-        Artisan::call('cache:clear');
-        return redirect()->back();
     }
 
     public function destroy($id)
     {
-        $instagramFeed = InstagramFeed::find(decrypt($id));
-        $image_path = $instagramFeed->image;  // Value is not URL but directory file path
-        if (File::exists($image_path)) {
-            File::delete($image_path);
+        $categoryVideo = CategoryVideo::find(decrypt($id));
+        if (File::exists($categoryVideo->image_icon)) {
+            File::delete($categoryVideo->image_icon);
         }
-        $instagramFeed->delete();
+        if (File::exists($categoryVideo->video)) {
+            File::delete($categoryVideo->video);
+        }
+        $categoryVideo->delete();
         Artisan::call('cache:clear');
         return redirect()->back();
     }
