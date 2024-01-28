@@ -8,8 +8,7 @@
                     <div class="ec-header-bottons">
                         <!-- Header User Start -->
                         <div class="ec-header-user dropdown">
-                            <button class="dropdown-toggle" data-bs-toggle="dropdown"><i
-                                    class="fi-rr-user"></i></button>
+                            <button class="dropdown-toggle" data-bs-toggle="dropdown"><i class="fi-rr-user"></i></button>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li><a class="dropdown-item" href="{{ route('register') }}">Register</a></li>
                                 <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
@@ -83,8 +82,7 @@
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     @if (auth()->check())
                                         @if (auth()->user()->isAdmin())
-                                            <li><a class="dropdown-item"
-                                                    href="{{ route('admin.home') }}">Dashboard</a>
+                                            <li><a class="dropdown-item" href="{{ route('admin.home') }}">Dashboard</a>
                                             </li>
                                         @endif
                                         <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
@@ -145,8 +143,7 @@
                 <div class="col">
                     <div class="header-search">
                         <form class="ec-btn-group-form" action="#">
-                            <input class="form-control ec-search-bar" placeholder="Search products..."
-                                type="text">
+                            <input class="form-control ec-search-bar" placeholder="Search products..." type="text">
                             <button class="submit" type="submit"><i class="fi-rr-search"></i></button>
                         </form>
                     </div>
@@ -539,22 +536,21 @@
                 <button class="ec-close">×</button>
             </div>
             <ul class="eccart-pro-items">
-                @if (!empty($carts))
-
-                    @foreach ($carts as $cart)
+                @if (session()->has('cart') && count(session('cart')) > 0)
+                    @foreach (session()->get('cart') as $cart)
                         <li>
-                            <a href="{{ route('feature.product.list', ['search' => $cart->variant->product->name]) }}"
-                                class="sidekka_pro_img"><img
-                                    src="{{ asset($cart->variant->product->images[0]->path) }}" alt="product"></a>
+                            <a href="{{ route('feature.product.list', ['search' => $cart['name']]) }}"
+                                class="sidekka_pro_img"><img src="{{ asset($cart['image']) }}" alt="product"></a>
                             <div class="ec-pro-content">
-                                <a href="product-left-sidebar.html"
-                                    class="cart_pro_title">{{ $cart->variant->product->name }}</a>
-                                <span class="cart-price"><span>{{ $cart->variant->sale_price ? number_format($cart->variant->sale_price, 0, '.', '.') : number_format($cart->variant->price, 0, '.', '.') }}
+                                <a href="product-left-sidebar.html" class="cart_pro_title">{{ $cart['name'] }}</a>
+                                <span class="cart-price"><span>{{ $cart['sale_price'] ? number_format($cart['sale_price'], 0, '.', '.') : number_format($cart['price'], 0, '.', '.') }}
                                         đ</span></span>
                                 <div class="qty-plus-minus">
-                                    <input class="qty-input" type="text" name="ec_qtybtn" value="1" />
+                                    <input class="qty-input" type="text" name="ec_qtybtn"
+                                        value={{ $cart['quantity'] }} />
                                 </div>
-                                <a href="javascript:void(0)" data-id="{{ $cart->id }}" class="remove">×</a>
+                                <a href="javascript:void(0)" data-id="{{ $cart['variant_id'] }}"
+                                    class="remove">×</a>
                             </div>
                         </li>
                     @endforeach

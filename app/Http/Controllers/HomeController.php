@@ -10,6 +10,7 @@ use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
 
 class HomeController extends Controller
 {
@@ -52,7 +53,13 @@ class HomeController extends Controller
     }
     public function cart()
     {
-        $carts = Cart::where('user_id', auth()->user()->id)->get();
-        return view('fe.feature.cart.index', compact('carts'));
+        // $carts = Cart::where('user_id', Auth::id())->get();
+        return view('fe.feature.cart.index');
+    }
+    public function checkout()
+    {
+        $cityRequest = Http::withOptions(['verify' => false])->get("https://vnprovinces.pythonanywhere.com/api/provinces/?basic=true&limit=100");
+        $cities = $cityRequest->json();
+        return view('fe.feature.checkout.index', compact('cities'));
     }
 }

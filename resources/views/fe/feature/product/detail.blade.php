@@ -1017,10 +1017,8 @@
     </script>
     <script>
         $('.ec-single-cart button').on('click', function() {
-            var productId = $('#productId').val();
             var quantity = $('.qty-input').val();
-            var variantId = $('.ec-pro-variation-size li.active, .ec-pro-variation-color li.active').data(
-                'id');
+            var variantId = $('.ec-pro-variation-size li.active, .ec-pro-variation-color li.active').data('id');
 
             $.ajax({
                 url: '/cart/add',
