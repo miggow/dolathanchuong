@@ -1,4 +1,3 @@
-{{-- @dd(session()->get('cart')) --}}
 @extends('fe.feature.layout')
 @section('feature.content')
     <!-- Ec cart page -->
