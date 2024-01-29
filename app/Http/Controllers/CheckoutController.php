@@ -15,8 +15,9 @@ class CheckoutController extends Controller
     {
         $validated = $request->validate([
             'phone' => 'required',
-            'customer_name' => 'required',
-            'delivery_method' => 'required',
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'radio_group_delivery' => 'required',
             'payment_method_id' => 'required',
             'address' => 'required',
             'total' => 'required|integer',
@@ -48,6 +49,7 @@ class CheckoutController extends Controller
             return view('fe.feature.checkout.thank-you');
         } catch (\Exception $e) {
             DB::rollback();
+            @dd($e->getMessage());
             $errorMessage = $e->getMessage();
             return view('fe.feature.checkout.payment-fail', compact('errorMessage'));
         }
