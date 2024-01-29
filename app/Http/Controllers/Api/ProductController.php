@@ -35,12 +35,11 @@ class ProductController extends Controller
         ]);
     }
 
-    public function toggleSwitch(Request $request)
+    public function updateProductType(Request $request, $id)
     {
         $validator = Validator::make(
             $request->all(),
             [
-                'product_id' => 'required|exists:products,id',
                 'type' => 'required',
                 'check' => 'required',
             ],
@@ -50,10 +49,30 @@ class ProductController extends Controller
             return response()->json(["message" => $validator->errors()->toJson()]);
         }
 
-        $product = Product::find($request->product_id);
-        if($request->type == "is_new") $product->is_new = $request->check;
-        if($request->type == "is_sale") $product->is_sale = $request->check;
-        if($request->type == "is_outstanding") $product->is_outstanding = $request->check;
+        $product = Product::find($id);
+        if ($request->type == "is_new") $product->is_new = $request->check;
+        if ($request->type == "is_sale") $product->is_sale = $request->check;
+        if ($request->type == "is_outstanding") $product->is_outstanding = $request->check;
+        $product->save();
+        return response()->json(['message' => "$product->name updated successfully"]);
+    }
+
+
+    public function updateProductStatus(Request $request, $id)
+    {
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'status' => 'required',
+            ],
+        );
+
+        if ($validator->fails()) {
+            return response()->json(["message" => $validator->errors()->toJson()]);
+        }
+
+        $product = Product::find($id);
+        $product->status = $request->status;
         $product->save();
         return response()->json(['message' => "$product->name updated successfully"]);
     }

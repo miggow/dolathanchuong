@@ -17,7 +17,8 @@ use App\Http\Controllers\Api\ProductController;
 
 
 Route::get('/products/{product}/variants', [ProductController::class, 'getVariants'])->name('api.products.variants');
-Route::post('/product/toggle', [ProductController::class, 'toggleSwitch'])->name('product.toggle');
+Route::post('/product/type/{id}', [ProductController::class, 'updateProductType']);
+Route::post('/product/status/{id}', [ProductController::class, 'updateProductStatus']);
 Route::post('/cart/add', 'Api\CartController@addToCart');
 Route::delete('/cart/{cart}', 'Api\CartController@removeFromCart')->name('api.cart.remove');
 
