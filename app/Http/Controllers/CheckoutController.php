@@ -21,6 +21,9 @@ class CheckoutController extends Controller
             'payment_method_id' => 'required',
             'address' => 'required',
             'total' => 'required|integer',
+            'ec_select_city' => 'required',
+            'ec_select_district' => 'required',
+            'ec_select_ward' => 'required'
         ]);
         DB::beginTransaction();
         try {
@@ -43,13 +46,13 @@ class CheckoutController extends Controller
                 OrderDetail::create([
                     'variant_id' => $cart['variant_id'],
                     'order_id' => $order->id,
+                    'quantity' => $cart['quantity'],
                 ]);
             }
             DB::commit();
             return view('fe.feature.checkout.thank-you');
         } catch (\Exception $e) {
             DB::rollback();
-            @dd($e->getMessage());
             $errorMessage = $e->getMessage();
             return view('fe.feature.checkout.payment-fail', compact('errorMessage'));
         }
