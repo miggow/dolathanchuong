@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\InstagramFeedController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\UploadImageController;
 use App\Http\Controllers\InventoryController;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'authAdmin'], function () {
     Route::post('inventory/{id}', [InventoryController::class, 'store'])->name('inventory.store');
     Route::get('inventory/{id}/destroy', [InventoryController::class, 'destroy'])->name('inventory.destroy');
 
+    Route::resource('order', OrderController::class);
 
     Route::resource('user', UserController::class);
     Route::get('user/destroy/{id}', [UserController::class, 'destroy'])->name('destroy.user');
@@ -44,5 +46,5 @@ Route::group(['prefix' => 'admin', 'middleware' => 'authAdmin'], function () {
         Route::resource('instagram-feed', InstagramFeedController::class);
         Route::get('instagram-feed/destroy/{id}', [InstagramFeedController::class, 'destroy'])->name('instagram-feed.destroy');
     });
-
+    
 });

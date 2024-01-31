@@ -8,6 +8,7 @@ class Order extends Model
 {
     protected $guarded = ['id'];
     protected $table = 'orders';
+    protected $with = ['order_details', 'customer', 'payment_method'];   
 
     public function order_details()
     {
