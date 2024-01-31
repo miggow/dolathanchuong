@@ -21,5 +21,3 @@ Route::get('/products/{product}/variants', [ProductController::class, 'getVarian
 Route::post('/product/toggle', [ProductController::class, 'toggleSwitch'])->name('product.toggle');
 Route::post('/cart/add', [CartController::class, 'addToCart']);
 Route::delete('/cart/{cart}', 'Api\CartController@removeFromCart')->name('api.cart.remove');
-Route::get('/districts', [CheckoutController::class, 'getDistricts'])->name('districts');
-Route::get('/wards', [CheckoutController::class, 'getWards'])->name('wards');
