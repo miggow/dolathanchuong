@@ -644,6 +644,8 @@
                 success: function(data) {
                     console.log(data.results);
                     $("#ec-select-district").empty();
+                    $("#ec-select-district").append($(`<option></option>`)
+                        .val("").text("Vui lòng chọn quận/huyện"))
                     data.results.forEach(value => $("#ec-select-district").append($(`<option></option>`)
                         .val(value.full_name).attr('data-id', value.id).text(value.full_name)))
                 }
@@ -659,6 +661,8 @@
                 success: function(data) {
                     console.log(data.results);
                     $("#ec-select-ward").empty();
+                    $("#ec-select-ward").append($(`<option></option>`)
+                        .val("").text("Vui lòng chọn xã"))
                     data.results.forEach(value => $("#ec-select-ward").append($(`<option></option>`)
                         .val(value.full_name).attr('data-id', value.id).text(value.full_name)))
                 }
