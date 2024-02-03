@@ -16,10 +16,10 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $products = Product::with(['variants', 'images', 'category'])->get();
-        $newProducts = Product::with(['images', 'variants', 'category'])->where('is_new', 1)->get();
-        $saleProducts = Product::with(['images', 'variants', 'category'])->where('is_sale', 1)->get();
-        $outstandingProducts = Product::with(['images', 'variants', 'category'])->where('is_outstanding', 1)->get();
+        $products = Product::where('status', 'publish')->with(['variants', 'images', 'category'])->get();
+        $newProducts = Product::where('status', 'publish')->with(['images', 'variants', 'category'])->where('is_new', 1)->get();
+        $saleProducts = Product::where('status', 'publish')->with(['images', 'variants', 'category'])->where('is_sale', 1)->get();
+        $outstandingProducts = Product::where('status', 'publish')->with(['images', 'variants', 'category'])->where('is_outstanding', 1)->get();
         $categories = Category::whereNull('parent_id')->get();
         $carts = [];
         if (Auth::check()) {
