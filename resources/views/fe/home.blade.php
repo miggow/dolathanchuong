@@ -599,6 +599,25 @@
                         @php $i=0; @endphp
                         @foreach ($categoryVideos as $categoryVideo)
                             <li class="cat-item">
+                                <a class="cat-link {{ $loop->first ? 'active' : '' }}" data-bs-toggle="tab"
+                                    aria-selected="{{ $loop->first ? 'true' : 'false' }}"
+                                    href="#tab-cat-{{ $categoryVideo->order }}">
+                                    {{-- <div class="cat-icons">
+                <img width="40" height="40" class="cat-icon"
+                    src="{{ asset($categoryVideo->image_icon) }}" alt="cat-icon">
+                <img width="40" height="40" class="cat-icon-hover"
+                    src="{{ asset($categoryVideo->image_icon) }}" alt="cat-icon">
+            </div> --}}
+                                    <div class="cat-desc"><span>{{ $categoryVideo->title }}</span>
+                                        {{-- <span>510 Products</span> --}}
+                                    </div>
+                                </a>
+                            </li>
+                        @endforeach
+
+                        {{-- @php $i=0; @endphp
+                        @foreach ($categoryVideos as $categoryVideo)
+                            <li class="cat-item">
                                 <a class="cat-link {{ $i == 0 ? 'active' : '' }}" data-bs-toggle="tab" aria-selected="{{ $i == 0 ? 'true' : 'false' }}" href="#tab-cat-{{ $categoryVideo->order }}">
                                     <div class="cat-icons">
                                         <img width="40" height="40" class="cat-icon"
@@ -611,7 +630,7 @@
                                 </a>
                             </li>
                             @php $i++; @endphp
-                        @endforeach
+                        @endforeach --}}
                     </ul>
                 </div>
                 <!-- Category Nav End -->
@@ -628,20 +647,19 @@
                             </span>
                         </div> --}}
                         <!-- 1st Category tab end -->
-                        @php $i=0; @endphp
                         @foreach ($categoryVideos as $categoryVideo)
-                            <div class="tab-pane fade {{ $i == 0 ? 'show active' : '' }}"
+                            <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}"
                                 id="tab-cat-{{ $categoryVideo->order }}">
                                 <div class="row">
-                                    <video controls width="1020" height="350">
+                                    <video loop="true" autoplay="autoplay" controls muted width="1020"
+                                        height="350">
                                         <source src="{{ asset($categoryVideo->video) }}">
                                     </video>
                                 </div>
-                                <span class="panel-overlay">
-                                    <a href="shop-left-sidebar-col-3.html" class="btn btn-primary">View All</a>
-                                </span>
+                                {{-- <span class="panel-overlay">
+            <a href="shop-left-sidebar-col-3.html" class="btn btn-primary">View All</a>
+        </span> --}}
                             </div>
-                            @php $i++; @endphp
                         @endforeach
                     </div>
                     <!-- Category Tab End -->
