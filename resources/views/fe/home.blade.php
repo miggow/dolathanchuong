@@ -579,85 +579,88 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <!--Category Nav Start -->
                 <div class="col-lg-3">
                     <ul class="ec-cat-tab-nav nav">
-                        <li class="cat-item"><a class="cat-link active" data-bs-toggle="tab" href="#tab-cat-1">
+                        {{-- <li class="cat-item">
+                            <a class="cat-link active" data-bs-toggle="tab" href="#tab-cat-1">
                                 <div class="cat-icons"><img class="cat-icon"
                                         src="{{ asset('frontend/assets/images/icons/cat_1.png') }}" alt="cat-icon"><img
                                         class="cat-icon-hover" src="frontend/assets/images/icons/cat_1_1.png"
-                                        alt="cat-icon"></div>
-                                <div class="cat-desc"><span>Clothes</span><span>440 Products</span></div>
-                            </a></li>
-                        <li class="cat-item"><a class="cat-link" data-bs-toggle="tab" href="#tab-cat-2">
-                                <div class="cat-icons"><img class="cat-icon"
-                                        src="{{ asset('frontend/assets/images/icons/cat_2.png') }}" alt="cat-icon"><img
-                                        class="cat-icon-hover" src="frontend/assets/images/icons/cat_2_1.png"
-                                        alt="cat-icon"></div>
-                                <div class="cat-desc"><span>Watches</span><span>510 Products</span></div>
-                            </a></li>
-                        <li class="cat-item"><a class="cat-link" data-bs-toggle="tab" href="#tab-cat-3">
-                                <div class="cat-icons"><img class="cat-icon"
-                                        src="{{ asset('frontend/assets/images/icons/cat_3.png') }}" alt="cat-icon"><img
-                                        class="cat-icon-hover" src="frontend/assets/images/icons/cat_3_1.png"
-                                        alt="cat-icon"></div>
-                                <div class="cat-desc"><span>Bags</span><span>620 Products</span></div>
-                            </a></li>
-                        <li class="cat-item"><a class="cat-link" data-bs-toggle="tab" href="#tab-cat-4">
-                                <div class="cat-icons"><img class="cat-icon"
-                                        src="{{ 'frontend/assets/images/icons/cat_4.png' }}" alt="cat-icon"><img
-                                        class="cat-icon-hover" src="frontend/assets/images/icons/cat_4_1.png"
-                                        alt="cat-icon"></div>
-                                <div class="cat-desc"><span>Shoes</span><span>320 Products</span></div>
-                            </a></li>
-                    </ul>
+                                        alt="cat-icon">
+                                </div>
+                                <div class="cat-desc">
+                                    <span>Clothes</span>
+                                    <span>440 Products</span>
+                                </div>
+                            </a>
+                        </li> --}}
+                        @php $i=0; @endphp
+                        @foreach ($categoryVideos as $categoryVideo)
+                            <li class="cat-item">
+                                <a class="cat-link {{ $loop->first ? 'active' : '' }}" data-bs-toggle="tab"
+                                    aria-selected="{{ $loop->first ? 'true' : 'false' }}"
+                                    href="#tab-cat-{{ $categoryVideo->order }}">
+                                    {{-- <div class="cat-icons">
+                <img width="40" height="40" class="cat-icon"
+                    src="{{ asset($categoryVideo->image_icon) }}" alt="cat-icon">
+                <img width="40" height="40" class="cat-icon-hover"
+                    src="{{ asset($categoryVideo->image_icon) }}" alt="cat-icon">
+            </div> --}}
+                                    <div class="cat-desc"><span>{{ $categoryVideo->title }}</span>
+                                        {{-- <span>510 Products</span> --}}
+                                    </div>
+                                </a>
+                            </li>
+                        @endforeach
 
+                        {{-- @php $i=0; @endphp
+                        @foreach ($categoryVideos as $categoryVideo)
+                            <li class="cat-item">
+                                <a class="cat-link {{ $i == 0 ? 'active' : '' }}" data-bs-toggle="tab" aria-selected="{{ $i == 0 ? 'true' : 'false' }}" href="#tab-cat-{{ $categoryVideo->order }}">
+                                    <div class="cat-icons">
+                                        <img width="40" height="40" class="cat-icon"
+                                            src="{{ asset($categoryVideo->image_icon) }}" alt="cat-icon">
+                                        <img width="40" height="40" class="cat-icon-hover"
+                                            src="{{ asset($categoryVideo->image_icon) }}" alt="cat-icon">
+                                    </div>
+                                    <div class="cat-desc"><span>{{ $categoryVideo->title }}</span><span>510 Products</span>
+                                    </div>
+                                </a>
+                            </li>
+                            @php $i++; @endphp
+                        @endforeach --}}
+                    </ul>
                 </div>
                 <!-- Category Nav End -->
                 <!--Category Tab Start -->
                 <div class="col-lg-9">
                     <div class="tab-content">
                         <!-- 1st Category tab end -->
-                        <div class="tab-pane fade show active" id="tab-cat-1">
+                        {{-- <div class="tab-pane fade show active" id="tab-cat-1">
                             <div class="row">
                                 <img src="{{ asset('frontend/assets/images/cat-banner/1.jpg') }}" alt="" />
                             </div>
                             <span class="panel-overlay">
                                 <a href="shop-left-sidebar-col-3.html" class="btn btn-primary">View All</a>
                             </span>
-                        </div>
+                        </div> --}}
                         <!-- 1st Category tab end -->
-                        <div class="tab-pane fade" id="tab-cat-2">
-                            <div class="row">
-                                <img src="{{ asset('frontend/assets/images/cat-banner/2.jpg') }}" alt="" />
+                        @foreach ($categoryVideos as $categoryVideo)
+                            <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}"
+                                id="tab-cat-{{ $categoryVideo->order }}">
+                                <div class="row">
+                                    <video loop="true" autoplay="autoplay" controls muted width="1020"
+                                        height="350">
+                                        <source src="{{ asset($categoryVideo->video) }}">
+                                    </video>
+                                </div>
+                                {{-- <span class="panel-overlay">
+            <a href="shop-left-sidebar-col-3.html" class="btn btn-primary">View All</a>
+        </span> --}}
                             </div>
-                            <span class="panel-overlay">
-                                <a href="shop-left-sidebar-col-3.html" class="btn btn-primary">View All</a>
-                            </span>
-                        </div>
-                        <!-- 2nd Category tab end -->
-                        <!-- 3rd Category tab start -->
-                        <div class="tab-pane fade" id="tab-cat-3">
-                            <div class="row">
-                                <img src="{{ asset('frontend/assets/images/cat-banner/3.jpg') }}" alt="" />
-                            </div>
-                            <span class="panel-overlay">
-                                <a href="shop-left-sidebar-col-3.html" class="btn btn-primary">View All</a>
-                            </span>
-                        </div>
-                        <!-- 3rd Category tab end -->
-                        <!-- 4th Category tab start -->
-                        <div class="tab-pane fade" id="tab-cat-4">
-                            <div class="row">
-                                <img src="{{ asset('frontend/assets/images/cat-banner/4.jpg') }}" alt="" />
-                            </div>
-                            <span class="panel-overlay">
-                                <a href="shop-left-sidebar-col-3.html" class="btn btn-primary">View All</a>
-                            </span>
-                        </div>
-                        <!-- 4th Category tab end -->
+                        @endforeach
                     </div>
                     <!-- Category Tab End -->
                 </div>
@@ -1408,7 +1411,7 @@
             <div class="ec-insta-outer">
                 <div class="container" data-animation="fadeIn">
                     <div class="insta-auto">
-                        @if (count($instagramFeeds)>0)
+                        @if (count($instagramFeeds) > 0)
                             @foreach ($instagramFeeds as $feed)
                                 <!-- instagram item -->
                                 <div class="ec-insta-item">

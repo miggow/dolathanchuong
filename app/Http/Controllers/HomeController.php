@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Banner;
 use App\Cart;
 use App\Category;
+use App\CategoryVideo;
 use App\InstagramFeed;
 use App\Product;
 use Illuminate\Http\Request;
@@ -16,10 +17,10 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $products = Product::with(['variants', 'images', 'category'])->get();
-        $newProducts = Product::with(['images', 'variants', 'category'])->where('is_new', 1)->get();
-        $saleProducts = Product::with(['images', 'variants', 'category'])->where('is_sale', 1)->get();
-        $outstandingProducts = Product::with(['images', 'variants', 'category'])->where('is_outstanding', 1)->get();
+        $products = Product::where('status', 'publish')->with(['variants', 'images', 'category'])->get();
+        $newProducts = Product::where('status', 'publish')->with(['images', 'variants', 'category'])->where('is_new', 1)->get();
+        $saleProducts = Product::where('status', 'publish')->with(['images', 'variants', 'category'])->where('is_sale', 1)->get();
+        $outstandingProducts = Product::where('status', 'publish')->with(['images', 'variants', 'category'])->where('is_outstanding', 1)->get();
         $categories = Category::whereNull('parent_id')->get();
         $carts = [];
         $banners = Cache::remember('banner', 60 * 60, function () {
@@ -30,7 +31,11 @@ class HomeController extends Controller
             return InstagramFeed::all();
             //cache để lưu lại cái biến đó trong 1 khoảng thời gian, hết thời gian nó gọi lại tiếp cái hàm trong {};
         });
-        return view('fe.home', compact('products', 'newProducts', 'saleProducts', 'outstandingProducts', 'carts', 'categories', 'banners', 'instagramFeeds'));
+        $categoryVideos = Cache::remember('category_video', 60 * 60, function () {
+            return CategoryVideo::all();
+            //cache để lưu lại cái biến đó trong 1 khoảng thời gian, hết thời gian nó gọi lại tiếp cái hàm trong {};
+        });
+        return view('fe.home', compact('products', 'newProducts', 'saleProducts', 'outstandingProducts', 'carts', 'categories', 'banners', 'instagramFeeds', 'categoryVideos'));
     }
     public function product(Request $request)
     {
