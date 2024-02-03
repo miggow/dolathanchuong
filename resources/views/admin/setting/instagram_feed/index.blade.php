@@ -90,7 +90,7 @@
                         @csrf
                         <div class="mb-3">
                             <label for="instagramFeed" class="form-label">Image</label>
-                            <input type="file" class="form-control" name="instagram_feed" id="instagramFeed"
+                            <input type="file" class="form-control" name="instagram_feed" id="instagramFeedImage"
                                 accept="image/*" required>
                         </div>
                         <div class="mb-3">
@@ -108,7 +108,8 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="edit-instagram-feed" tabindex="-1" aria-labelledby="addInstagramFeedModalLabel" aria-hidden="true">
+    <div class="modal fade" id="edit-instagram-feed" tabindex="-1" aria-labelledby="addInstagramFeedModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <!-- Modal Header -->
@@ -123,7 +124,7 @@
                         @csrf
                         <div class="mb-3">
                             <label for="instagramFeed" class="form-label">Image</label>
-                            <input type="file" class="form-control" name="instagram_feed" id="instagramFeed"
+                            <input type="file" class="form-control" name="instagram_feed" id="x"
                                 accept="image/*" required>
                         </div>
                         <div class="mb-3">
@@ -143,6 +144,22 @@
 @endsection
 @section('script')
     <script>
+        $("#instagramFeedImage").on('change', function(e) {
+            for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
+                var file = e.originalEvent.srcElement.files[i];
+                if ($("#add-img").length)
+                    $("#add-img").remove()
+                var img = document.createElement("img");
+                var reader = new FileReader();
+                reader.onloadend = function() {
+                    img.id = "add-img"
+                    img.width = 300
+                    img.src = reader.result;
+                }
+                reader.readAsDataURL(file);
+                $("#instagramFeedImage").after(img);
+            }
+        });
         $(document).ready(function() {
             $(".btn-edit-instagram-feed").click(function() {
                 var id = $(this).data('id');

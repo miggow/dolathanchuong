@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CategoryVideoController;
 use App\Http\Controllers\Admin\DashBoardController;
 use App\Http\Controllers\Admin\HomeSiteSettingController;
 use App\Http\Controllers\Admin\ProductController;
@@ -43,6 +44,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'authAdmin'], function () {
         Route::get('banner/destroy/{id}', [BannerController::class, 'destroy'])->name('destroy.banner');
         Route::resource('instagram-feed', InstagramFeedController::class);
         Route::get('instagram-feed/destroy/{id}', [InstagramFeedController::class, 'destroy'])->name('instagram-feed.destroy');
+        Route::resource('category-video', CategoryVideoController::class);
+        Route::get('category-video/destroy/{id}', [CategoryVideoController::class, 'destroy'])->name('category-video.destroy');
     });
 
 });

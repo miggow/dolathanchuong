@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Banner;
 use App\Cart;
 use App\Category;
+use App\CategoryVideo;
 use App\InstagramFeed;
 use App\Product;
 use Illuminate\Http\Request;
@@ -33,7 +34,11 @@ class HomeController extends Controller
             return InstagramFeed::all();
             //cache để lưu lại cái biến đó trong 1 khoảng thời gian, hết thời gian nó gọi lại tiếp cái hàm trong {};
         });
-        return view('fe.home', compact('products', 'newProducts', 'saleProducts', 'outstandingProducts', 'carts', 'categories', 'banners', 'instagramFeeds'));
+        $categoryVideos = Cache::remember('category_video', 60 * 60, function () {
+            return CategoryVideo::all();
+            //cache để lưu lại cái biến đó trong 1 khoảng thời gian, hết thời gian nó gọi lại tiếp cái hàm trong {};
+        });
+        return view('fe.home', compact('products', 'newProducts', 'saleProducts', 'outstandingProducts', 'carts', 'categories', 'banners', 'instagramFeeds', 'categoryVideos'));
     }
     public function product(Request $request)
     {

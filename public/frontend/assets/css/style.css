@@ -19413,7 +19413,7 @@ div#ec_news_signup {
   height: 100%;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
-          justify-content: space-between;
+          /* justify-content: space-between; */
 }
 .ec-category-section .ec-cat-tab-nav li.cat-item:not(:last-child) {
   margin-bottom: 5px;
