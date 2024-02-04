@@ -27,31 +27,29 @@
                                             <div class="ec-check-bill-form">
                                                 <form action="#" method="post">
                                                     <span class="ec-bill-wrap ec-bill-half">
-                                                        <label>Tên họ*</label>
+                                                        <label>First name*</label>
                                                         <input type="text" name="firstname"
                                                             placeholder="Enter your first name" required />
                                                     </span>
                                                     <span class="ec-bill-wrap ec-bill-half">
-                                                        <label>Tên cuối*</label>
+                                                        <label>Last name*</label>
                                                         <input type="text" name="lastname"
                                                             placeholder="Enter your last name" required />
                                                     </span>
                                                     <span class="ec-bill-wrap ec-bill-half">
-                                                        <label>Địa chỉ</label>
-                                                        <input type="text" name="address"
-                                                            placeholder="Số đường, số nhà" />
+                                                        <label>Address</label>
+                                                        <input type="text" name="address" placeholder="Address line" />
                                                     </span>
                                                     <span class="ec-bill-wrap ec-bill-half">
-                                                        <label>Số điện thoại</label>
-                                                        <input type="text" name="phone"
-                                                            placeholder="Số đường, số nhà" />
+                                                        <label>Phone number</label>
+                                                        <input type="text" name="phone" placeholder="Phone number" />
                                                     </span>
                                                     <span class="ec-bill-wrap">
-                                                        <label>Tỉnh/Thành</label>
+                                                        <label>Province/City</label>
                                                         <span class="ec-bl-select-inner">
                                                             <select name="ec_select_city" id="ec-select-city"
                                                                 class="ec-bill-select">
-                                                                <option selected disabled>Tỉnh/Thành</option>
+                                                                <option selected disabled>Province/City</option>
                                                                 @foreach ($cities['results'] as $city)
                                                                     <option data-id={{ $city['id'] }}
                                                                         value="{{ $city['full_name'] }}">
@@ -62,20 +60,20 @@
                                                         </span>
                                                     </span>
                                                     <span class="ec-bill-wrap">
-                                                        <label>Quận/Huyện *</label>
+                                                        <label>District/Town *</label>
                                                         <span class="ec-bl-select-inner">
                                                             <select name="ec_select_district" id="ec-select-district"
                                                                 class="ec-bill-select">
-                                                                <option selected disabled>Quận/Huyện</option>
+                                                                <option selected disabled>District/Town</option>
                                                             </select>
                                                         </span>
                                                     </span>
                                                     <span class="ec-bill-wrap">
-                                                        <label>Phường/Xã</label>
+                                                        <label>Ward/Commune</label>
                                                         <span class="ec-bl-select-inner">
                                                             <select name="ec_select_ward" id="ec-select-ward"
                                                                 class="ec-bill-select">
-                                                                <option selected disabled>Phường/Xã</option>
+                                                                <option selected disabled>Ward/Commune</option>
                                                             </select>
                                                         </span>
                                                     </span>
@@ -87,7 +85,7 @@
 
                                 </div>
                                 <span class="ec-check-order-btn">
-                                    <button type="submit" class="btn btn-primary" href="#">Đặt hàng</button>
+                                    <button type="submit" class="btn btn-primary" href="#">Place order</button>
                                 </span>
                             </div>
                         </div>
@@ -99,7 +97,7 @@
                             <!-- Sidebar Summary Block -->
                             <div class="ec-sidebar-block">
                                 <div class="ec-sb-title">
-                                    <h3 class="ec-sidebar-title">Tóm tắt</h3>
+                                    <h3 class="ec-sidebar-title">Summary</h3>
                                 </div>
                                 <div class="ec-sb-block-content">
                                     <div class="ec-checkout-pro">
@@ -126,21 +124,30 @@
                                                                 href="product-left-sidebar.html">{{ $cart['name'] }}</a>
                                                         </h5>
                                                         <div class="ec-pro-rating">
+                                                            {{-- <i class="ecicon eci-star fill"></i>
                                                             <i class="ecicon eci-star fill"></i>
                                                             <i class="ecicon eci-star fill"></i>
                                                             <i class="ecicon eci-star fill"></i>
-                                                            <i class="ecicon eci-star fill"></i>
-                                                            <i class="ecicon eci-star"></i>
+                                                            <i class="ecicon eci-star"></i> --}}
+                                                            <span>Quantity: {{ $cart['quantity'] }}
                                                         </div>
                                                         <span class="ec-price">
                                                             <span
-                                                                {{ $cart['sale_price'] == null ? 'class=new-price' : 'class=old-price' }}>{{ $cart['price'] }}</span>
-                                                            <span class="new-price">{{ $cart['sale_price'] }}</span>
+                                                                {{ $cart['sale_price'] == null ? 'class=new-price' : 'class=old-price' }}>{{ number_format($cart['price'], 0, '', '.') }}
+                                                                đ</span>
+                                                            <span
+                                                                class="new-price">{{ number_format($cart['sale_price'], 0, '', '.') }}
+                                                                đ</span>
                                                         </span>
                                                         <div class="ec-pro-option">
                                                             <div class="ec-pro-color">
                                                                 <span class="ec-pro-opt-label">Color</span>
-                                                                <ul class="ec-opt-swatch ec-change-img">
+                                                                @foreach ($cart['attributes'] as $attribute)
+                                                                    @if ($attribute['name'] == 'color')
+                                                                        <span>Color: {{ $attribute['value'] }}</span>
+                                                                    @endif
+                                                                @endforeach
+                                                                {{-- <ul class="ec-opt-swatch ec-change-img">
                                                                     <li class="active"><a href="#"
                                                                             class="ec-opt-clr-img"
                                                                             data-src="assets/images/product-image/1_1.jpg"
@@ -166,11 +173,16 @@
                                                                             data-tooltip="Sky Blue"><span
                                                                                 style="background-color:#74f8d1;"></span></a>
                                                                     </li>
-                                                                </ul>
+                                                                </ul> --}}
                                                             </div>
                                                             <div class="ec-pro-size">
                                                                 <span class="ec-pro-opt-label">Size</span>
-                                                                <ul class="ec-opt-size">
+                                                                @foreach ($cart['attributes'] as $attribute)
+                                                                    @if ($attribute['name'] == 'size')
+                                                                        <span>Size: {{ $attribute['value'] }}</span>
+                                                                    @endif
+                                                                @endforeach
+                                                                {{-- <ul class="ec-opt-size">
                                                                     <li class="active"><a href="#"
                                                                             class="ec-opt-sz" data-old="$95.00"
                                                                             data-new="$79.00" data-tooltip="Small">S</a>
@@ -185,7 +197,7 @@
                                                                             data-old="$70.00" data-new="$50.00"
                                                                             data-tooltip="Extra Large">XL</a>
                                                                     </li>
-                                                                </ul>
+                                                                </ul> --}}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -195,18 +207,17 @@
                                     </div>
                                     <div class="ec-checkout-summary">
                                         <div>
-                                            <span class="text-left">Tổng giá trước giảm</span>
-                                            <span class="text-right">{{ number_format($subTotal, 0, '.', '.') }}
+                                            <span class="text-left">Sub-total</span>
+                                            <span class="text-right">{{ number_format($subTotal, 0, '', '.') }}
                                                 đ</span>
                                         </div>
                                         <div>
-                                            <span class="text-left">Phí giao hàng</span>
-                                            <span class="text-right">{{ number_format(0, 0, '.', '.') }} đ</span>
+                                            <span class="text-left">Delivery charges</span>
+                                            <span class="text-right">{{ number_format(0, 0, '', '.') }} đ</span>
                                         </div>
                                         <div>
-                                            <span class="text-left">Mã khuyến mãi</span>
-                                            <span class="text-right"><a class="ec-checkout-coupan">Nhập mã khuyến
-                                                    mãi</a></span>
+                                            <span class="text-left">Coupan discount</span>
+                                            <span class="text-right"><a class="ec-checkout-coupan">Apply coupan</a></span>
                                         </div>
                                         <div class="ec-checkout-coupan-content">
                                             <form class="ec-checkout-coupan-form" name="ec-checkout-coupan-form"
@@ -214,11 +225,11 @@
                                                 <input class="ec-coupan" type="text" required=""
                                                     placeholder="Enter Your Coupan Code" name="ec-coupan" value="">
                                                 <button class="ec-coupan-btn button btn-primary" type="submit"
-                                                    name="subscribe" value="">Áp dụng</button>
+                                                    name="subscribe" value="">Apply</button>
                                             </form>
                                         </div>
                                         <div class="ec-checkout-summary-total">
-                                            <span class="text-left">Tổng giá tiền</span>
+                                            <span class="text-left">Total amount</span>
                                             <span class="text-right">{{ number_format($subTotal, 0, '.', '.') }}
                                                 đ</span>
                                         </div>
@@ -228,7 +239,7 @@
                             </div>
                             <!-- Sidebar Summary Block -->
                         </div>
-                        <div class="ec-sidebar-wrap ec-checkout-del-wrap">
+                        {{-- <div class="ec-sidebar-wrap ec-checkout-del-wrap">
                             <!-- Sidebar Summary Block -->
                             <div class="ec-sidebar-block">
                                 <div class="ec-sb-title">
@@ -238,7 +249,7 @@
                                     <div class="ec-checkout-del">
                                         <div class="ec-del-desc">Hãy chọn phương thức vận chuyển mà bạn muốn cho đơn
                                             hàng này.</div>
-                                        {{-- <form action="#"> --}}
+                                        <form action="#">
                                             <span class="ec-del-option">
                                                 <span>
                                                     <span class="ec-del-opt-head">Free Shipping</span>
@@ -253,13 +264,13 @@
                                                     <label for="del2">Rate - 20.000 đ</label>
                                                 </span>
                                             </span>
-                                        {{-- </form> --}}
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                             <!-- Sidebar Summary Block -->
-                        </div>
-                        <div class="ec-sidebar-wrap ec-checkout-pay-wrap">
+                        </div> --}}
+                        {{-- <div class="ec-sidebar-wrap ec-checkout-pay-wrap">
                             <!-- Sidebar Payment Block -->
                             <div class="ec-sidebar-block">
                                 <div class="ec-sb-title">
@@ -267,11 +278,10 @@
                                 </div>
                                 <div class="ec-sb-block-content">
                                     <div class="ec-checkout-pay">
-                                        <div class="ec-pay-desc">Xin hãy chọn phương thức thanh toán bạn muốn cho đơn
-                                            hàng
-                                            này.
+                                        <div class="ec-pay-desc">
+                                            Xin hãy chọn phương thức thanh toán bạn muốn cho đơn hàng này.
                                         </div>
-                                        {{-- <form action="#"> --}}
+                                        <form action="#">
                                             <span class="ec-pay-option">
                                                 <span>
                                                     <input value="1" type="checkbox" id="pay1"
@@ -286,13 +296,13 @@
                                             <span class="ec-pay-agree"><input type="checkbox" value=""><a
                                                     href="#">Tôi đã đọc và đồng ý với <span>Điều khoản và dịch
                                                         vụ</span></a><span class="checked"></span></span>
-                                        {{-- </form> --}}
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                             <!-- Sidebar Payment Block -->
-                        </div>
-                        <div class="ec-sidebar-wrap ec-check-pay-img-wrap">
+                        </div> --}}
+                        {{-- <div class="ec-sidebar-wrap ec-check-pay-img-wrap">
                             <!-- Sidebar Payment Block -->
                             <div class="ec-sidebar-block">
                                 <div class="ec-sb-title">
@@ -332,7 +342,7 @@
                                 </div>
                             </div>
                             <!-- Sidebar Payment Block -->
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

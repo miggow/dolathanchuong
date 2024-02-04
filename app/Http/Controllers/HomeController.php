@@ -58,7 +58,6 @@ class HomeController extends Controller
     }
     public function cart()
     {
-        // $carts = Cart::where('user_id', Auth::id())->get();
         return view('fe.feature.cart.index');
     }
     public function checkout()

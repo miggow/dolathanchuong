@@ -20,6 +20,11 @@ class CartController extends Controller
         ]);
         try {
             $variant = Variant::find($request->variant_id);
+            $attributes = [];
+            foreach ($variant->attributes as $attribute) {
+                $currentAttribute = ['name' => $attribute->name, 'value' => $attribute->getOriginal('pivot_value')];
+                array_push($attributes, $currentAttribute);
+            }
             $cart = session('cart');
             if (isset($cart[$variant->id])) {
                 if ($cart[$variant->id]['quantity'] < $variant->quantity) {
@@ -36,6 +41,7 @@ class CartController extends Controller
                     'price' => $variant->price,
                     'sale_price' => $variant->sale_price,
                     'quantity' => $request->quantity,
+                    'attributes' => $attributes,
                 ];
             }
             session()->put('cart', $cart);
