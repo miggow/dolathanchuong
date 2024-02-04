@@ -8,6 +8,8 @@ class Variant extends Model
 {
     protected $guarded = ['id'];
     protected $table = 'variants';
+    protected $with = ['product'];
+    
     public function product()
     {
         return $this->belongsTo(Product::class);

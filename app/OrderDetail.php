@@ -8,6 +8,7 @@ class OrderDetail extends Model
 {
     protected $guarded = ['id'];
     protected $table = 'order_details';
+    protected $with = ['variant'];
 
     public function variant()
     {

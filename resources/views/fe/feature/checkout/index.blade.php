@@ -239,20 +239,20 @@
                                         <div class="ec-del-desc">Hãy chọn phương thức vận chuyển mà bạn muốn cho đơn
                                             hàng này.</div>
                                         {{-- <form action="#"> --}}
-                                            <span class="ec-del-option">
-                                                <span>
-                                                    <span class="ec-del-opt-head">Free Shipping</span>
-                                                    <input type="radio" id="del1" name="radio_group_delivery"
-                                                        value="Free Shipping" checked>
-                                                    <label for="del1">Rate - 0 đ</label>
-                                                </span>
-                                                <span>
-                                                    <span class="ec-del-opt-head">Flat Rate</span>
-                                                    <input type="radio" id="del2" name="radio_group_delivery"
-                                                        value="Flat Rate">
-                                                    <label for="del2">Rate - 20.000 đ</label>
-                                                </span>
+                                        <span class="ec-del-option">
+                                            <span>
+                                                <span class="ec-del-opt-head">Free Shipping</span>
+                                                <input type="radio" id="del1" name="radio_group_delivery"
+                                                    value="Free Shipping" checked>
+                                                <label for="del1">Rate - 0 đ</label>
                                             </span>
+                                            <span>
+                                                <span class="ec-del-opt-head">Flat Rate</span>
+                                                <input type="radio" id="del2" name="radio_group_delivery"
+                                                    value="Flat Rate">
+                                                <label for="del2">Rate - 20.000 đ</label>
+                                            </span>
+                                        </span>
                                         {{-- </form> --}}
                                     </div>
                                 </div>
@@ -272,20 +272,20 @@
                                             này.
                                         </div>
                                         {{-- <form action="#"> --}}
-                                            <span class="ec-pay-option">
-                                                <span>
-                                                    <input value="1" type="checkbox" id="pay1"
-                                                        name="payment_method_id" checked>
-                                                    <label for="pay1">Trả tiền khi nhận</label>
-                                                </span>
+                                        <span class="ec-pay-option">
+                                            <span>
+                                                <input value="1" type="checkbox" id="pay1"
+                                                    name="payment_method_id" checked>
+                                                <label for="pay1">Trả tiền khi nhận</label>
                                             </span>
-                                            <span class="ec-pay-commemt">
-                                                <span class="ec-pay-opt-head">Thêm ghi chú vào đơn hàng của bạn</span>
-                                                <textarea placeholder="Ghi chú" name="note"></textarea>
-                                            </span>
-                                            <span class="ec-pay-agree"><input type="checkbox" value=""><a
-                                                    href="#">Tôi đã đọc và đồng ý với <span>Điều khoản và dịch
-                                                        vụ</span></a><span class="checked"></span></span>
+                                        </span>
+                                        <span class="ec-pay-commemt">
+                                            <span class="ec-pay-opt-head">Thêm ghi chú vào đơn hàng của bạn</span>
+                                            <textarea placeholder="Ghi chú" name="note"></textarea>
+                                        </span>
+                                        <span class="ec-pay-agree"><input type="checkbox" value=""><a
+                                                href="#">Tôi đã đọc và đồng ý với <span>Điều khoản và dịch
+                                                    vụ</span></a><span class="checked"></span></span>
                                         {{-- </form> --}}
                                     </div>
                                 </div>
@@ -634,54 +634,35 @@
 
 @section('feature.script')
     <script>
-        $('#ec-select-city').on('change', function() {
+        $("#ec-select-city").change(function() {
             let cityID = $(this).find("option:selected").attr('data-id');
             $.ajax({
-                url: '/api/districts',
-                type: 'GET',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                data: {
-                    cityID: cityID
-                },
-                success: function(response) {
-                    let html;
-                    response.results.forEach(element => {
-                        html +=
-                            `<option data-id=${element.id} value=${element.full_name}>${element.full_name}</option>`;
-                    });
-                    $("#ec-select-district").html(html)
-                    $("#ec-select-ward").html("<option selected disabled>Phường/Xã</option>")
-                },
-                error: function(xhr, status, error) {
-                    alert("Error: " + error);
+                url: "https://vnprovinces.pythonanywhere.com/api/districts/?province_id=" + cityID +
+                    "&basic=true&limit=100",
+                type: 'get',
+                dataType: 'json',
+                success: function(data) {
+                    console.log(data.results);
+                    $("#ec-select-district").empty();
+                    data.results.forEach(value => $("#ec-select-district").append($(`<option></option>`)
+                        .val(value.full_name).attr('data-id', value.id).text(value.full_name)))
                 }
-            });
+            })
         });
-        $('#ec-select-district').on('change', function() {
+        $('#ec-select-district').change(function() {
             let districtID = $(this).find("option:selected").attr('data-id');
             $.ajax({
-                url: '/api/wards',
-                type: 'GET',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                data: {
-                    districtID: districtID
-                },
-                success: function(response) {
-                    let html;
-                    response.results.forEach(element => {
-                        html +=
-                            `<option data-id=${element.id} value=${element.full_name}>${element.full_name}</option>`;
-                    });
-                    $("#ec-select-ward").html(html)
-                },
-                error: function(xhr, status, error) {
-                    alert("Error: " + error);
+                url: "https://vnprovinces.pythonanywhere.com/api/wards/?district_id=" + districtID +
+                    "&basic=true&limit=100",
+                type: 'get',
+                dataType: 'json',
+                success: function(data) {
+                    console.log(data.results);
+                    $("#ec-select-ward").empty();
+                    data.results.forEach(value => $("#ec-select-ward").append($(`<option></option>`)
+                        .val(value.full_name).attr('data-id', value.id).text(value.full_name)))
                 }
-            });
+            })
         });
     </script>
 @endsection

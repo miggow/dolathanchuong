@@ -23,6 +23,7 @@ class CreateOrdersTable extends Migration
             $table->string('note');
             $table->string('address');
             $table->bigInteger('total');
+            $table->enum('status', ['pending', 'ready to ship', 'on the way', 'delivered', 'return', 'canceled'])->default('pending');
             $table->timestamps();
         });
     }

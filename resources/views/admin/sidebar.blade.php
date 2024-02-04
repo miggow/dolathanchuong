@@ -89,25 +89,25 @@
                     <div class="collapse">
                         <ul class="sub-menu" id="orders" data-parent="#sidebar-menu">
                             <li class="">
-                                <a class="sidenav-item-link" href="new-order.html">
-                                    <span class="nav-text">New Order</span>
+                                <a class="sidenav-item-link" href="{{ route('order.index') }}">
+                                    <span class="nav-text">Order List</span>
                                 </a>
                             </li>
-                            <li class="">
+                            {{-- <li class="">
                                 <a class="sidenav-item-link" href="order-history.html">
                                     <span class="nav-text">Order History</span>
                                 </a>
-                            </li>
-                            <li class="">
+                            </li> --}}
+                            {{-- <li class="">
                                 <a class="sidenav-item-link" href="order-detail.html">
                                     <span class="nav-text">Order Detail</span>
                                 </a>
-                            </li>
-                            <li class="">
+                            </li> --}}
+                            {{-- <li class="">
                                 <a class="sidenav-item-link" href="invoice.html">
                                     <span class="nav-text">Invoice</span>
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </li>

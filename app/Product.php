@@ -8,6 +8,8 @@ class Product extends Model
 {
     protected $guarded = ['id'];
     protected $table = 'products';
+    protected $with = ['images'];
+    
     public function variants()
     {
         return $this->hasMany(Variant::class);
