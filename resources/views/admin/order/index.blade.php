@@ -21,7 +21,7 @@
                                             <th>Customer</th>
                                             <th>Items</th>
                                             <th>Price</th>
-                                            <th>Payment</th>
+                                            {{-- <th>Payment</th> --}}
                                             <th>Payment status</th>
                                             <th>Status</th>
                                             <th>Date</th>
@@ -62,7 +62,7 @@
                                                     {{ $quantity }}
                                                 </td>
                                                 <td>{{ number_format($order->total, 0, '.', '.') }} đ</td>
-                                                <td>{{ $order->payment_method->name }}</td>
+                                                {{-- <td>{{ $order->payment_method->name }}</td> --}}
                                                 <td>
                                                     <span
                                                         class="badge {{ $order->payment_status == 'paid' ? 'badge-success' : 'badge-secondary' }}">{{ $order->payment_status }}<span>

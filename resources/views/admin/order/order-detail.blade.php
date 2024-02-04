@@ -44,7 +44,7 @@
                                     <address class="info-grid">
                                         <div class="info-title"><strong>Payment Method:</strong></div><br>
                                         <div class="info-content">
-                                            {{ $orderDetail->payment_method->name }}<br>
+                                            {{-- {{ $orderDetail->payment_method->name }}<br> --}}
                                             {{ $orderDetail->customer->customer_name }}<br>
                                         </div>
                                     </address>

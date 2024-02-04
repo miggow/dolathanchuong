@@ -18,7 +18,7 @@ class CheckoutController extends Controller
             'firstname' => 'required',
             'lastname' => 'required',
             'radio_group_delivery' => 'required',
-            'payment_method_id' => 'required',
+            // 'payment_method_id' => 'required',
             'address' => 'required',
             'total' => 'required|integer',
             'ec_select_city' => 'required',
@@ -34,8 +34,8 @@ class CheckoutController extends Controller
             $order = Order::create(
                 [
                     'customer_id' => $customer->id,
-                    'delivery_method' => $request->radio_group_delivery,
-                    'payment_method_id' => $request->payment_method_id,
+                    // 'delivery_method' => $request->radio_group_delivery,
+                    // 'payment_method_id' => $request->payment_method_id,
                     'note' => $request->note,
                     'address' => $request->address . " " . $request->ec_select_ward  . " " . $request->ec_select_district . " " . $request->ec_select_city,
                     'total' => $request->total,

@@ -8,7 +8,7 @@ class Order extends Model
 {
     protected $guarded = ['id'];
     protected $table = 'orders';
-    protected $with = ['order_details', 'customer', 'payment_method'];   
+    protected $with = ['order_details', 'customer'];   
 
     public function order_details()
     {
@@ -20,8 +20,8 @@ class Order extends Model
         return $this->belongsTo(Customer::class);
     }
 
-    public function payment_method()
-    {
-        return $this->belongsTo(PaymentMethod::class);   
-    }
+    // public function payment_method()
+    // {
+    //     return $this->belongsTo(PaymentMethod::class);   
+    // }
 }
