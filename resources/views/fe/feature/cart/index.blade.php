@@ -495,29 +495,50 @@
         $(document).ready(function() {
             $('.remove-cart-item').on('click', function(e) {
                 e.preventDefault();
-
                 var cartItemId = $(this).data('id');
                 var $row = $(this).closest('tr');
-
-                if (confirm('Are you sure you want to remove this item from the cart?')) {
-                    $.ajax({
-                        url: '/api/cart/' + cartItemId,
-                        type: 'DELETE',
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
-                                'content') // For CSRF token
-                        },
-                        success: function(response) {
-                            alert(response.message);
-                            $row.fadeOut(500, function() {
-                                $(this).remove();
-                            });
-                        },
-                        error: function(xhr, status, error) {
-                            alert("Error: " + error);
-                        }
-                    });
-                }
+                Swal.fire({
+                    title: "Are you sure you want to remove this item from cart?",
+                    icon: "warning",
+                    confirmButtonText: "Yes",
+                    showDenyButton: true,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: '/cart/' + cartItemId,
+                            type: 'DELETE',
+                            headers: {
+                                // For CSRF token
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success: function(response) {
+                                Swal.fire({
+                                    toast: true,
+                                    position: "bottom-end",
+                                    showConfirmButton: false,
+                                    timer: 2000,
+                                    timerProgressBar: true,
+                                    title: response.message,
+                                    icon: 'success',
+                                });
+                                $row.fadeOut(500, function() {
+                                    $(this).remove();
+                                });
+                            },
+                            error: function(xhr, status, error) {
+                                Swal.fire({
+                                    toast: true,
+                                    position: "bottom-end",
+                                    showConfirmButton: false,
+                                    timer: 2000,
+                                    timerProgressBar: true,
+                                    title: error,
+                                    icon: 'error',
+                                });
+                            }
+                        });
+                    }
+                });
             });
         });
     </script>

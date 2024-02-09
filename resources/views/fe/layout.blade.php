@@ -36,6 +36,9 @@
 
     <!-- Background css -->
     <link rel="stylesheet" id="bg-switcher-css" href="{{ asset('frontend/assets/css/backgrounds/bg-4.css') }}">
+
+    <!-- Sweetalert -->
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/plugins/sweetalert2.min.css') }}" />
 </head>
 
 <body>
@@ -51,17 +54,10 @@
 
     @include('fe.navbar')
 
-
-
-
-
     <!-- Main Slider Start -->
-
     <!-- Main Slider End -->
 
     @yield('fe.content')
-
-
 
     <!-- Footer Start -->
     <footer class="ec-footer section-space-mt">
@@ -220,7 +216,7 @@
                             class="ec-cart-noti ec-header-count cart-count-lable">3</span></a>
                 </div>
                 <div class="ec-nav-panel-icons">
-                    <a href={{route('home')}} class="ec-header-btn"><i class="fi-rr-home"></i></a>
+                    <a href={{ route('home') }} class="ec-header-btn"><i class="fi-rr-home"></i></a>
                 </div>
                 <div class="ec-nav-panel-icons">
                     <a href="wishlist.html" class="ec-header-btn"><i class="fi-rr-heart"></i><span
@@ -348,6 +344,9 @@
     <!-- Main Js -->
     <script src="{{ asset('frontend/assets/js/vendor/index.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
+
+    <!-- Sweetalert -->
+    <script src="{{ asset('frontend/assets/js/plugins/sweetalert2.min.js') }}"></script>
     <script>
         $(document).ready(function() {
             // function updateItemTotal($item) {
@@ -398,29 +397,43 @@
         $(document).ready(function() {
             $('.remove').on('click', function(e) {
                 e.preventDefault();
-
-                var cartItemId = $(this).data(
-                'id'); // Ensure this data attribute is correctly set in your HTML
+                // Ensure this data attribute is correctly set in your HTML
+                var cartItemId = $(this).data('id');
                 var $cartItem = $(this).closest('li');
-
                 if (confirm('Are you sure you want to remove this item from the cart?')) {
                     $.ajax({
-                        url: '/api/cart/' + cartItemId, // Adjust the URL as per your API endpoint
+                        url: '/cart/' + cartItemId, // Adjust the URL as per your API endpoint
                         type: 'DELETE',
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
                                 'content') // For CSRF token, necessary for Laravel
                         },
                         success: function(response) {
-                            alert(response.message);
+                            Swal.fire({
+                                toast: true,
+                                position: "bottom-end",
+                                showConfirmButton: false,
+                                timer: 2000,
+                                timerProgressBar: true,
+                                title: response.message,
+                                icon: 'success',
+                            });
                             $cartItem.fadeOut(500, function() {
                                 $(this).remove();
-                                updateCartTotals
-                            (); // Call to recalculate the cart total after item removal
+                                // Call to recalculate the cart total after item removal
+                                updateCartTotals();
                             });
                         },
                         error: function(xhr, status, error) {
-                            alert("Error: " + error);
+                            Swal.fire({
+                                toast: true,
+                                position: "bottom-end",
+                                showConfirmButton: false,
+                                timer: 2000,
+                                timerProgressBar: true,
+                                title: response.message,
+                                icon: 'error',
+                            });
                         }
                     });
                 }

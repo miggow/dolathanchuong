@@ -665,7 +665,12 @@
                     $("#ec-select-ward").html("<option selected disabled>Phường/Xã</option>")
                 },
                 error: function(xhr, status, error) {
-                    alert("Error: " + error);
+                    Swal.fire({
+                        title: 'Error',
+                        text: error,
+                        icon: 'error',
+                        confirmButtonText: 'Back'
+                    })
                 }
             });
         });
@@ -689,7 +694,12 @@
                     $("#ec-select-ward").html(html)
                 },
                 error: function(xhr, status, error) {
-                    alert("Error: " + error);
+                    Swal.fire({
+                        title: 'Error',
+                        text: error,
+                        icon: 'error',
+                        confirmButtonText: 'Back'
+                    })
                 }
             });
         });

@@ -36,6 +36,9 @@
 
     <!-- Background css -->
     <link rel="stylesheet" id="bg-switcher-css" href="{{ asset('frontend/assets/css/backgrounds/bg-4.css')}}">
+
+    <!-- Sweetalert -->
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/plugins/sweetalert2.min.css') }}" />
 </head>
 
 <body class="product_page">
@@ -60,6 +63,9 @@
     <!-- Main Js -->
     <script src="{{ asset('frontend/assets/js/vendor/index.js')}}"></script>
     <script src="{{ asset('frontend/assets/js/main.js')}}"></script>
+
+    <!-- Sweetalert -->
+    <script src="{{ asset('frontend/assets/js/plugins/sweetalert2.min.js') }}"></script>
     @yield('feature.script')
 
 </body>
