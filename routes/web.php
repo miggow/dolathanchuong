@@ -32,5 +32,6 @@ Route::group(['prefix' => 'product', 'as' => 'feature.'], function () {
 });
 Route::get('cart', [HomeController::class, 'cart'])->name('cart');
 Route::get('checkout', [HomeController::class, 'checkout'])->name('checkout');
-Route::post('/cart/add', [CartController::class, 'addToCart']);
+Route::post('/cart/add', [CartController::class, 'store']);
+Route::delete('/cart/{id}', [CartController::class, 'destroy']);
 Route::get('/place/order', [CheckoutController::class, 'placeOrder'])->name('place.order');

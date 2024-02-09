@@ -23,14 +23,14 @@
                                         <tr>
                                             <th>Product</th>
                                             <th>Name</th>
-                                            <th>Gía</th>
-                                            <th>Sale</th>
+                                            <th>Price</th>
+                                            <th>Sale price</th>
                                             <th>Giao dịch</th>
-                                            <th>Kho</th>
+                                            <th>Inventory</th>
                                             <th>Status</th>
-                                            <th>Mới</th>
-                                            <th>Nổi bật</th>
-                                            <th>Khuyến mãi</th>
+                                            <th>New</th>
+                                            <th>Outstanding</th>
+                                            <th>On Sale</th>
                                             {{-- <th>Date</th> --}}
                                             <th class="text-center">Action</th>
                                         </tr>
@@ -60,11 +60,11 @@
                                                         class="form-control">
                                                         <option value="publish"
                                                             {{ $product->status == 'publish' ? 'selected' : '' }}>
-                                                            Hoạt động
+                                                            Publish
                                                         </option>
                                                         <option value="draft"
                                                             {{ $product->status == 'draft' ? 'selected' : '' }}>
-                                                            Ngừng hiển thị
+                                                            Draft
                                                         </option>
                                                     </select>
                                                 </td>
@@ -160,10 +160,20 @@
                     check: check == true ? 1 : 0,
                 },
                 success: function(response) {
-                    alert(response.message);
+                    Swal.fire({
+                        title: 'Success',
+                        text: response.message,
+                        icon: 'success',
+                        confirmButtonText: 'Back'
+                    })
                 },
                 error: function(xhr, status, error) {
-                    alert("Error: " + error);
+                    Swal.fire({
+                        title: 'Error',
+                        text: error,
+                        icon: 'error',
+                        confirmButtonText: 'Back'
+                    })
                 }
             });
         });
@@ -180,10 +190,20 @@
                     status: status
                 },
                 success: function(response) {
-                    alert(response.message);
+                    Swal.fire({
+                        title: 'Success',
+                        text: response.message,
+                        icon: 'success',
+                        confirmButtonText: 'Back'
+                    })
                 },
                 error: function(xhr, status, error) {
-                    alert("Error: " + error);
+                    Swal.fire({
+                        title: 'Error',
+                        text: error,
+                        icon: 'error',
+                        confirmButtonText: 'Back'
+                    })
                 }
             });
         });

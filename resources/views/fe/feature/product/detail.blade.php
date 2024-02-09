@@ -407,7 +407,8 @@
                             <div>
                                 <div class="ec-sb-pro-sl-item">
                                     <a href="#" class="sidekka_pro_img"><img
-                                            src="{{ asset('frontend/assets/images/product-image/1_1.jpg') }}" alt="product" /></a>
+                                            src="{{ asset('frontend/assets/images/product-image/1_1.jpg') }}"
+                                            alt="product" /></a>
                                     <div class="ec-pro-content">
                                         <h5 class="ec-pro-title"><a href="#">Beautiful Teddy
                                                 Bear</a></h5>
@@ -428,7 +429,8 @@
                             <div>
                                 <div class="ec-sb-pro-sl-item">
                                     <a href="#" class="sidekka_pro_img"><img
-                                            src="{{ asset('frontend/assets/images/product-image/2_1.jpg') }}" alt="product" /></a>
+                                            src="{{ asset('frontend/assets/images/product-image/2_1.jpg') }}"
+                                            alt="product" /></a>
                                     <div class="ec-pro-content">
                                         <h5 class="ec-pro-title"><a href="#">Gym Backpack</a>
                                         </h5>
@@ -449,7 +451,8 @@
                             <div>
                                 <div class="ec-sb-pro-sl-item">
                                     <a href="#" class="sidekka_pro_img"><img
-                                            src="{{ asset('frontend/assets/images/product-image/3_1.jpg') }}" alt="product" /></a>
+                                            src="{{ asset('frontend/assets/images/product-image/3_1.jpg') }}"
+                                            alt="product" /></a>
                                     <div class="ec-pro-content">
                                         <h5 class="ec-pro-title"><a href="#">Beautiful Purse for
                                                 Women</a></h5>
@@ -470,7 +473,8 @@
                             <div>
                                 <div class="ec-sb-pro-sl-item">
                                     <a href="#" class="sidekka_pro_img"><img
-                                            src="{{ asset('frontend/assets/images/product-image/4_1.jpg') }}" alt="product" /></a>
+                                            src="{{ asset('frontend/assets/images/product-image/4_1.jpg') }}"
+                                            alt="product" /></a>
                                     <div class="ec-pro-content">
                                         <h5 class="ec-pro-title"><a href="#">Wool Felt Long Brim
                                                 Hat</a></h5>
@@ -491,7 +495,8 @@
                             <div>
                                 <div class="ec-sb-pro-sl-item">
                                     <a href="#" class="sidekka_pro_img"><img
-                                            src="{{ asset('frontend/assets/images/product-image/5_1.jpg') }}" alt="product" /></a>
+                                            src="{{ asset('frontend/assets/images/product-image/5_1.jpg') }}"
+                                            alt="product" /></a>
                                     <div class="ec-pro-content">
                                         <h5 class="ec-pro-title"><a href="#">Black Leather
                                                 Belt</a></h5>
@@ -512,7 +517,8 @@
                             <div>
                                 <div class="ec-sb-pro-sl-item">
                                     <a href="#" class="sidekka_pro_img"><img
-                                            src="{{ asset('frontend/assets/images/product-image/6_2.jpg') }}" alt="product" /></a>
+                                            src="{{ asset('frontend/assets/images/product-image/6_2.jpg') }}"
+                                            alt="product" /></a>
                                     <div class="ec-pro-content">
                                         <h5 class="ec-pro-title"><a href="#">Beautiful Tee for
                                                 Women</a></h5>
@@ -533,7 +539,8 @@
                             <div>
                                 <div class="ec-sb-pro-sl-item">
                                     <a href="#" class="sidekka_pro_img"><img
-                                            src="{{ asset('frontend/assets/images/product-image/7_1.jpg') }}" alt="product" /></a>
+                                            src="{{ asset('frontend/assets/images/product-image/7_1.jpg') }}"
+                                            alt="product" /></a>
                                     <div class="ec-pro-content">
                                         <h5 class="ec-pro-title"><a href="#">Cotton Shirt for
                                                 Men</a></h5>
@@ -686,9 +693,11 @@
                             <div class="ec-pro-image-outer">
                                 <div class="ec-pro-image">
                                     <a href="#" class="image">
-                                        <img class="main-image" src="{{ asset('frontend/assets/images/product-image/6_1.jpg') }}"
+                                        <img class="main-image"
+                                            src="{{ asset('frontend/assets/images/product-image/6_1.jpg') }}"
                                             alt="Product" />
-                                        <img class="hover-image" src="{{ asset('frontend/assets/images/product-image/6_2.jpg') }}"
+                                        <img class="hover-image"
+                                            src="{{ asset('frontend/assets/images/product-image/6_2.jpg') }}"
                                             alt="Product" />
                                     </a>
                                     <span class="percentage">20%</span>
@@ -759,9 +768,11 @@
                             <div class="ec-pro-image-outer">
                                 <div class="ec-pro-image">
                                     <a href="#" class="image">
-                                        <img class="main-image" src="{{ asset('frontend/assets/images/product-image/7_1.jpg') }}"
+                                        <img class="main-image"
+                                            src="{{ asset('frontend/assets/images/product-image/7_1.jpg') }}"
                                             alt="Product" />
-                                        <img class="hover-image" src="{{ asset('frontend/assets/images/product-image/7_2.jpg') }}"
+                                        <img class="hover-image"
+                                            src="{{ asset('frontend/assets/images/product-image/7_2.jpg') }}"
                                             alt="Product" />
                                     </a>
                                     <span class="percentage">20%</span>
@@ -835,9 +846,11 @@
                             <div class="ec-pro-image-outer">
                                 <div class="ec-pro-image">
                                     <a href="#" class="image">
-                                        <img class="main-image" src="{{ asset('frontend/assets/images/product-image/1_1.jpg') }}"
+                                        <img class="main-image"
+                                            src="{{ asset('frontend/assets/images/product-image/1_1.jpg') }}"
                                             alt="Product" />
-                                        <img class="hover-image" src="{{ asset('frontend/assets/images/product-image/1_2.jpg') }}"
+                                        <img class="hover-image"
+                                            src="{{ asset('frontend/assets/images/product-image/1_2.jpg') }}"
                                             alt="Product" />
                                     </a>
                                     <span class="percentage">20%</span>
@@ -920,9 +933,11 @@
                             <div class="ec-pro-image-outer">
                                 <div class="ec-pro-image">
                                     <a href="#" class="image">
-                                        <img class="main-image" src="{{ asset('frontend/assets/images/product-image/2_1.jpg') }}"
+                                        <img class="main-image"
+                                            src="{{ asset('frontend/assets/images/product-image/2_1.jpg') }}"
                                             alt="Product" />
-                                        <img class="hover-image" src="{{ asset('frontend/assets/images/product-image/2_2.jpg') }}"
+                                        <img class="hover-image"
+                                            src="{{ asset('frontend/assets/images/product-image/2_2.jpg') }}"
                                             alt="Product" />
                                     </a>
                                     <span class="percentage">20%</span>
@@ -1031,10 +1046,26 @@
                     quantity: quantity
                 },
                 success: function(response) {
-                    alert(response.message);
+                    Swal.fire({
+                        toast: true,
+                        position: "bottom-end",
+                        showConfirmButton: false,
+                        timer: 2000,
+                        timerProgressBar: true,
+                        title: response.message,
+                        icon: 'success',
+                    });
                 },
                 error: function(xhr, status, error) {
-                    alert("Error: " + error);
+                    Swal.fire({
+                        toast: true,
+                        position: "bottom-end",
+                        showConfirmButton: false,
+                        timer: 2000,
+                        timerProgressBar: true,
+                        title: error,
+                        icon: 'error',
+                    });
                 }
             });
         });

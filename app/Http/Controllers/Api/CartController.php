@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Cart;
 use App\Http\Controllers\Controller;
-use App\Product;
 use App\Variant;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
-    public function addToCart(Request $request)
+
+    public function store(Request $request)
     {
         // Validate the request
         $validated = $request->validate([
@@ -46,16 +44,16 @@ class CartController extends Controller
             }
             session()->put('cart', $cart);
             session()->save();
-            return response()->json(['message' => 'Added to Cart', 'cartItem' => $cart[$variant->id]]);
+            return response()->json(['message' => 'Added to Cart']);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()]);
         }
     }
-    public function removeFromCart($cartId)
+    
+    public function destroy($id)
     {
         try {
-            session()->pull('cart.' . $cartId);
-            session()->save();
+            session()->pull('cart.' . $id);
             return response()->json(['message' => 'Cart item removed successfully']);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Cart item not found' . $e->getMessage()], 404);

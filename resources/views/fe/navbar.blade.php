@@ -101,21 +101,12 @@
                             </a> --}}
                             <!-- Header wishlist End -->
                             <!-- Header Cart Start -->
-                            @if (auth()->check())
-                                <a href="#ec-side-cart" class="ec-header-btn ec-side-toggle">
-                                    <div class="header-icon"><i class="fi-rr-shopping-bag"></i></div>
-                                    <span class="ec-header-count cart-count-lable">
-                                        {{ auth()->user()->carts->count() }}
-                                    </span>
-                                </a>
-                            @else
-                                <a href="{{ route('login') }}" class="ec-header-btn ec-side-toggle">
-                                    <div class="header-icon"><i class="fi-rr-shopping-bag"></i></div>
-                                    <span class="ec-header-count cart-count-lable">
-                                        0
-                                    </span>
-                                </a>
-                            @endif
+                            <a href="#ec-side-cart" class="ec-header-btn ec-side-toggle">
+                                <div class="header-icon"><i class="fi-rr-shopping-bag"></i></div>
+                                <span class="ec-header-count cart-count-lable">
+                                    {{ session()->has('cart') ? count(session()->get('cart')) : 0 }}
+                                </span>
+                            </a>
                             <!-- Header Cart End -->
                         </div>
                     </div>

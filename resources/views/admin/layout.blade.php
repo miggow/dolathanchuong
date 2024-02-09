@@ -32,6 +32,9 @@
 
     <!-- FAVICON -->
     <link href="{{asset('admin/assets/img/deba-logo.png') }}" rel="shortcut icon" />
+
+    <!-- Sweetalert -->
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/plugins/sweetalert2.min.css') }}" />
 </head>
 
 <body class="ec-header-fixed ec-sidebar-fixed ec-header-light" id="body">
@@ -85,6 +88,9 @@
 
     <!-- Ekka Custom -->
     <script src="{{asset('admin/assets/js/ekka.js')}}"></script>
+
+    <!-- Sweetalert -->
+    <script src="{{ asset('frontend/assets/js/plugins/sweetalert2.min.js') }}"></script>
     @yield('modal')
     @yield('script')
 </body>
